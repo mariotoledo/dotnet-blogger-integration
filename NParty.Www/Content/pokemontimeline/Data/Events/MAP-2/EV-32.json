@@ -1,0 +1,1 @@
+[{"id":32,"x":9,"y":12,"name":"EV-32"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'A tecnologia \u00e9 incr\u00edvel!'}","SHOW_TEXT: {'text': 'Agora \u00e9 poss\u00edvel jogar uma linha do tempo, quem diria?'}"],"graphic":"136","graphic-params":{"uniqid":1454032241560}}]]

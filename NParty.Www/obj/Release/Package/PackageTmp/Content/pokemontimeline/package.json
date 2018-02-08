@@ -1,0 +1,15 @@
+{
+  "main": "index.html",
+  "name": "game-1829-2410",
+  "version": "1.0.0",
+  "window": {
+    "title": "terste",
+    "toolbar": false,
+    "frame": true,
+    "width": 640,
+    "height": 480,
+    "position": "center",
+    "resizable": true,
+    "fullscreen": false
+  }
+}

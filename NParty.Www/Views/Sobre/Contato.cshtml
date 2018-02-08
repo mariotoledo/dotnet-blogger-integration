@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Contato";
+    ViewData["MenuHasBorderBottom"] = true;
+
+    ViewData["title"] = "Contato";
+    ViewData["metaDescription"] = "Entre em contato conosco!";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/contato.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Sobre/Contato");
+    ViewData["metaKeywords"] = new List<string>() { "Contato" };    
+}
+
+<div class="container" style="padding-top: 20px; padding-bottom: 20px; background-color: #FFF; margin-top: 20px; margin-bottom: 20px;">
+    <div class="row">
+        <div class="col-md-4" style="margin-bottom: 20px;">
+            Entre em contato conosco através do formulário ou escreva um email para <a href="mailto:contato@nparty.com.br">contato@nparty.com.br</a>
+        </div>
+        <div class="col-md-8 col-bordered-left">
+            <iframe frameborder="0" height="450px" src="http://br.foxyform.com/form.php?id=93743&amp;sec_hash=3fa34728e23" width="100%" style="overflow-x: hidden;"></iframe>
+        </div>
+    </div>
+</div>

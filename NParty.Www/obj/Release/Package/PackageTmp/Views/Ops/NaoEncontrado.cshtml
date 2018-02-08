@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Ops";
+    ViewData["MenuHasBorderBottom"] = true;
+
+    ViewData["title"] = "Não Encontrado";
+    ViewData["metaDescription"] = "Ops: não encontramos a página desejada";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/naoencontrado.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Ops/NaoEncontrado");
+    ViewData["metaKeywords"] = new List<string>() { "Not Found" };
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-lg-offset-1">
+            <img class="img-responsive" style="width: 100%;" src="@Url.Content("~/Content/img/missing_no.png")" />
+        </div>
+        <div class="col-md-7" >
+            <div style="padding: 10px;">
+                <h2>Ops....</h2>
+                <p>Não encontramos a página procurada, mas esperamos que você tenha entendido o trocadilho da imagem com o Missigno (missing page, sacou? Hãn? Hãn?).<br/>
+                <br/>Pode ser que tenhamos removido a página, mas por via das dúvidas, verifique se você tentou acessar o caminho certo da página.</p>
+            </div>
+        </div>
+    </div>
+</div>

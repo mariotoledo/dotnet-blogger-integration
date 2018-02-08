@@ -1,0 +1,1 @@
+[{"id":44,"x":"74","y":"10","name":"EV-44"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'S\u00f3 peguei a Pok\u00e9dex 3D porque foi de gra\u00e7a.'}"],"graphic":"149","graphic-params":{"uniqid":1454074774446}}]]

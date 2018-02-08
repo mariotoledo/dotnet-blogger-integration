@@ -1,0 +1,1 @@
+[{"id":1,"x":"25","y":"10","name":"EV-1"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Essas portas me deixam confuso...'}","SHOW_TEXT: {'text': 'Ainda irei entend\u00ea-las.'}"],"graphic":"130","graphic-params":{"uniqid":1454034814053}}]]

@@ -1,0 +1,1 @@
+[{"id":52,"x":70,"y":13,"name":"EV-52"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Estou babando pelo BREAK Zoroark...'}"],"graphic":"140","graphic-params":{"uniqid":1454075755310}}]]

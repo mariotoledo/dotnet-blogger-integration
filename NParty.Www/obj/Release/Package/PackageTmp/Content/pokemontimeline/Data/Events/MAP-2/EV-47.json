@@ -1,0 +1,1 @@
+[{"id":47,"x":35,"y":9,"name":"EV-47"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Nunca entendi o porqu\u00ea de Cerulean s\u00f3 ter uma sa\u00edda, e ela ainda ser por dentro da casa de um morador...'}"],"graphic":"143","graphic-params":{"uniqid":1454067260344}}]]

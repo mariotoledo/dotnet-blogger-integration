@@ -1,0 +1,368 @@
+﻿@{
+    int activeMenuId = ViewData["ActiveMenu"] == null ? 0 : (Int32)ViewData["ActiveMenu"];
+    bool menuhasBorderBottom = true.Equals(ViewData["MenuHasBorderBottom"]);
+
+    string metaDescription = string.IsNullOrEmpty((string)ViewData["metaDescription"]) ?
+        "O melhor do universo da Nintendo, eSports e Eventos! Wii U, 3DS, Pokémon, Mario, League of Legends, Counter Strike, campeonatos e mais!" : (string)ViewData["metaDescription"];
+
+    string metaAuthor = string.IsNullOrEmpty((string)ViewData["metaAuthor"]) ?
+        "" : (string)ViewData["metaAuthor"];
+
+    List<string> metaKeywords = ViewData["metaKeywords"] == null ?
+        new List<string>() { "Nintendo", "eSports", "Eventos", "Wii U", "3DS", "Pokémon", "Mario", "Zelda", "League of Legends", "Counter Strike", "Campeonatos" }
+     : (List<string>)ViewData["metaKeywords"];
+
+    string title = string.IsNullOrEmpty((string)ViewData["title"]) ?
+        "N-Party" : (string)ViewData["title"];
+
+    string metaUrl = string.IsNullOrEmpty((string)ViewData["metaUrl"]) ?
+        System.Configuration.ConfigurationManager.AppSettings["SiteUrl"] : System.Configuration.ConfigurationManager.AppSettings["SiteUrl"] + (string)ViewData["metaUrl"];
+
+    bool metaImageIsExternal = true.Equals(ViewData["metaImageUrlIsExternal"]);
+
+    string metaImage = string.IsNullOrEmpty((string)ViewData["metaImage"]) ?
+System.Configuration.ConfigurationManager.AppSettings["SiteUrl"] + Url.Content("~/Content/img/metaImages/sharer.jpg") : (metaImageIsExternal ? "" : System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]) + (string)ViewData["metaImage"];
+
+    string metaTwitterAuthor = string.IsNullOrEmpty((string)ViewData["metaTwitterAuthor"]) ?
+    "@n_party" : (string)ViewData["metaTwitterAuthor"];
+
+    string metaFacebookAuthor = string.IsNullOrEmpty((string)ViewData["metaFacebookAuthor"]) ?
+    "" : (string)ViewData["metaFacebookAuthor"];
+
+    string feedUrl = string.IsNullOrEmpty((string)ViewData["feedUrl"]) ? "http://feeds.feedburner.com/all-n-party" :
+        (string)ViewData["feedUrl"];
+}
+
+<!--
+╓▓███████████        ╓▓██████████▄ ╓▓█████   ,▓██████████▓███████████████ ╓▓████
+▌          ▓█        ▌          ▓█╒     ▓██  [          ▓          ▓   ▐█ ¢   ▓█
+▌   ▓▓"$   ▓█▄▄▄▄▄▄▄▄▌   ▓█▄▌   ▓█`  ╒   ▓█▌ ▌   ▓▓"$   ▓█""]   ▐█Ö▐   ▐█▄▌   ▓█
+▌   ▓█ ║   ▓""""""""]▌   ▀▀▀"   ▓▌   ▓▌   ▓█▄▌   ▓██▓   ▓█  ]   ▐█▌]          ▓█
+▌   ▓█ ║   ▓▄=======4▌   ▄▄≡≡≡≡é▓   ▓█▐    ▓█▌   ╕    ▄▄▌   ]   ▐█▌ ⁿ══µ   ▄▄²  
+▌   ▓█ ║   ▓█        ▌   ▓█    Æ   ▐▓▀▀▀   ╙█▌   ▓▄    ▓██  ]   ▐█▌    µ   █▌   
+▌   ▓▀ ║   ▓█        ▌   ▓▀   ╔    ▓        ╙▌   ▓▀¼    ▀█▀ ]   ▐█`    µ   ▓▀   
+
+    N-Party - 5.0b
+    Design e desenvolvimento por Mario Toledo (mario.toledo@nparty.com.br)
+
+-->
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content='243433449077247' property='fb:app_id' />
+    <meta content='100000198134068' property='fb:admins' />
+
+    <meta name="description" content="@HttpUtility.HtmlDecode(metaDescription)">
+    <meta name="author" content="@HttpUtility.HtmlDecode(metaAuthor)">
+
+    @if (metaKeywords != null)
+    {
+        string keywords = "";
+        foreach (string keyword in metaKeywords)
+        {
+            keywords += keyword + ",";
+        }
+
+        <meta name="keywords" content="@keywords" />
+    }
+    
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="@HttpUtility.HtmlDecode(title)">
+    <meta itemprop="description" content="@HttpUtility.HtmlDecode(metaDescription)">
+    <meta itemprop="image" content="@metaImage">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@("n_party")">
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@WebUtility.HtmlDecode(metaDescription)">
+    <meta name="twitter:creator" content="@metaTwitterAuthor">
+    <meta name="twitter:image:src" content="@metaImage">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="@title" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="@metaUrl" />
+    <meta property="og:image" content="@metaImage" />
+    <meta property="og:image:width" content="640" />
+    <meta property="og:image:height" content="360" />
+    <meta property="og:description" content="@WebUtility.HtmlDecode(metaDescription)" />
+    <meta property="og:site_name" content="N-Party" />
+
+    @if (metaKeywords != null)
+    {
+        foreach (string keyword in metaKeywords)
+        {
+            <meta property="article:tag" content="@WebUtility.HtmlDecode(keyword)" />
+        }
+    }
+    
+    <meta property="article:author" content="@metaFacebookAuthor" />
+
+    <link href='@Url.Content("~/Content/img/favicon.png")' rel='icon' type='image/x-icon' />
+    <link href='@Url.Content("~/Content/img/favicon.png")' rel='shortcut icon' />
+    <link href='@Url.Content("~/Content/img/favicon.png")' rel='apple-touch-icon' />
+
+    <title>@HttpUtility.HtmlDecode(title)</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/nparty.css")?date=@DateTime.Now.ToString("ddMMyyyyhhmm")" rel="stylesheet">
+    <link href="http://nparty.com.br/Content/css/audioplayer.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="alternate" type="application/atom+xml" title="N-Party - Atom" href="@feedUrl" />
+    <link rel="alternate" type="application/rss+xml" title="N-Party - RSS" href="@feedUrl?alt=rss" />
+
+    @RenderSection("Head", false)
+</head>
+<body>
+    <nav class="navbar navbar-default" style="@(menuhasBorderBottom ? "border-bottom: 1px solid #CCCCCC;" : "")">
+        <div class="container">
+            <div class="navbar-header" itemscope itemtype="http://schema.org/Organization">
+                <meta itemprop="name" content="N-Party"> 
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a itemprop="url" class="navbar-brand" href="@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]">
+                    <img itemprop="logo" style="height: 100%;" class="img-responsive" alt="N-Party" src="@Url.Content("~/Content/img/logo.png")">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="main-menu" itemscope itemtype="http://schema.org/WebSite">
+                <ul class="nav navbar-nav">
+                    <li class="bordered-left nintendo-menu @(activeMenuId == 1 ? "nintendo-menu-active" : "")">
+                        <a href="@Url.Content("~/Nintendo")">Nintendo</a>
+                    </li>
+                    <li class="esports-menu  @(activeMenuId == 2 ? "esports-menu-active" : "")">
+                        <a href="@Url.Content("~/ESports")">E-Sports</a>
+                    </li>
+                    <li class="eventos-menu @(activeMenuId == 3 ? "eventos-menu-active" : "")">
+                        <a href="@Url.Content("~/Eventos")"> Eventos</a>
+                    </li>
+                    <li class="bordered-left podcasts-menu @(activeMenuId == 4 ? "podcasts-menu-active" : "")">
+                        <a href="@Url.Content("~/Podcasts")"> Podcasts</a>
+                    </li>
+                    @*<li class="bordered-left dropdown">
+                        <a href="#">Comunidade</a>
+                        <div class="dropdown-menu">
+                            <ul class="nav">
+                                <li><a href="#">Usuários</a></li>
+                                        <li><a href="#">Ranking</a></li>
+                                <li><a href="#">Widgets</a></li>
+                            </ul>
+                        </div>
+                    </li>*@
+                    <li class="bordered-left bordered-right dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre <span class="caret"></span></a>
+                        <div class="dropdown-menu">
+                            <ul class="nav">
+                                <li><a href="@Url.Content("~/Sobre/QuemSomos")">Quem Somos</a></li>
+                                <li><a href="@Url.Content("~/Sobre/FacaParte")">Faça Parte</a></li>
+                                <li role="separator" class="divider" style="margin: 0;"></li>
+                                <li><a href="@Url.Content("~/Sobre/Contato")">Contato</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <meta itemprop="url" content="@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]" />
+                <form class="navbar-form navbar-left" role="search" action="@Url.Content("~/Home/Busca")" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+                    <div class="input-group">
+                        <meta itemprop="target" content="@Url.Content("~/Home/Busca")={search_term}" />
+                        <input itemprop="query-input" type="text" class="form-control" name="q" placeholder="Buscar por..." value="@ViewData["query"]">
+                        <span class="input-group-btn">
+                            <button style="height:34px;" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </form>
+                <div class="top-bar-social">
+                    <a title="Facebook" itemprop="sameAs" target="_blank" class="socialIcon" href="http://www.facebook.com/NParty" style="font-size: 20px"><i class="fa fa-facebook"></i></a>
+                    <a title="Twitter" itemprop="sameAs" target="_blank" class="socialIcon" href="https://twitter.com/n_party" style="font-size: 20px"><i class="fa fa-twitter"></i></a>
+                    <a title="Google +" itemprop="sameAs" target="_blank" class="navbar-btn socialIcon" href="https://plus.google.com/101582759847063966924" style="font-size: 20px"><i class="fa fa-google-plus"></i></a>
+                    <a title="YouTube" itemprop="sameAs" target="_blank" class="navbar-btn socialIcon" href="http://youtube.com/npartytv" style="font-size: 20px"><i class="fa fa-youtube"></i></a>
+                    <a title="Instagram" itemprop="sameAs" target="_blank" class="navbar-btn socialIcon" href="http://instagram.com/nintendoparty" style="font-size: 20px"><i class="fa fa-instagram"></i></a>
+                    <a title="RSS" itemprop="sameAs" target="_blank" class="navbar-btn socialIcon" href="http://feeds.feedburner.com/all-n-party" style="font-size: 20px"><i class="fa fa-rss"></i></a>
+                </div>
+                @*<ul class="nav navbar-nav navbar-right">
+        <li class="bordered-left bordered-right"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+    </ul>*@
+            </div>
+        </div>
+    </nav>
+    <div>
+        @{
+            string flashMessage = (string)TempData["FlashMessage"];
+            string flashMessageType = (string)TempData["FlashMessageType"];
+            if (!string.IsNullOrEmpty(flashMessage))
+            {
+                <div class="alert-bar">
+                    <div class="@flashMessageType">
+                        @Html.Raw(Html.Encode(flashMessage).Replace("\r\n", "<br />\r\n"))
+                    </div>
+                </div>
+            }
+        }
+
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="margin-bottom: 20px;">
+                    <h4>Destaques</h4>
+                    <ul class="media-list" id="footer-hilights">
+                        <li>Carregando...</li>
+                    </ul>
+                </div>
+                <div class="col-md-4" style="margin-bottom: 20px;">
+                    @*<h4>Último Evento</h4>
+                        <div class="media thumb-item" style="border: 0">
+                            <a href="#">
+                                <div class="media-left media-middle">
+                                    <figure class="media-object" style="width: 80px; height: 80px; background-image: url('http://www.images.nparty.com.br/connect/eventCover/small/animefriends.png')"></figure>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Anime Friends 2015</h4>
+                                    <div class="time">
+                                        <div>Organizador: Yamato</div>
+                                        <div>Tipo: Evento de Anime</div>
+                                        <div>Local: Campo de Marte (Sao Paulo - SP)</div>
+                                        <div>Data: 20/05/2015 à 22/05/2015</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <br />*@
+                        <h4 style="margin-bottom: 2px;">Se inscreva em nossa newsletter</h4>
+                        <p style="font-size: 12px; color: #FFF;">Receba em seu email um resumo de todas as novidades de nosso site e nossos eventos</p>
+                        <form>
+                            <div class="input-group">
+                                <input id="suscriptionEmail" type="text" class="form-control" placeholder="digite seu email">
+                                <span class="input-group-btn">
+                                    <button onclick="subscribeEmailToNewsletter()" id="btnSubscribe" data-loading-text="Carregando..." class="btn btn-default" type="button">Cadastrar</button>
+                                </span>
+                            </div>
+                        </form>
+                        <div class="alert alert-danger" id="subscribeErrorMessage" style="display: none;"></div>
+                        <div class="alert alert-success" id="subscribeSuccessMessage" style="display: none;"></div>
+                </div>
+                <div class="col-md-4" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="N-Party"> 
+                    <h4>Siga-nos!</h4>
+                    <link itemprop="url" href="@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]" rel="alternate"> 
+                    <div style="min-height: 60px;">
+                        <a itemprop="sameAs" target="_blank" href="http://www.facebook.com/NParty" type="button" style="font-size: 50px"><i class="fa fa-facebook-square"></i></a>
+                        <a itemprop="sameAs" target="_blank" href="https://twitter.com/n_party" type="button" style="font-size: 50px"><i class="fa fa-twitter-square"></i></a>
+                        <a itemprop="sameAs" target="_blank" href="https://plus.google.com/101582759847063966924" style="font-size: 50px" type="button"><i class="fa fa-google-plus-square"></i></a>
+                        <a itemprop="sameAs" target="_blank" href="http://youtube.com/npartytv" type="button" style="font-size: 50px"><i class="fa fa-youtube-square"></i></a>
+                        <a itemprop="sameAs" target="_blank" href="http://instagram.com/nintendoparty" type="button" style="font-size: 50px"><i class="fa fa-instagram"></i></a>
+                        <a itemprop="sameAs" target="_blank" href="http://feeds.feedburner.com/all-n-party" type="button" style="font-size: 50px"><i class="fa fa-rss-square"></i></a>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div style="background-color: #000">
+        <div class="container" style="padding-top: 10px; padding-bottom: 10px; color: #fff;">
+            COPYRIGHT (C) 2010 - 2016 N-Party <span style="font-size: 10px"> - licenciado sobre a <a href="http://creativecommons.org/licenses/by/3.0/br/" style="color: #FFF;" target="_blank">atribuição 3.0 da Creative Commons</a></span>
+            <div class="pull-right" style="font-size: 12px">Design e desenvolvimento por <b>Mario Toledo</b></div>
+        </div>
+    </div>
+    <script src='@Url.Content("~/Content/js/jquery-1.11.3.min.js")'></script>
+    <script src='@Url.Content("~/Content/js/bootstrap.min.js")'></script>
+    <script src='@Url.Content("~/Content/js/nparty.js")'></script>
+    <script>
+        $(document).ready(function () {
+            var $hilights = $('#footer-hilights');
+
+            $.ajax('@Url.Content("~/Home/GetHilightItems/")').done(function (data) {
+                if (!data || data.length == 0) {
+                    $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+                    return;
+                }
+
+                var appendable = '';
+
+                var i = 0;
+
+                $.each(data, function (index) {
+                    appendable +=   '<li class="media thumb-item">' +
+                                    '<a href="/' + data[index].NPartyArticleLink + '">' +
+                                    '<div class="media-left media-middle">' +
+                                    '<figure class="media-object" style="background-image: url(' + data[index].CoverImage + ')"></figure>' + 
+                                    '</div><div class="media-body">' +
+                                    '<h5 style="margin-bottom: 5px;" class="media-heading">' + data[index].Title + '</h5>' +
+                                    '<span class="label label-default">' + data[index].Domain + '</span></div></a></li>';
+
+                    if (index > 1)
+                        return false;
+                });
+
+                $hilights.html(appendable);
+            }).fail(function () {
+                $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+            });
+        });
+
+        function subscribeEmailToNewsletter() {
+            var $suscriptionEmail = $('#suscriptionEmail');
+            var $btnSubscribe = $('#btnSubscribe');
+            var $errorMessage = $('#subscribeErrorMessage');
+            var $successMessage = $('#subscribeSuccessMessage');
+
+            $btnSubscribe.button("loading");
+            $errorMessage.hide();
+            $successMessage.hide();
+
+            $.post('@Url.Content("~/Home/SubscribeEmailToNewsletter/")', { email: $suscriptionEmail.val()}).done(function (data) {
+                if (data) {
+                    if (data.status == 'success') {
+                        $successMessage.html(data.message);
+                        $successMessage.show();
+                    } else {
+                        $errorMessage.html(data.message);
+                        $errorMessage.show();
+                    }
+                } else {
+                    $errorMessage.html('Ocorreu um erro inesperado. Por favor, tente novamente mais tarde');
+                }
+
+                $btnSubscribe.button("reset");
+            });
+        }
+    </script>
+    @RenderSection("Scripts", false)
+    <div id="fb-root"></div>
+    <script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1401757976733944";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- ANALYTICS -->
+    <script type='text/javascript'>
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24151615-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <!-- FIM ANALYTICS -->
+</body>
+</html>

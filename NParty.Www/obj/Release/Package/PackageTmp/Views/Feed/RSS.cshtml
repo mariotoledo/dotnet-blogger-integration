@@ -1,0 +1,33 @@
+﻿@model List<NParty.Www.Models.Article>
+@{
+    this.Response.ContentType = "application/rss+xml";
+    ViewBag.Title = "RSS";
+    string title = (string)ViewData["Title"];
+    string link = (string)ViewData["Link"];
+    string description = (string)ViewData["Description"];
+    string lastBuildDate = (string)ViewData["LastBuildDate"];
+    Layout = null;
+}
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>@title</title>
+        <link>@link</link>
+        <description>@description</description>
+        @if (!string.IsNullOrEmpty(lastBuildDate))
+        {
+            <lastBuildDate>@lastBuildDate</lastBuildDate>
+        }
+        <language>pt-br</language>
+        @foreach (NParty.Www.Models.Article article in Model)
+        {
+            @Html.Raw("<item>")
+            <title>@article.Title</title>
+            @Html.Raw("<link>" + Url.Content("/" + article.NPartyArticleLink) + "</link>")
+            <guid>@("/" + article.NPartyArticleLink)</guid>
+            <pubDate>@article.DatePublished.ToUniversalTime().ToString("r")</pubDate>
+            <description>@Html.Encode(article.Summary)</description>
+            @Html.Raw("</item>")
+                }
+    </channel>
+</rss>

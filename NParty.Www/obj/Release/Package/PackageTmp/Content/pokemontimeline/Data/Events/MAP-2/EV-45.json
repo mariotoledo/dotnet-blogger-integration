@@ -1,0 +1,1 @@
+[{"id":45,"x":"69","y":"13","name":"EV-45"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Quando vi o Ash virar pedra no filme, comecei a suar pelos olhos.'}"],"graphic":"142","graphic-params":{"uniqid":1454066469656}}]]

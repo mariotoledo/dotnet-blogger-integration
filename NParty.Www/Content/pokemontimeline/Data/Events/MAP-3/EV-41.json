@@ -1,0 +1,1 @@
+[{"id":41,"x":19,"y":12,"name":"EV-41"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'O Eusine tem um fator de maneirice muito alto.'}","SHOW_TEXT: {'text': 'E o tema dele? Me faz suspirar.'}"],"graphic":"131","graphic-params":{"uniqid":1454072414003}}]]

@@ -1,0 +1,1 @@
+[{"id":40,"x":57,"y":10,"name":"EV-40"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Voc\u00ea viu aquele Tyranitar Prime? O brilho saindo dos olhos dele \u00e9 bom demais!'}"],"graphic":"131","graphic-params":{"uniqid":1454074437830}}]]

@@ -1,0 +1,37 @@
+﻿@using NParty.Www.Models
+@model List<Article>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<style>
+    table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+<table cellspacing="2">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Data</th>
+            <th>Link</th>
+            <th>Horas</th>
+        </tr>
+    </thead>
+    @foreach (Article a in Model)
+    {
+        <tr>
+            <td>@a.Title</td>
+            <td>@a.DatePublished.ToString("dd/MM/yyyy")</td>
+            <td><a href="http://nparty-www.azurewebsites.net/@a.NPartyArticleLink">http://nparty-www.azurewebsites.net/@a.NPartyArticleLink</a></td>
+            <td>1 hora</td>
+        </tr>
+    }
+    <tr></tr>
+</table>

@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "Pokémon";
+    ViewData["ActiveMenu"] = 1;
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+    int currentPage = (int)ViewData["currentPage"];
+
+    int maxPosts = (int)ViewData["MaxPosts"];
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/NintendoN-party";
+
+    ViewData["title"] = "Pokémon";
+    ViewData["metaDescription"] = "Tudo sobre os monstrinhos de bolso mais adorados do mundo";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/metaPokemon20th.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Nintendo/Pokemon");
+    ViewData["metaKeywords"] = new List<string>() { "Pokémon", "Pokemon", "Nintendo", "Pikachu", "Moon", "Sun", "X" };
+
+    string[] nintendoSpecialTags = (string[])ViewData["NintendoSpecialTags"];
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    @section Head{
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/pokemon20th.css")"/>
+
+        @if (articles.Count >= maxPosts)
+        {
+            <link rel="next" href="@Url.Content("~/Nintendo/Pokemon?page=" + (currentPage + 1))">
+        }
+        @if (currentPage > 0)
+        {
+            <link rel="prev" href="@Url.Content("~/Nintendo/Pokemon?page=" + (currentPage - 1))">
+        }
+    }
+}
+
+<div id="nintendo-container" class="pokemon20th" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Nintendo", 9);}
+    
+    <section class="content-section video-section">
+        <div class="pattern-overlay">
+            <video class="hidden-sm hidden-xs" autoplay loop muted poster="@Url.Content("~/Content/img/poke20th_bgHome.jpg")">
+                <source src="@Url.Content("~/Content/video/pokevideo.mp4")" type="video/mp4">
+            </video>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo"><img class="img-responsive" alt="20 anos de Pokémon" src="@Url.Content("~/Content/img/20anospokemon.png")" /></div>
+                        <h3>O melhor dos monstrinhos de bolso mais adorados do mundo com a N-Party!</h3>
+                        <div class="share-icons">
+                            <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar navbar-default" id="pokemon20th-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-pokeParty" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="margin-top: 12px; text-align: center; color: #FFF; text-shadow: 0 1px 2px rgba(0,0,0,.6);" class="hidden-lg">Menu</h3>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-pokeParty">
+                <ul class="nav nav-pills  menu">
+                    <li role="presentation" class="active"><a href="@Url.Content("~/Nintendo/Pokemon/")">Home</a></li>
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/Timeline")">Timeline Interativa</a></li>
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/PokePartyDay")">Poké Party Day</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="carousel-pokemon20th" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-pokemon20th" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-pokemon20th" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" style="background: url('@Url.Content("~/Content/img/marquee_bg.jpg")') center center; background-size: cover;">
+            <div class="item active">
+                <a href="@Url.Content("~/Nintendo/Pokemon/Timeline")">
+                    <div class="item-inner" style="text-align: center;">
+                        <img style="margin: auto;" class="img-responsive" src="@Url.Content("~/Content/img/poke20th_timeline.png")" alt="Timeline" />
+                    </div>
+                    <div class="carousel-caption">
+                        <span class="title">Timeline Interativa</span>
+                        <p>Acompanhe a trajetória da franquia Pokémon da melhor forma possível: jogando!</p>
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="@Url.Content("~/Nintendo/Pokemon/PokePartyDay")">
+                    <div class="item-inner" style="text-align: center;">
+                        <img style="margin: auto;" class="img-responsive" src="@Url.Content("~/Content/img/pokeEventoBg.png")" alt="Timeline" />
+                    </div>
+                    <div class="carousel-caption">
+                        <span class="title">Poké Party Day</span>
+                        <p>Veja como foi o nosso evento comemorativo dos 20 anos de Pokémon, com freeplays, campeonatos, palestras, cosplays e muito mais!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-pokemon20th" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-pokemon20th" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="container" style="padding-top: 30px;">
+        @{
+            if (articles != null && articles.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+
+                        @foreach (NParty.Www.Models.Article article in articles)
+                        {
+                            bool isSpecialTag = false;
+
+                            foreach (string label in article.Labels)
+                            {
+                                if (nintendoSpecialTags.Contains(label))
+                                {
+                                    isSpecialTag = true;
+                                    break;
+                                }
+                            }
+                            if (isSpecialTag)
+                            {
+                                <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    <h3>@article.Title</h3>
+                                    @if (!string.IsNullOrEmpty(article.AuthorName))
+                                    {
+                                        <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                    }
+                                    <p class="snippet">@article.Summary</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <figure style="background-image: url('@article.CoverImage')"></figure>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>@article.Title</h3>
+                                            @if (!string.IsNullOrEmpty(article.AuthorName))
+                                            {
+                                                <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                            }
+                                            <p class="snippet">@article.Summary</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            <hr />
+                        }
+
+                        <div class="row">
+                            <div class="col-md-5 prevPage">
+                                @{
+                if (articles.Count >= maxPosts)
+                {
+                    <a rel="next" class="directionLink" href="@Url.Content("~/Nintendo/Pokemon?page=" + (currentPage + 1))" style="text-align: left"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span> ARTIGOS MAIS <b>ANTIGOS</b> </a>
+                }
+                                }
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5 nextPage">
+                                @{
+                if (currentPage > 0)
+                {
+                    <a rel="prev" class="directionLink" href="@Url.Content("~/Nintendo/Pokemon?page=" + (currentPage - 1))" style="text-align: right;"> ARTIGOS MAIS <b>RECENTES</b> <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @{Html.RenderPartial("Sidebars/Nintendo");}
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 50px; text-align: center;"> Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+            }
+        }
+    </div>
+</div>
+

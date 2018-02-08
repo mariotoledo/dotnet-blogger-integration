@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Mario";
+    ViewData["ActiveMenu"] = 1;
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+    int currentPage = (int)ViewData["currentPage"];
+    int maxPosts = (int)ViewData["MaxPosts"];
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/NintendoN-party";
+
+    ViewData["title"] = "Mario";
+    ViewData["metaDescription"] = "Tudo sobre o bigodudo da Nintendo com a N-Party";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/mario.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Nintendo/Mario");
+    ViewData["metaKeywords"] = new List<string>() { "Mario", "Nintendo" };
+
+    string[] nintendoSpecialTags = (string[])ViewData["NintendoSpecialTags"];
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    @section Head{
+        @if (articles.Count >= maxPosts)
+        {
+            <link rel="next" href="@Url.Content("~/Nintendo/Mario?page=" + (currentPage + 1))">
+        }
+        @if (currentPage > 0)
+        {
+            <link rel="prev" href="@Url.Content("~/Nintendo/Mario?page=" + (currentPage - 1))">
+        }
+    }
+}
+
+<div id="nintendo-container" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Nintendo", 8);}
+    
+    <div class="container" style="padding-top: 30px;">
+        @{
+            if (articles != null && articles.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+
+                        @foreach (NParty.Www.Models.Article article in articles)
+                        {
+                            bool isSpecialTag = false;
+
+                            foreach (string label in article.Labels)
+                            {
+                                if (nintendoSpecialTags.Contains(label))
+                                {
+                                    isSpecialTag = true;
+                                    break;
+                                }
+                            }
+                            if (isSpecialTag)
+                            {
+                                <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    <h3>@article.Title</h3>
+                                    @if (!string.IsNullOrEmpty(article.AuthorName))
+                                    {
+                                        <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                    }
+                                    <p class="snippet">@article.Summary</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <figure style="background-image: url('@article.CoverImage')"></figure>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>@article.Title</h3>
+                                            @if (!string.IsNullOrEmpty(article.AuthorName))
+                                            {
+                                                <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                            }
+                                            <p class="snippet">@article.Summary</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }   
+                            <hr />
+                        }
+                        
+                        <div class="row">
+                            <div class="col-md-5 prevPage">
+                                @{
+                                    if (articles.Count >= maxPosts)
+                                    {
+                                        <a rel="next" class="directionLink" href="@Url.Content("~/Nintendo/Mario?page=" + (currentPage + 1))" style="text-align: left"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span> ARTIGOS MAIS <b>ANTIGOS</b> </a>
+                                    }
+                                }
+                                
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5 nextPage">
+                                @{
+                                    if (currentPage > 0)
+                                    {
+                                        <a rel="prev" class="directionLink" href="@Url.Content("~/Nintendo/Mario?page=" + (currentPage - 1))" style="text-align: right;"> ARTIGOS MAIS <b>RECENTES</b> <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @{Html.RenderPartial("Sidebars/Nintendo");}
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 50px; text-align: center;"> Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+            }
+        }
+    </div>
+</div>

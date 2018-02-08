@@ -1,0 +1,936 @@
+﻿@{
+    ViewBag.Title = "Poké Party Day";
+    ViewData["ActiveMenu"] = 1;
+
+    ViewData["title"] = "Poké Party Day";
+    ViewData["metaDescription"] = "Um evento gratuito comemorativo dos 20 anos de Pokémon, com freeplays, campeonatos, palestras, cosplays e muito mais!";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/metaPokePartyDay.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Nintendo/Pokemon/PokePartyDay");
+    ViewData["metaKeywords"] = new List<string>() { "Pokémon", "Pokemon", "Nintendo", "Campeonato", "VGC", "Cosplay", "Evento" };
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/NintendoN-party";
+
+    @section Head{
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/pokemon20th.css")" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    }
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .share-item{
+        padding: 20px;
+        box-shadow: 1px 1px 1px 1px #E0E0E0;
+        color:white;
+        font-size: 19px;
+        margin-bottom: 20px;
+    }
+
+    .share-item .detail{
+        text-align: left;
+        color: #FFF;
+    }
+
+    .share-item .detail a{
+        color: #FFF!important;
+    }
+
+    .btn-articles, .btn-videos, .btn-photos{
+        color: #FFF;
+    }
+
+    .btn-articles{
+        background-color: #e6bc2f;
+    }
+
+    .btn-articles:active, .btn-articles.active{
+        background-color: #bf9c28;
+        color: #FFF;
+    }
+
+    .btn-videos{
+        background-color: #30a7d7
+    }
+
+    .btn-videos:active, .btn-videos.active{
+        background-color: #237a9d;
+        color: #FFF;
+    }
+
+    .btn-photos{
+        background-color: #E3350D
+    }
+
+    .btn-photos:active, .btn-photos.active{
+        background-color: #a8280b;
+        color: #FFF;
+    }
+
+</style>
+
+<div id="nintendo-container" class="pokemon20th" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Nintendo", 9);}
+    <section class="content-section video-section">
+        <div style="background: url('@Url.Content("~/Content/img/marquee_bg.jpg")') center center; background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo"><img class="img-responsive" alt="20 anos de Pokémon" src="@Url.Content("~/Content/img/pokeEventoLogo.png")" /></div>
+                        <!--<h3 class="subTitle">Um evento gratuito* comemorativo dos 20 anos de Pokémon, com freeplays, campeonatos, palestras, cosplays e muito mais!</h3>-->
+                    </div>
+                </div>
+                <div class="share-icons">
+                    <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/PokePartyDay"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/PokePartyDay"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/PokePartyDay"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/PokePartyDay"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-lg-offset-4" style="padding: 10px; text-align: center;">
+                        <b>Realização:</b><br/>
+                        <img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" style="max-width: 170px; margin: 10px auto;" />
+                    </div>
+                    <div class="col-md-2" style="text-align: center;">
+                        <b>Apoio:</b><br />
+                        <img src="@Url.Content("~/Content/img/logo_copag.png")" class="img-responsive" style="max-width: 200px; margin: 10px auto;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar navbar-default" id="pokemon20th-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-pokeParty" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="margin-top: 12px; text-align: center; color: #FFF; text-shadow: 0 1px 2px rgba(0,0,0,.6);" class="hidden-lg">Menu</h3>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-pokeParty">
+                <ul class="nav nav-pills  menu">
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/")">Home</a></li>
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/Timeline")">Timeline Interativa</a></li>
+                    <li role="presentation" class="active"><a href="@Url.Content("~/Nintendo/Pokemon/PokePartyDay")">Poké Party Day</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @*<nav class="navbar" id="pokemon20th-subnavbar">
+        
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subMenu-pokeParty" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h3 style="margin-top: 12px; text-align: center; color: #FFF; text-shadow: 0 1px 2px rgba(0,0,0,.6);" class="hidden-lg">Menu</h3>
+                </div>
+                <div class="collapse navbar-collapse" id="subMenu-pokeParty">
+                    <ul class="nav nav-pills menu" >
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('oQueE')">O que é</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('localEData')">Local e Data</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('videoGames')">Video-Game</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('tcg')">TCG</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('palestras')">No Palco</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('desfileCosplay')">Cosplay</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('estandistas')">Estandistas</a></li>
+                        <li role="presentation"><a style="cursor: pointer" onclick="goToSectionFromId('contato')">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>*@
+    <div class="activity-area" id="obrigado" style="background-color: #FFF;">
+        <div class="container">
+            <h1 class="activity-area-title">Muito obrigado!</h1>
+            <p>O Poké Party Day foi um sonho que se tornou realidade. Há 5 anos que o grupo N-Party participa de eventos de terceiros, e mesmo com tanto esforço, sempre tivemos problemas que nunca conseguimos resolver devido ao fato de nos limitarmos as regras e os recursos fornecidos. Mais do que isto: tínhamos desgastes que não deveríamos ter. Já fomos furtados, já ficamos em situações de limites e fomos subjulgados em tantas outras situações. Nós nunca nos limitamos a pensar que somos "uma sala de eventos de anime", mas sim "um grupo que proporciona atividades para fãs de jogos eletrônicos". Mesmo em nossos encontros, sempre dependemos de nos limitarmos a espaços de terceiros, e desta forma, sempre sentimos que ficamos em dívida com nosso público.</p>
+            <p>Tentamos várias vezes por em prática ações que possibilitassem fazer nosso próprio evento. Mandamos propostas para outras organizadoras, entramos em contato com parceiros, participamos de projetos culturais e do governo, mas todas não surtiram efeito.</p>
+            <p>A idéia do Poké Party Day veio de um dia de frustração pelo fato de que queríamos muito fazer um evento com a nossa cara e do nosso jeito, que permitisse que o público realmente se sentisse a vontade e se divertisse. Mais do que isto, a idéia Poké Party Day surgiu para surprir a carência de eventos oficiais da Nintendo no Brasil e de eventos dedicados a um público que simplesmente gosta de Pokémon.</p>
+            <p>Foram quase 2 meses de muito esforço, e mesmo agora, que deu tudo certo, ainda estamos desacreditados. Só temos a agradecer por todos os que nos ajudaram e todos os que compareceram no evento. Se ele foi o que foi, então é graças a você que esteve lá e tornou esta festa memorável.</p>
+            <p>Este evento foi muito experimental para nós, mas o feedback do público foi essencial para tomarmos a decisão de continuarmos com o projeto para os próximos anos. Mais do que isto, queremos trazer outros projetos semelhantes durante o ano. Então pedimos a todos que aguardem, pois melhoraremos muito a qualidade de nosso trabalho, e continuaremos sonhando alto para alcançar novos objetivos.</p>
+        </div>
+    </div>
+    <div class="activity-area" id="oficial">
+        <div class="container">
+            <h1 class="activity-area-title">Cobertura Oficial</h1>
+            <p>As fotos oficiais foram tiradas pela <a href="https://www.facebook.com/Dani-Santos-Fotografia-469618393150503/?fref=ts" target="_blank">Dani Santos Fotografia</a>. Veja abaixo algumas delas ou <a href="https://www.facebook.com/media/set/?set=a.976804835707787.1073741932.133498603371752&type=3" target="_blank">clique aqui</a> para ver o álbum no Facebook.</p>
+            <div style="height: 300px; overflow-x: auto; overflow-y: hidden;">
+                <div style="width: 1500px; height: 200px; float: left;">
+                    <div style="float: left;"><img style="max-width: 186px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xal1/t31.0-8/s960x960/12719663_976812952373642_4789764119923782736_o.jpg" /></div>
+                    <div style="float: left;">
+                        <img style="max-width: 210px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xpl1/v/t1.0-9/12800168_976806569040947_6458407728154939489_n.jpg?oh=0fb05e16572ccb954651314c8612d688&oe=575DD305" /><br />
+                        <img style="max-width: 210px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/1496913_976805962374341_4734771928557677109_n.jpg?oh=4cdeb6430914e1b440eb7a498bfe5969&oe=574C23BC" />
+                    </div>
+                    <div style="float: left;"><img style="display: inline-block; max-width: 186px;" src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xlf1/v/t1.0-9/12799309_976805775707693_7916793470922540856_n.jpg?oh=8274fcbc3ecbe9a1f041bae42eaa355c&oe=57581457&__gda__=1466464808_dd78dfaf1cc06bf4aba4a4aa800700fb" /></div>
+                    <div style="float: left;">
+                        <img style="max-width: 210px;" src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xft1/v/t1.0-9/12814072_976804942374443_8750915144730129139_n.jpg?oh=e7f700c6bcdcb172ba1a439dcecb4eee&oe=575AD151&__gda__=1466380507_41799c370616acfff61cdf1995b9898f" /><br />
+                        <img style="max-width: 210px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/12806155_976805032374434_6683623247817174977_n.jpg?oh=17655bfb835701a93cef388c6a61abc8&oe=574B9A60" />
+                    </div>
+                    <div style="float: left;"><img style="display: inline-block; max-width: 186px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12814498_976809082374029_3456972242201228786_n.jpg?oh=698ba21c97ced66856b53fe2c4ed6064&oe=575AFD77" /></div>
+                    <div style="float: left;">
+                        <img style="max-width: 210px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xlt1/v/t1.0-9/12801430_976805329041071_1586388593993388379_n.jpg?oh=e00ecdb92b01303a75191e1a07e32bbc&oe=5769CE01" /><br />
+                        <img style="max-width: 210px;" src="https://scontent-gru2-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/12027669_976805579041046_7977734575845249508_n.jpg?oh=220b260aa87e0860e40311ee3014b13f&oe=575A7BA8" />
+                    </div>
+                    <div style="float: left;"><img style="display: inline-block; max-width: 186px;" src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfl1/v/t1.0-9/12805799_976809289040675_102064397935353161_n.jpg?oh=ac8ed0fa4113fb02236721461c66975c&oe=5752870F&__gda__=1469501351_70960da0c8d883cb6d36739b67fb3e83" /></div>
+                    <div style="float: left">
+                        <a href="https://www.facebook.com/media/set/?set=a.976804835707787.1073741932.133498603371752&type=3" target="_blank" class="btn btn-pokemon20th" style="max-width: 150px; height: 279px; color: #FFF; padding-top: 120px; ">Veja mais fotos</a>
+                    </div>
+                </div>
+            </div><br/>
+            <p>Veja também <a href="http://nparty.com.br/Eventos/Artigos/Ler/98114684829484286/20-anos-de-pokemon-no-poke" target="_blank">o nosso artigo</a> com tudo o que rolou no evento!</p>
+        </div>
+    </div>
+    <div class="activity-area" style="background-color: #FFF;">
+        <div class="container">
+            <h1 class="activity-area-title">Na mídia</h1>
+            <p>Sites, canais do YouTube, blogs e outros tipos de produtores de conteúdo estão falando sobre evento. Veja abaixo o que eles prepararam.</p><br/>
+            <div class="btn-group btn-group-lg" style="margin: 10px auto;">
+                <button type="button" class="btn btn-articles active" onclick="toogleArticles()">Artigos</button>
+                <button type="button" class="btn btn-videos active"  onclick="toogleVideos()">Videos</button>
+                <button type="button" class="btn btn-photos active" onclick="tooglePhotos()">Fotos</button>
+            </div>
+            <div class="row in-media">
+                <div class="col-md-4 article">
+                    <div class="share-item" style="background-color: #e6bc2f">
+                        <a href="http://nparty.com.br/Eventos/Artigos/Ler/98114684829484286/20-anos-de-pokemon-no-poke" target="_blank"><img class="img-responsive" src="https://1.bp.blogspot.com/-JigJGpTb-74/VtU3wocYUkI/AAAAAAAApZk/LY3E0pfOgHw/s640/pokepartyday.jpg" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="http://nparty.com.br/">N-Party</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 video">
+                    <div class="share-item" style="background-color: #30a7d7">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" width="720" height="405" src="https://www.youtube.com/embed/jr8mN_prUXE" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <hr />
+                        <div class="detail">
+                            <a target="_blank" href="https://www.youtube.com/channel/UCvAWo2OvTcgeK4FkSXLRK3g">Vida de Cosplayers</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 video">
+                    <div class="share-item" style="background-color: #30a7d7">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" width="720" height="405" src="https://www.youtube.com/embed/RWrbq9dKouE" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <hr />
+                        <div class="detail">
+                            <a target="_blank" href="https://www.youtube.com/channel/UCvgJZ2mCGDOm2T3cfgiiOvA">Cosplay All Stars</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 video">
+                    <div class="share-item" style="background-color: #30a7d7">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" width="720" height="405" src="https://www.youtube.com/embed/5ICkBcuk9pI" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <hr />
+                        <div class="detail">
+                            <a target="_blank" href="https://www.youtube.com/channel/UCMEzvVKaIj7s1V1S4ipjeXg">É Bom Saber</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 photos">
+                    <div class="share-item" style="background-color: #E3350D">
+                        <a href="http://www.otakucompany.com.br/evento/?wppa-album=1344&wppa-cover=0&wppa-occur=1" target="_blank"><img class="img-responsive" src="http://www.otakucompany.com.br/wp-content/uploads/wppa/119743.jpg?ver=1" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="http://www.otakucompany.com.br/">Otaku Company</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 photos">
+                    <div class="share-item" style="background-color: #E3350D">
+                        <a href="http://www.otakucompany.com.br/evento/wppaspec/ab1340/cv0/oc1" target="_blank"><img class="img-responsive" src="http://www.otakucompany.com.br/wp-content/uploads/wppa/119643.jpg?ver=1" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="http://www.otakucompany.com.br/">Otaku Company</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 photos">
+                    <div class="share-item" style="background-color: #E3350D">
+                        <a href="https://www.facebook.com/media/set/?set=a.976804835707787.1073741932.133498603371752&type=3" target="_blank"><img class="img-responsive" src="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xfl1/v/t1.0-9/12801291_976808442374093_5075261632059996711_n.jpg?oh=888694c8406da283760c4e4cc6518057&oe=57978E35" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="http://nparty.com.br/">N-Party</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 video">
+                    <div class="share-item" style="background-color: #30a7d7">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" width="720" height="405" src="https://www.youtube.com/embed/VKjsjcjPyKo" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <hr />
+                        <div class="detail">
+                            <a target="_blank" href="https://www.youtube.com/channel/UC1qi-EelNLoFhOxfrCuHVlg">Canal KrossOver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 photos">
+                    <div class="share-item" style="background-color: #E3350D">
+                        <a href="https://www.facebook.com/media/set/?set=a.537371846441092.1073741830.505892792922331&type=3" target="_blank"><img class="img-responsive" src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xlt1/v/t1.0-9/12798828_537372023107741_1536806092624709796_n.jpg?oh=a9088d3952b137e8e8619589f17f8fdd&oe=576C35A1&__gda__=1466186672_c3a259aadf4d605e14cbd120f23fb654" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="https://www.facebook.com/hotcube1/">Hotclube</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 article">
+                    <div class="share-item" style="background-color: #e6bc2f">
+                        <a href="http://spknews.com.br/cobertura-pokemon-party-day/" target="_blank"><img class="img-responsive" style="width: 100%;" src="http://spknews.com.br/wp-content/uploads/2016/02/photo-6-300x225.jpg" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="spknews.com.b">SPK News</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 photos">
+                    <div class="share-item" style="background-color: #E3350D">
+                        <a href="https://www.facebook.com/media/set/?set=a.951853454864586.1073741827.187408221309117&type=3" target="_blank"><img class="img-responsive" src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xfl1/v/t1.0-9/12799338_951854458197819_4184127921930161850_n.jpg?oh=6a898eb7eaca781ce6ec02215390cfe0&oe=57647D72&__gda__=1465623920_f51dc74adf1a8a8823ce7cf29292fe5e" /></a>
+                        <hr />
+                        <div class="detail">
+                            <a href="https://www.facebook.com/revistaanimeclube/">Revista Anime Clube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button onclick="openEventSite()" class="btn btn-lg btn-block btn-pokemon20th">ABRIR SITE DO EVENTO</button>
+        </div>
+    </div>
+    <div style="display: none;" id="eventSite">
+        <div class="activity-area" id="oQueE">
+            <div class="container">
+                <h1 class="activity-area-title">Vivencie o melhor de Pokémon em seu aniversário de 20 anos</h1>
+                <p>Nós amamos Pokémon, e com a chegada do 20º. aniversário da franquia, o grupo <b>N-Party</b> organizará um evento gratuito para os fãs da série aproveitarem o que há de melhor da franquia em diversas atividades e muita diversão.</p>
+                <div class="alert alert-info"><b>Atenção: </b> nós estamos muito felizes com a repercussão do evento, e esperamos ver todos lá! Mas devido a limitação do espaço, distribuiremos um número limitado de fitas na entrada do evento conforme a chegada do público, e em caso de lotação, teremos que restringir o acesso daqueles que não tiverem recebido a fim de garantir a integridade do público e do evento.</div>
+                <h3 style="font-weight: normal"><b>Não fique de fora dessa!</b> Compartilhe, chame seus amigos e venha se divertir!</h3>
+                <a style="margin-top: 15px; color: #FFF;" href="https://www.facebook.com/events/976009085819308/" target="_blank" class="btn btn-lg btn-pokemon20th">Marque sua presença</a>
+            </div>
+        </div>
+        <div class="activity-area" style="background-color: #FFF;" id="localEData">
+            <div class="container">
+                <h1>Uma ótima localização</h1>
+                <p>O <i>Poké Party Day</i> será realizado no dia <b>27 de fevereiro</b>, das <b>12h às 19h</b>, na <i>Associação Aichi do Brasil</i> (Rua Santa Luzia, 74 - Liberdade, São Paulo - SP).<br />O local fica a apenas 5 minutos a pé da estação de metrô Liberdade, então não há desculpas para você não ir! </p>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-6 col-lg-offset-3">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1828.6861281208987!2d-46.635280641973445!3d-23.555070237452295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x94ce59a93e375647%3A0x1c6bd73cda3c9095!2sLiberdade+-+Pra%C3%A7a+da+Liberdade%2C+133+-+Liberdade%2C+S%C3%A3p+Paulo+-+SP%2C+01503-010!3m2!1d-23.5551229!2d-46.6359711!4m5!1s0x94ce59a9d2cc547b%3A0x41ef8b2b7cc559fd!2sR.+Santa+Luzia%2C+74+-+S%C3%A9%2C+S%C3%A3o+Paulo+-+SP%2C+01513-030!3m2!1d-23.554634099999998!2d-46.6323711!5e0!3m2!1spt-BR!2sbr!4v1453607086222" width="640" height="360" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-area" id="videoGames">
+            <div class="container">
+                <h1 class="activity-area-title">Não vão faltar video-games...</h1>
+                <p>Pokémon nasceu nos video-games, e é claro que não deixaremos de ter atividades para a galera dos consoles e dos portáteis.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/meetup.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h1> Praça <span>Street Pass</span> </h1>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Traga seu 3DS, faça novos encontros, troque Pokémon, batalhe e jogue em multiplayer com outros jogadores. Teremos um espaço dedicado para o portátil da Nintendo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/jogosclassicos.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h1> Festival de <span>Jogos Clássicos</span> </h1>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Pokémon Stadium, Pokémon Puzzle League, Pokémon Snap... teremos diversos pontos de freeplay de jogos clássicos da série Pokémon para o público se divertir!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-area" id="vgc" style="padding: 50px; background: url('@Url.Content("~/Content/img/pokepartyday/vgc.jpg")') center center; background-size: cover">
+            <div class="row">
+                <div class="col-md-4" style="padding: 20px; background-color: rgba(0, 0, 0, 0.5); color: #FFF;">
+                    <h1 class="activity-area-title">Campeonato de VGC com a LOP-SP</h1>
+                    <p>
+                        A LOP-SP realizará um Premiere Challenge no evento, valendo Championship Points para classificação para o Worlds Championships deste ano.<br />
+                        <br />
+                        <button class="btn btn-lg btn-pokemon20th" data-toggle="modal" data-target="#lopVgcModal">VEJA AS REGRAS</button><br />
+                        <br />
+                        Realização:<br />
+                        <a href="http://www.lop-sp.com.br/" target="_blank"><img src="@Url.Content("~/Content/img/pokepartyday/logoLopSp.png")" /></a>
+                    </p>
+                </div>
+                <div class="col-md-8" style="padding: 50px;"></div>
+            </div>
+        </div>
+        <div class="activity-area" style="background-color: #FFF;" id="tcg">
+            <div class="container">
+                <h1 class="activity-area-title">...e nem TCG!</h1>
+                <p>O TCG (trading card game) é tão antigo quanto os video-games de Pokémon, e possuem uma grande massa de fãs no Brasil e no mundo. No Poké Party Day, teremos um espaço dedicado apenas ao jogo de cartas de Pokémon, com áreas livres para jogo e aprendizado, além de um campeonato oficial.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/tcgFree.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h1>Espaço <span>Freeplay</span></h1>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Traga seu deck, participe de partidas livres, faça trocas, etc.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/tcgLearn.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h1>Aprenda a jogar</h1>
+                                    <h3>Com a Dungeon Store</h3>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Não sabe jogar o TCG de Pokémon? Não se preocupe: teremos um espaço de dedicado para você. Apenas converse com um de nossos staffs, e teremos o prazer de lhe ensinar o básico do jogo.<br />
+                                    <br />
+                                    Realização:<br />
+                                    <a href="http://dungeon-store.com" target="_blank"><img src="@Url.Content("~/Content/img/pokepartyday/logo_dungeonStore.png")" style="width: 130px;" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-area" id="vgc" style="padding: 50px; background: url('@Url.Content("~/Content/img/pokepartyday/tcgChampionship.jpg")') center center; background-size: cover">
+            <div class="row">
+                <div class="col-md-8" style="padding: 50px;"></div>
+                <div class="col-md-4" style="padding: 20px; background-color: rgba(0, 0, 0, 0.5); color: #FFF;">
+                    <h1 class="activity-area-title">Campeonato de TCG com a Mad Slayers</h1>
+                    <p>
+                        A Mad Slayers realizará um campeonato exclusivo de TCG no evento valendo brindes exclusivos.<br />
+                        <br />
+                        <button class="btn btn-lg btn-pokemon20th" data-toggle="modal" data-target="#tcgModal">VEJA AS REGRAS</button><br />
+                        <br />
+                        Realização:<br />
+                        <a href="https://www.facebook.com/LigaMDS/" target="_blank"><img src="@Url.Content("~/Content/img/pokepartyday/logoMadSlayersSmall.png")" /></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="activity-area" id="palestras">
+            <div class="container">
+                <h1 class="activity-area-title">No palco</h1>
+                <p>Teremos diversas atividades no palco, indo desde palestras com pessoas que entendem de Pokémon a gincanas, desafios de captura de Pokémon e desfiles cosplay</p>
+                <div style="margin: 40px 0px; padding: 10px; background-color: #FFF;">
+                    <h3>
+                        Bate-Papo com o público sobre Pokémon
+                    </h3>
+                    <h4>às 13h</h4><br />
+                    <p>Participe com perguntas de um bate-papo envolvendo especialistas e entendedores da franquia Pokémon, entre jornalistas, jogadores e podcasters. Conheça os integrantes:</p><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="@Url.Content("~/Content/img/pokepartyday/palestra_igor.jpg")" alt="Igor Andrade" class="img-circle">
+                            <h4>Igor Andrade</h4>
+                            <h5>Editor da Nintendo World</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="@Url.Content("~/Content/img/pokepartyday/palestra_ricardo.jpg")" alt="Ricardo Syozi" class="img-circle">
+                            <h4>Ricardo Syozi</h4>
+                            <h5>Colaborador da Nintendo World</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="@Url.Content("~/Content/img/pokepartyday/palestra_mugi.jpg")" alt="Ivaldo Junior" class="img-circle">
+                            <h4>Ivaldo Junior</h4>
+                            <h5>Projeto X Podcast</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="@Url.Content("~/Content/img/pokepartyday/palestra_braz.jpg")" alt="Gustavo Braz" class="img-circle">
+                            <h4>Gustavo Braz</h4>
+                            <h5>Campeão Ranking Brasil VGC 2015</h5>
+                        </div>
+                    </div><br />
+                    <br />
+                    <p>O debate vai envolver perguntas que você realizar. Quer vê-los debater um tema de sua escolha?</p>
+                    <a href="https://docs.google.com/forms/d/18-sls4nAOxIkCjh_Fjfnzh-XkBAwGuA3KI0AkEwSdIg/viewform" target="_blank" class="btn btn-lg btn-pokemon20th" style="color: #FFF;">Clique aqui e faça sua pergunta!</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/desafiocaptura.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h2>Captura de Pokémon</h2>
+                                    <h3>às 12:30h / 14h / 15:30h / 17h / 18:30h</h3>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Fique ligado, pois entre os intervalos das atividades, anunciaremos Pokémon a captura. Eles estarão espalhados pelo evento, e cabe a você encontrá-los!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="[ info-card ]">
+                            <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/desafioperguntas.jpg")" />
+                            <div class="[ info-card-details ] animate">
+                                <div class="[ info-card-header ]">
+                                    <h2>Desafios de perguntas e respostas</h2>
+                                    <h3>às 14:30h</h3>
+                                </div>
+                                <div class="[ info-card-detail ]">
+                                    Você se considera um expert no universo Pokémon? Então se prepare, pois traremos uma gincana de perguntas e respostas que apenas os Mestres Pokémon serão campeões
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <a style="cursor: pointer" onclick="goToSectionFromId('desfileCosplay')">
+                            <div class="[ info-card ]">
+                                <img style="width: 100%" src="@Url.Content("~/Content/img/pokepartyday/desfilePokemon.jpg")" />
+                                <div class="[ info-card-details ] animate">
+                                    <div class="[ info-card-header ]">
+                                        <h2>Desfile cosplay</h2>
+                                        <h3>às 16h</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-area" id="cosplay" style="padding: 50px; background: url('@Url.Content("~/Content/img/pokepartyday/oc.jpg")') center center; background-size: cover">
+            <div class="row">
+                <div class="col-md-6" style="padding: 20px; background-color: rgba(0, 0, 0, 0.5); color: #FFF;">
+                    <h1 class="activity-area-title">Sessões de fotos com a Otaku Company</h1>
+                    <p>
+                        O grupo OtakuCompany foi desenvolvido para trazer o melhor da cultura japonesa. Onde o visitante pode se informar sobre as novidades referentes à cultura japonesa.<br />
+                        <br />
+                        E como uma imagem vale mais do que mil palavras a OtakuCompany vem cobrindo eventos desde 2007, trazendo até você o que ocorre nos pequenos, médios e grandes eventos que ocorrem pelo Brasil.<br />
+                        <br />
+                        Com uma crescente no número de audiência, o site vem passando por melhorias constantes e por consequência número de parceiros também. Nosso método de divulgação massiva atingindo o público dos seguintes canais: site, instagram, worldcosplay e facebook. Trabalho sério, dedicação e qualidade são as bases do grupo OtakuCompany.<br />
+                        <br />
+                        A OtakuCompany chega ao primeiro Poké Party Day com uma equipe formada por fotógrafos profissionais, com um mega espaço temático onde, além de você poder tirar fotos para sua recordação, poderá ficar ligado nas dicas do momento do mundo cosplay e bater aquele papo com uma equipe que está nos melhores eventos do Brasil<br /><br />
+                        Realização:<br />
+                        <a href="http://www.otakucompany.com.br/" target="_blank"><img src="@Url.Content("~/Content/img/pokepartyday/otakucompany.png")" /></a>
+                    </p>
+                </div>
+                <div class="col-md-8" style="padding: 50px;"></div>
+            </div>
+        </div>
+        <div class="activity-area" style="background-color: #FFF;" id="desfileCosplay">
+            <div class="container">
+                <h1 class="activity-area-title">Desfile Cosplay</h1>
+                <div style="text-align: left;">
+                    <p>Nós adoramos a cultura cosplay, e por isto teremos um desfile exclusivo, assistido por jurados que entendem do assunto. O desfile começará às 15:30, e contará com 2 categorias</p>
+                    <ul>
+                        <li>Desfile Pokémon: dedicado apenas para aqueles caracterizados de personagens de Pokémon;</li>
+                        <li>Desfile Geral: um desfile padrão, independente da caracterização da franquia Pokémon ou não;</li>
+                    </ul>
+                    <div class="alert alert-info" style="text-align: center;"><b>Lembrando que os participantes só poderão se inscrever em 1 das categorias</b>.<br /><a style="cursor: pointer; font-size: 18px;" data-toggle="modal" data-target="#cosplayModal">clique aqui para ver as regras</a>.</div>
+                    <p>
+                        As inscrições serão gratuitas e realizadas até às 15h, enquanto o desfile começará às <b>15h30</b>.
+                        <h2>Apresentação</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <img class="media-object" src="@Url.Content("~/Content/img/pokepartyday/cosplay_gih.jpg")" alt="...">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Giovanna Zanettim</h4>
+                                        <div style="margin-bottom: 10px;">
+                                            <a href="http://www.facebook.com.br/comicscosplaybr" target="_blank" class="btn btn-default"><i class="fa fa-facebook"></i></a>
+                                        </div>
+                                        Meu nome é Giovanna, mas todos me chamam de Gih. Sou cosplayer há 7 anos e sou do mundo do ocidental. Quadrinhos é minha paixão e sou uma das coordenadoras do <a href="http://www.facebook.com.br/comicscosplaybr" target="_blank">Comics Cosplay Br</a>, um grupo voltando para fãs de cosplay, comics e mais recentemente cultura ocidental. Adoro criar visuais inspirados além de cosplays propriamente ditos.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Jurados</h2>
+                        <div class="row">
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <img class="media-object" src="@Url.Content("~/Content/img/pokepartyday/cosplay_amanda.jpg")" alt="...">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Amanda Delgado</h4>
+                                        <div style="margin-bottom: 10px;">
+                                            <a href="http://www.facebook.com/VidaDeCosplayers/" target="_blank" class="btn btn-default"><i class="fa fa-facebook"></i></a>
+                                            <a href="http://www.youtube.com/user/VidadeCosplayers/" target="_blank" class="btn btn-default"><i class=" fa fa-youtube"></i></a>
+                                            <a href="http://www.vidadecosplayers.blogspot.com.br/" target="_blank" class="btn btn-default"><i class=" fa fa-globe"></i></a>
+                                        </div>
+                                        Sou Anjinha, criei o blog Vida de Cosplayers em 2012 com o intuito de ajudar e comentar o dia a dia desse mundo! E sempre trazer novidades e mostrar a parte divertida dessa vida tão complicada! #Vidadecosplayers
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <img class="media-object" src="@Url.Content("~/Content/img/pokepartyday/cosplay_vini.jpg")" alt="...">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Vinicius Chagas</h4>
+                                        <div style="margin-bottom: 10px;">
+                                            <a href="http://www.facebook.com/vinnycosplay/" target="_blank" class="btn btn-default"><i class="fa fa-facebook"></i></a>
+                                            <a href="http://www.youtube.com/user/famicomhighschool" target="_blank" class="btn btn-default"><i class=" fa fa-youtube"></i></a>
+                                        </div>
+                                        Cosplayer há 9 anos, bom entendedor do assunto, grande amante de Pokémon e quase um mestre
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <img class="media-object" src="@Url.Content("~/Content/img/pokepartyday/cosplay_aline.jpg")" alt="...">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Aline Hirata</h4>
+                                        <div style="margin-bottom: 10px;">
+                                            <a href="https://www.facebook.com/BlackFangCosplay/" target="_blank" class="btn btn-default"><i class="fa fa-facebook"></i></a>
+                                        </div>
+                                        Comecei com cosplay por volta de 2008/2009 e desde então eu não consigo mais ir para eventos sem estar usando algum deles! Atualmente também sou cosmaker nas horas vagas trabalhando com estilização de perucas (mas não me peçam a da Jessie!)<br />
+                                        Meu contato com Pokémon começou quando eu tinha 3 anos com o anime e foi me acompanhando nos games desde o Stadium e Snap do N64 até o Alpha Sapphire que foi minha última aquisição. Atualmente estou trabalhando em uma collab com vários outros artistas que está sendo feita especialmente pra comunidade de Pokémon!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <img class="media-object" src="@Url.Content("~/Content/img/pokepartyday/cosplay_ana.jpg")" alt="...">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Ana Luiza do Amaral</h4>
+                                        <div style="margin-bottom: 10px;">
+                                            <a href="http://facebook.com/dothecosplay" target="_blank" class="btn btn-default"><i class="fa fa-facebook"></i></a>
+                                            <a href="https://www.youtube.com/user/dothecosplay" target="_blank" class="btn btn-default"><i class="fa fa-youtube"></i></a>
+                                            <a href="http://dothecosplay.blogspot.com.br/" target="_blank" class="btn btn-default"><i class="fa fa-globe"></i></a>
+                                            <a href="mailto:dothecosplay@live.com" target="_blank" class="btn btn-default"><i class="fa fa-envelope"></i></a>
+                                        </div>
+                                        <i>"Olá, eu sou a Ana do canal Do The Cosplay"</i>, muitos já conhecem a apresentação de sempre, e para os que não conhecem... Olá! Me chamo Ana, sou cosplayer e cosmaker há 3 anos e apaixonada por Pokémon desde criança. Fiz dois cosplays da série durante esse tempo (Braixen e Misty), e tenho um <a href="https://www.youtube.com/user/dothecosplay" target="_blank">canal do Youtube</a> onde ensino a fazer um monte de coisa legal com materiais acessíveis! Vejo vocês no Poké Party Day!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-area" id="estandistas">
+            <h1 class="activity-area-title">Estandistas</h1>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-1">
+                    <a href="http://dungeon-store.com" target="_blank" class="thumbnail">
+                        <img src="@Url.Content("~/Content/img/pokepartyday/estande_dungeonstore.jpg")" class="img-responsive" alt="Dungeon Store">
+                        <div class="caption">
+                            <h3>Dungeon Store</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="http://www.ohmypurin.com.br/" target="_blank" class="thumbnail">
+                        <img src="@Url.Content("~/Content/img/pokepartyday/estande_ohmypudin.jpg")" class="img-responsive" alt="Dungeon Store">
+                        <div class="caption">
+                            <h3>Oh! My Purin</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="https://www.facebook.com/PixelSK/" target="_blank" class="thumbnail">
+                        <img src="@Url.Content("~/Content/img/pokepartyday/estande_multiplayer.jpg")" class="img-responsive" alt="Multiplayer Store">
+                        <div class="caption">
+                            <h3>MULTI.Player Store</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="tel:3681-2148" target="_blank" class="thumbnail">
+                        <img src="@Url.Content("~/Content/img/pokepartyday/estande_arigato.jpg")" class="img-responsive" alt="Multiplayer Store">
+                        <div class="caption">
+                            <h3>Arigato Fest Food</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="https://www.facebook.com/Alia-Gym-606735572807973/?fref=ts" target="_blank" class="thumbnail">
+                        <img src="@Url.Content("~/Content/img/pokepartyday/estande_aliagym.jpg")" class="img-responsive" alt="Alia Gym">
+                        <div class="caption">
+                            <h3>Alia Gym</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lop VGC Modal -->
+<div class="modal fade" id="lopVgcModal" tabindex="-1" role="dialog" aria-labelledby="lopVgcModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Premiere Challenge #4 - Regras</h4>
+            </div>
+            <div class="modal-body">
+                <p>VGC é o conjunto de regras oficiais da Nintendo. A LOP-SP se usa dessas regras regularmente em seus torneios. Esta página descreve a versão dessas regras usada em 2016.</p>
+                <p>Inscrição: R$ 10,00</p>
+                <p>As inscrições para o campeonato no Poké Party Day começarão às 12h, e o torneio começará às 14h, valendo Championship Points para a classificação no Worlds Championships. Lembrando que serão garantidas apenas as 64 primeiras inscrições. Caso este número seja ultrapassado, os demais inscritos estarão em uma fila de espera.</p>
+                <p>Head Judge: Carlos "Dog" Agarie</p>
+                <h2>Regras padrão</h2>
+                <ul>
+                    <li>Todos os jogadores deverão usar&nbsp;as versões <em>Pokémon Omega Ruby</em> ou <em>Pokémon Alpha Sapphire</em>.</li>
+                    <li>Todas as batalhas serão <em>Double Battle</em> com&nbsp;<em>Normal Rules.</em></li>
+                    <li>Regra do pentágono: Todos os Pokémon usados devem possuir o pentágono azul em seus stats indicando que foi capturado ou recebido como presente nas versões X, Y, Omega Ruby ou Alpha Sapphire.</li>
+                    <li>Um Pokémon não pode possuir um apelido considerado ofensivo (pelos juízes ou outros jogadores) nem <em>parecido com o nome de outra espécie de Pokémon</em>. Por exemplo, você não pode usar um Raichu chamado Pikachu, P1k4chu, nem nada do tipo. Será necessário trocar o apelido do Pokémon, se possível, ou tirá-lo do time e jogar com apenas 5 Pokémon.</li>
+                    <li>Cada jogador leva&nbsp;6 pokémon e escolhe&nbsp;4 deles durante o <em>Team Preview</em>.</li>
+                    <li>Todos os pokémon acima do lv50 terão seus níveis baixados temporariamente para lv50. Pokémon abaixo desse nível continuarão com seus níveis originais.</li>
+                    <li><em>Species Clause</em>: Não pode haver dois pokémon com o mesmo número na Pokédex.</li>
+                    <li><em>Item Clause</em>: Não se pode equipar dois itens iguais.</li>
+                    <li>O item <em>Soul Dew</em> é banido.</li>
+                    <li>
+                        Os seguintes Pokémon estão banidos, em todas as suas formas:
+                        <ul>
+                            <li>Mew</li>
+                            <li>Celebi</li>
+                            <li>Jirachi</li>
+                            <li>Deoxys</li>
+                            <li>Phione</li>
+                            <li>Manaphy</li>
+                            <li>Darkrai</li>
+                            <li>Shaymin</li>
+                            <li>Arceus</li>
+                            <li>Victini</li>
+                            <li>Keldeo</li>
+                            <li>Meloetta</li>
+                            <li>Genesect</li>
+                            <li>Diancie</li>
+                            <li>Hoopa</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Os times podem ter no máximo dois dentre os seguintes Pokémon:
+                        <ul>
+                            <li>Mewtwo</li>
+                            <li>Lugia</li>
+                            <li>Ho-Oh</li>
+                            <li>Kyogre</li>
+                            <li>Groudon</li>
+                            <li>Rayquaza</li>
+                            <li>Dialga</li>
+                            <li>Palkia</li>
+                            <li>Giratina</li>
+                            <li>Reshiram</li>
+                            <li>Zekrom</li>
+                            <li>Kyurem</li>
+                            <li>Xerneas</li>
+                            <li>Yveltal</li>
+                            <li>Zygarde</li>
+                        </ul>
+                    </li>
+                    <li>O uso de dispositivos externos para modificar ou criar itens ou Pokémon&nbsp;no jogo de um jogador é proibido.&nbsp;Quem for pego com pokémon alterados será desclassificado imediatamente, independente deles terem sido obtidos através de trocas.</li>
+                </ul>
+                <p>O site oficial de Pokémon tem uma página contando um pouco sobre os stats e os principais golpes de cada um dos lendários que&nbsp;podem ser usados no VGC 2016. Dê uma olhada no <a target="_blank" href="http://www.pokemon.com/us/strategy/vgc-2016-championship-series-preview/">2016 Pokémon Video Game Championship Series Preview</a>.</p>
+                <h2>Suíço com top</h2>
+                <p>Todos os torneios VGC, sejam eles apenas sancionados, <em>Premier Challenges</em>, ou outras modalidades, seguirão o mesmo formato em duas partes: a primeira consiste de um suíço com várias rodadas, a segunda, de um torneio por eliminação simples com os melhores colocados no suíço.</p>
+                <p>Um torneio suíço funciona&nbsp;por rodadas, da seguinte maneira: na primeira, as partidas são aleatórias; na segunda, os&nbsp;vencedores da rodada anterior jogam entre si e os perdedores fazem o mesmo; e assim por diante, tentando manter&nbsp;as batalhas “pareadas” entre pessoas com números de vitórias/derrotas semelhantes. Isso ocorre até que consigamos separar os 4 ou 8&nbsp;jogadores melhor colocados para fazermos o <em>top</em>.&nbsp;A Wikipedia tem um artigo sobre o assunto: <a target="_blank" href="https://pt.wikipedia.org/wiki/Sistema_su%C3%AD%C3%A7o">Sistema suíço</a>.</p>
+                <h2>Quantas batalhas por partida?</h2>
+                <p>A primeira parte dos torneios VGC, o suíço, vai ser realizada como “melhor de um”&nbsp;(<em>best of one</em>, ou <em>bo1</em>), cada partida terá somente uma batalha com tempo limite de 20 minutos. Na segunda parte, o <em>top cut</em>, as partidas serão feitas no melhor de três&nbsp;(<em>best of three</em>, ou <em>bo3</em>), onde o vencedor será aquele que ganhar 2 das 3 batalhas.</p>
+                <p>Caso tenhamos torneios com mais de um dia de duração, como os Midseason Showdowns, as partidas do suíço também poderão ser&nbsp;melhor de três. Não&nbsp;podemos confirmar que teremos um torneio desse tipo, mas avisaremos com antecedência caso ocorra.</p>
+                <h2>Resolução de batalhas</h2>
+                <ul>
+                    <li>Se o último pokémon de um jogador usar&nbsp;&nbsp;Selfdestruct, Explosion, Destiny Bond, ou Final Gambit e ambos os pokémon desmaiarem, aquele que usou o golpe perde a batalha.</li>
+                    <li>Se o último pokémon de um jogador usar&nbsp; Double‐Edge, Volt Tackle, Flare Blitz, Take Down, Submission, Brave Bird, Wood Hammer, Head Smash, Struggle, Head Charge, ou Wild Charge, ou estava segurando o item&nbsp;Life Orb, e ambos os pokémon desmaiarem, aquele que usou o golpe vence a batalha.</li>
+                    <li>Se os últimos pokémon de cada jogador desmaiarem graças aos efeitos de clima, como Hail ou Sandstorm, o jogador cujo pokémon desmaiar por último vence o jogo. Isso inclui o efeito de Perish Song.</li>
+                    <li>Se a ability de um pokémon (como Rough Skin, Aftermath, Liquid Ooze, ou Iron Barbs) ou item (como Rocky Helmet) resultar em ambos os pokémon desmaiarem, o jogador com a ability ou com o item vence a batalha.</li>
+                </ul>
+                <h2>Critérios de desempate</h2>
+                <p>Todas as batalhas terão tempo limite de 15 a&nbsp;20 minutos. Caso o tempo de batalha acabe antes de o último pokémon de um jogador desmaiar, o vencedor é&nbsp;determinado de acordo com os seguintes critérios, em ordem crescente:</p>
+                <ol>
+                    <li>O jogador que tiver mais pokémon sobrando vence;</li>
+                    <li>O jogador que tiver a maior porcentagem média de HP vence;</li>
+                    <li>O jogador que possuir a maior quantidade total de HP vence.</li>
+                </ol>
+                <p>Como&nbsp;o único tipo de torneio que existe no Brasil por enquanto é o&nbsp;Premier Challenge, onde não podemos travar a Battle Box e reforçar o limite de tempo por batalha automaticamente, os responsáveis&nbsp;por isso serão os organizadores da LOP-SP presentes no local.</p>
+                <h2>Regras&nbsp;adicionais</h2>
+                <h3>Anotações</h3>
+                <p>Você <strong>pode</strong> levar uma folha de papel branco para fazer anotações durante as batalhas. Entretanto, se houver a confirmação de que um jogador recebeu as anotações de outro para se beneficiar em batalhas, este será removido do torneio. Você <strong>não pode</strong>&nbsp;usar um caderno durante as batalhas. Cada partida precisa que você use uma folha em branco nova.</p>
+                <h3>Headphones</h3>
+                <p>Você <strong>pode</strong> usar fones de ouvido enquanto joga desde que&nbsp;o modelo do fone use cabos e esteja conectado no seu 3DS. O cabo precisa ficar visível o tempo todo.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TCG Modal -->
+<div class="modal fade" id="tcgModal" tabindex="-1" role="dialog" aria-labelledby="lopVgcModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Campeonato de TCG - Regras</h4>
+            </div>
+            <div class="modal-body">
+                <p>As regras gerais do evento são as mesmas listadas no site oficial de Pokémon (disponível <a href="http://support.pokemon.com/FileManagement/Download/285237e1e815473dbac38d3a368f84a2" target="_blank">através do link</a>)</p>
+                <p>Inscrição: gratuita</p>
+                <p>As inscrições para o campeonato no Poké Party Day começarão às 12h, e o torneio começará às 14h. Lembrando que serão garantidas apenas as 64 primeiras inscrições. Caso este número seja ultrapassado, os demais inscritos estarão em uma fila de espera.</p>
+                <p>Formato do torneio: Suiço modificado (todas as idades no mesmo torneio)</p>
+                <p>Formato para Decks: Standart Oficial Copag (somente coleções que já foram lançadas em pt-br). No caso, apenas as expansões de XY em diante, até a Turbo Revolução. Obs: a mais nova coleção, a Break Point, não será válida no torneio.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cosplay Modal -->
+<div class="modal fade" id="cosplayModal" tabindex="-1" role="dialog" aria-labelledby="cosplayModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Campeonato de TCG - Regras</h4>
+            </div>
+            <div class="modal-body">
+                <p>Inscrição: gratuita. Será realizada das 12h às 15h;</p>
+                <p>Horário do desfile: 15h30;</p>
+                <h3>REGRAS GERAIS</h3>
+                <ul>
+                    <li>O concurso é aberto para pessoas com idade superior a 5 (cinco) anos e de todas as origens presentes no evento.</li>
+                    <li>É vetada a participação de membros da comissão organizadora, coordenadores, staffs do evento, assim como os ex-membros da coordenação e comissão julgadora. É permitida a participação de convidados e vendedores terceirizados.</li>
+                    <li>O mesmo será assistido por pessoas de todas as idades, sendo crianças e adultos. Por isso, é exigido do participante bom senso para a definição de sua apresentação.</li>
+                    <li>Ofensas (palavrões), apelo sexual e apologia a qualquer tipo de droga ou racismo são considerados pelos juízes como critério de desclassificação do participante.</li>
+                    <li>Em caso de apresentações que firam as disposições criminais, como atentados ao pudor e aliciamento de menores, os mesmos ou seus responsáveis legais responderão criminalmente por seus atos.</li>
+                    <li>É terminantemente proibido o porte de: Explosivos, armas de fogo (mesmo descarregadas), armas brancas com fio ou objetos que representem perigo aos presentes no evento. O porte deste tipo de objeto dará ao evento a autoridade de barrar o visitante na entrada e recolher o mesmo ao guarda-volumes, tendo o visitante o direito de retirá-lo no final do evento.</li>
+                    <li>Caso o participante for utilizar um objeto barrado em sua apresentação, deverá avisar no ato de sua inscrição para que a arma seja retirada pela coordenação de cosplay durante o período do concurso e após será devolvido para o guarda-volumes. O uso do mesmo será autorizado pela coordenação de cosplay. A coordenação faz-se jus o direito de não autorizar o uso do mesmo.</li>
+                    <li>É responsabilidade dos organizadores do evento e do coordenador do Concurso de Cosplay o cumprimento destas regras e entrega dos prêmios.</li>
+                </ul>
+                <h3>AS CATEGORIAS</h3>
+                <p>As categorias do concurso de cosplay são:</p>
+                <ul>
+                    <li>Desfile Pokémon (individual): O participante se preocupa apenas em mostrar sua roupa e acessórios para os juízes, subindo ao palco, caminhando até a frente e parando brevemente sobre a marcação, em seguida virando-se de costas, e novamente de frente na pose do personagem. Não é necessário fazer nenhum tipo de apresentação ou interpretação. Deverão participar nesta categoria apenas os cosplayers que estiverem caracterizados com personagens da franquia Pokémon.</li>
+                    <li>Desfile Livre (individual): O participante se preocupa apenas em mostrar sua roupa e acessórios para os juízes, subindo ao palco, caminhando até a frente e parando brevemente sobre a marcação, em seguida virando-se de costas, e novamente de frente na pose do personagem. Não é necessário fazer nenhum tipo de apresentação ou interpretação.</li>
+                </ul>
+                <h3>A INSCRIÇÃO</h3>
+                <ul>
+                    <li>Os interessados em participar do concurso deverão se dirigir até a tenda de inscrições da Área Cosplay e preencher sua ficha com a equipe responsável.</li>
+                    <li>Só serão válidas inscrições feitas pelo próprio participante. Inscrições feitas por terceiros não serão aceitas.</li>
+                    <li>O cosplayer que se inscrever não poderá cancelar sua inscrição por qualquer motivo.</li>
+                    <li>Será permitido a inscrição em apenas uma categoria (o cosplayer só poderá se inscrever no Desfile Pokémon ou no Desfile Livre)</li>
+                    <li>A organização da fila de inscrição é de responsabilidade da organização, somente após a abertura das inscrições, não tendo esta a obrigação de fazê-lo antes da abertura da mesma.</li>
+                    <li>Os cosplayers poderão levar para o júri material de apoio impresso, desde que contenha imagem do personagem e qualquer outro documento que acredite ajudar na categoria, o mesmo só será aceito caso leve uma cópia para cada juiz, sendo 4 (quatro) por banca. O mesmo deverá entregar o material no momento da inscrição. Vale destacar que o material de apoio deve ser coerente com a apresentação, pois receberá um bônus de 0,5 pontos, cabendo à coordenação do concurso julgar se o material se enquadra ou não dentro deste quesito.</li>
+                    <li>
+                        ATENÇÃO: O participante irá receber no ato de sua inscrição uma ficha com o número de sua apresentação. Este número deve ser mantido em seu poder e apresentado ao responsável pela fila 30 (trinta) minutos antes de sua apresentação.
+                        Mantenha seu canhoto devidamente guardado, pois a não apresentação do mesmo ocasionará na não participação do concurso.
+                    </li>
+                    <li>Os cosplayers devem se reunir 30 (trinta) minutos antes do concurso, ao lado do palco. Os participantes organizados em fila deverão manter-se nela até o momento de sua apresentação. Caso saiam do local estipulado pelo staff responsável, serão desclassificados.</li>
+                    <li>Ao assinar a ficha, o participante declara que está de pleno acordo com as regras do concurso. O cosplayer deve preencher todos os campos com os dados cadastrais na entrega da ficha. A coordenação geral do evento vai solicitar que os coordenadores de cosplay apresentem as fichas dos vencedores, e caso algum campo não esteja preenchido, o mesmo será desclassificado mesmo que tenha ficado em primeiro lugar no concurso.</li>
+                </ul>
+                <h3>JULGAMENTO</h3>
+                <ul>
+                    <li>As notas serão dadas pelos juízes e a média entre eles será a nota final. A banca será composta por 3 (três) ou 4 (quatro) juízes.</li>
+                    <li>Cada juiz dará uma nota de 1 (um) a 10 (dez), com intervalos de 0,25. O juiz irá avaliar se a roupa está fiel ao personagem original, também considerando como critério de avaliação o detalhamento, acabamento da roupa, acessórios e outras partes da roupa. Não será levada em conta a constituição física do participante, mas se ele dará ênfase nas saídas técnicas usadas na execução da roupa.</li>
+                    <li>Em caso de empate nas notas finais, caberá ao júri e a coordenação de cosplay decidir o desempate.</li>
+                    <li>Os juízes e apresentadores do concurso de cosplay são escolhidos e aprovados pela coordenação cosplay.</li>
+                    <li>As somatórias, médias e notas finais serão feitas pela coordenação do concurso.</li>
+                </ul>
+                <h3>PREMIAÇÃO</h3>
+                <p>A definir</p>
+                <h3>OBSERVAÇÕES FINAIS</h3>
+                <ul>
+                    <li>Os prêmios serão anunciados no palco do evento, no término do mesmo</li>
+                    <li>O prêmio aos ganhadores deste concurso é pessoal e intransferível e seu valor</li>
+                    <li>Os casos omissos no regulamento serão analisados pela coordenação de cosplay e a decisão será soberana e inquestionável.</li>
+                    <li>Todos os participantes serão julgados por um corpo de jurados, cujas notas serão consideradas plenas e também inquestionáveis.</li>
+                    <li>Todo o resultado do concurso cosplay e média de notas serão divulgados pela organização do evento, de modo que todos tenham acesso ao resultado.</li>
+                    <li>Este concurso tem caráter exclusivamente cultural, e não está sujeito a nenhuma modalidade de sorteio ou fator aleatório e a participação no concurso é gratuita e voluntária não vinculada a qualquer tipo de desembolso por parte dos PARTICIPANTES ou premiados, ou à aquisição ou uso de qualquer bem, direito ou serviço, sendo dispensado de autorização, nos termos do artigo 3º, II, da Lei 5.768/71 e artigo 30, do Decreto 70.951/72.</li>
+                    <li>O grupo N-Party se reserva no direito de, a qualquer momento, alterar, suspender ou cancelar o presente Regulamento, sem aviso prévio, por motivo de força maior ou qualquer outro motivo imprevisto que esteja fora do controle da Yamato Comunicações e Eventos, e que comprometa o concurso de forma a impedir ou modificar substancialmente a condição deste como originalmente previsto.</li>
+                    <li>Os participantes concordam, desde já, em ceder, em caráter irrevogável e irretratável, seus dados, imagens, nomes, som de voz, bem como os conteúdos cedidos na resposta enviada para fins de divulgação deste Concurso, sem qualquer ônus ao grupo N-Party, para utilização em toda e qualquer mídia (foto, áudio, vídeo, impresso, meios digitais, internet, celular, jornais e revistas, cartazes, folhetos, filmes, spots, peças publicitárias e e-mail), mas não se limitando a essas, pelo prazo de 50 (cinquenta) anos contados da data de término do concurso, em todo o território nacional.</li>
+                    <li>A organização do evento não tolerará condutas fraudulentas (ou tentativas), expedientes que tenham como objetivo burlar as regras ou manipular o resultado do concurso, podendo desclassificar as concorrentes que pratiquem tais condutas, sem prejuízo das sanções legais.</li>
+                    <li>Os participantes do concurso assumem total e exclusiva responsabilidade pelo conteúdo e dados fornecidos para o concurso, a respeito de todas e quaisquer eventuais reivindicações de terceiros que se sintam prejudicados pela cessão do direito de autor, sendo esses direitos cedidos livres e desembaraçados de todos e quaisquer ônus ou restrições a Yamato.</li>
+                    <li>Caso de dúvidas, por favor, entre em contato com através do email contato@nparty.com.br</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function openEventSite() {
+            $('#eventSite').slideDown();
+        }
+
+        var isVideosSelected = true;
+        var isPhotosSelected = true;
+        var isArticlesSelected = true;
+
+        function toogleVideos() {
+            if (isVideosSelected) {
+                isVideosSelected = false;
+                $('.in-media .video').hide('fast');
+                $('.btn-videos').removeClass('active');
+            } else {
+                isVideosSelected = true;
+                $('.in-media .video').show('fast');
+                $('.btn-videos').addClass('active');
+            }
+        }
+
+        function tooglePhotos() {
+            if (isPhotosSelected) {
+                isPhotosSelected = false;
+                $('.in-media .photos').hide('fast');
+                $('.btn-photos').removeClass('active');
+            } else {
+                isPhotosSelected = true;
+                $('.in-media .photos').show('fast');
+                $('.btn-photos').addClass('active');
+            }
+        }
+
+        function toogleArticles() {
+            if (isArticlesSelected) {
+                isArticlesSelected = false;
+                $('.in-media .article').hide('fast');
+                $('.btn-articles').removeClass('active');
+            } else {
+                isArticlesSelected = true;
+                $('.in-media .article').show('fast');
+                $('.btn-articles').addClass('active');
+            }
+        }
+
+    </script>
+}
+

@@ -1,0 +1,30 @@
+﻿@model int
+
+<div class="content-area-menu">
+    <nav class="navbar" style="min-height: initial; margin-bottom: 0px;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subMenu-Eventos" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="margin-top: 12px; text-align: center;" class="hidden-lg">Eventos</h3>
+            </div>
+            <div class="collapse navbar-collapse" id="subMenu-Eventos">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="@(Model == 1 ? "active" : "")"><a href="@Url.Content("~/Eventos")">Home</a></li>
+                    <li class="divider-vertical"></li>
+                    <li role="presentation" class="@(Model == 2 ? "active" : "")"><a href="@Url.Content("~/Eventos/Coberturas")">Coberturas</a></li>
+                    <li class="divider-vertical"></li>
+                    <li role="presentation" class="@(Model == 3 ? "active" : "")"><a href="@Url.Content("~/Eventos/AnimeFriends")">Anime Friends</a></li>
+                    <li role="presentation" class="@(Model == 4 ? "active" : "")"><a href="@Url.Content("~/Eventos/BGS")">Brasil Game Show</a></li>
+                    <li role="presentation" class="@(Model == 5 ? "active" : "")"><a href="@Url.Content("~/Eventos/BMA")">Brasil Mega Arena</a></li>
+                    <li class="divider-vertical"></li>
+                    <li role="presentation"><a style="padding: 8px; font-size: 20px;" title="Assine nosso feed para conteúdo de Eventos" href="http://feeds.feedburner.com/EventosN-party" target="_blank"><i class="fa fa-rss-square"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

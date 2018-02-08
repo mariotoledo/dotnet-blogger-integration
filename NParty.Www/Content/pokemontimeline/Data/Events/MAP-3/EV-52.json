@@ -1,0 +1,1 @@
+[{"id":52,"x":"82","y":"12","name":"EV-52"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Pok\u00e9mon ex Delta... Acho que isso est\u00e1 saindo do controle...'}"],"graphic":"139","graphic-params":{"uniqid":1454073533936}}]]

@@ -1,0 +1,1 @@
+[{"id":53,"x":67,"y":10,"name":"EV-53"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Jogar Pok\u00e9mon Shuffle Mobile no meio do transporte p\u00fablico \u00e9 \u00f3timo.'}"],"graphic":"149","graphic-params":{"uniqid":1454075802770}}]]

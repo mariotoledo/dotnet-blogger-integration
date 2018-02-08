@@ -1,0 +1,113 @@
+﻿@{
+    string query = (string)ViewData["query"];
+    ViewBag.Title = "Resultados da busca por: " + query;
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["SearchResults"];
+
+    ViewData["title"] = "Resultados da busca por: " + query;
+    ViewData["metaDescription"] = "Resultados da busca por: " + query;
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/busca.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Home/Busca");
+    ViewData["metaKeywords"] = new List<string>() { "Eventos", "Nintendo", "Wii U", "3DS", "eSports", "League of Legends", "Counter Strike", query };
+
+    int currentPage = (int)ViewData["currentPage"];
+    int maxPosts = (int)ViewData["MaxPosts"];
+
+    ViewData["MenuHasBorderBottom"] = true;
+
+    @section Head{
+        @if (articles.Count >= maxPosts)
+        {
+            <link rel="next" href="@Url.Content("~/Home/Busca?q=" + ViewData["query"] + "&page=" + (currentPage + 1))">
+        }
+        @if (currentPage > 0)
+        {
+            <link rel="prev" href="@Url.Content("~/Home/Busca?q=" + ViewData["query"] + "&page=" + (currentPage - 1))">
+        }
+    }
+}
+
+<div class="container default-container" style="padding-top: 30px;">
+    @{ 
+        if (articles != null && articles.Count > 0)
+        {
+                <div class="row">
+                    <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+                        @foreach (NParty.Www.Models.Article article in articles)
+                        {
+                            <a class="hilight-article-item hilight-md-article-item domainLink-@article.Domain" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3>@article.Title</h3>
+                                        @if (!string.IsNullOrEmpty(article.AuthorName))
+                                        {
+                                            <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                        }
+                                        <p class="snippet">@article.Summary</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr />
+                        }
+
+                        <div class="row">
+                            <div class="col-md-5 prevPage">
+                                @{
+                                    if (articles.Count >= maxPosts)
+                                    {
+                                        <a rel="next" class="directionLink domainLink-Nintendo" href="@Url.Content("~/Home/Busca?q=" + ViewData["query"] + "&page=" + (currentPage + 1))" style="text-align: left"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span> ARTIGOS MAIS <b>ANTIGOS</b> </a>
+                                    }
+                                }
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5 nextPage">
+                                @{
+                                    if (currentPage > 0)
+                                    {
+                                        <a rel="prev" class="directionLink domainLink-Nintendo" href="@Url.Content("~/Home/Busca?q=" + ViewData["query"] + "&page=" + (currentPage - 1))" style="text-align: right;"> ARTIGOS MAIS <b>RECENTES</b> <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @{Html.RenderPartial("Sidebars/General");}
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 50px; text-align: center;"> Não encontramos nenhuma publicação com estes termos.</div>
+            }
+   
+    }
+</div>
+@section Scripts{
+<script>
+        $(document).ready(function () {
+            var $hilights = $('#general-hilights');
+
+            $.ajax('@Url.Content("~/Home/GetHilightItems/")').done(function (data) {
+                if (!data || data.length == 0) {
+                    $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+                    return;
+                }
+
+                var appendable = '';
+
+                $.each(data, function (index) {
+                    appendable += '<li class="media ' + data[index].Domain.toLowerCase() + '">' +
+                                   '<a href="' + data[index].NPartyArticleLink + '"><div class="media-left"><div style="width: 45px; height: 45px; background-image: url(' + data[index].CoverImage + '); background-size: cover; background-position: center center;" class="media-object"></div></div>' +
+                                   '<div class="media-body"><span class="label label-default">' + data[index].Domain + '</span>' + data[index].Title + '</div></a></li>'
+                });
+
+                $hilights.html(appendable);
+            }).fail(function () {
+                $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+            });
+        });
+</script>
+}

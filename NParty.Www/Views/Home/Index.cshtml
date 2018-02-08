@@ -1,0 +1,399 @@
+﻿@{
+    ViewBag.Title = "N-Party - Nintendo, eSports, Eventos e muito mais";
+    ViewData["MenuHasBorderBottom"] = true;
+    
+    List<NParty.Www.Models.Article> hilights = (List<NParty.Www.Models.Article>)ViewData["Hilights"];
+    List<NParty.Www.Models.Article> nintendoPosts = (List<NParty.Www.Models.Article>)ViewData["NintendoPosts"];
+    List<NParty.Www.Models.Article> eSportsPosts = (List<NParty.Www.Models.Article>)ViewData["ESportsPosts"];
+    List<NParty.Www.Models.Article> eventosPosts = (List<NParty.Www.Models.Article>)ViewData["EventosPosts"];
+
+    ViewData["metaDescription"] = "Wii U, 3DS, Pokémon, Mario, Zelda, League of Legends, Counter Strike e mais";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/sharer.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Home/Index");
+    ViewData["metaKeywords"] = new List<string>() { "Eventos", "Nintendo", "Wii U", "3DS", "eSports", "League of Legends", "Counter Strike" };
+}
+    @{Html.RenderPartial("Special_Area_Top");}
+    @if (hilights != null && hilights.Count >= 3)
+    {
+        <div class="container" style="margin-top: 30px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="hilight">
+                        <a href="@Url.Content("~/" + hilights[0].NPartyArticleLink)">
+                            <div class="hilight-img hilight-img-big" style="background-image: url('@hilights[0].CoverImage')"></div>
+
+                            <div class="hilight-caption">
+                                <div class="hilight-caption-inner">
+                                    <div class="clearfix">
+                                        <span href="@Url.Content("~/" + hilights[0].Domain)" class="domain-box domain-box-@hilights[0].Domain">@hilights[0].Domain</span>
+                                    </div>
+                                    <div href="@Url.Content("~/" + hilights[0].NPartyArticleLink)"><h2>@hilights[0].Title</h2></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="hilight">
+                        <a href="@Url.Content("~/" + hilights[1].NPartyArticleLink)">
+                            <div class="hilight-img hilight-img-med" style="background-image: url('@hilights[1].CoverImage')"></div>
+
+                            <div class="hilight-caption">
+                                <div class="hilight-caption-inner">
+                                    <div class="clearfix">
+                                        <span href="@Url.Content("~/" + hilights[1].Domain)" class="domain-box domain-box-@hilights[1].Domain">@hilights[1].Domain</span>
+                                    </div>
+                                    <div href="@Url.Content("~/" + hilights[1].NPartyArticleLink)"><h3>@hilights[1].Title</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="hilight" style="margin-top: 10px;">
+                        <a href="@Url.Content("~/" + hilights[2].NPartyArticleLink)">
+                            <div class="hilight-img hilight-img-med" style="background-image: url('@hilights[2].CoverImage')"></div>
+
+                            <div class="hilight-caption">
+                                <div class="hilight-caption-inner">
+                                    <div class="clearfix">
+                                        <span href="@Url.Content("~/" + hilights[2].Domain)" class="domain-box domain-box-@hilights[2].Domain">@hilights[2].Domain</span>
+                                    </div>
+                                    <div href="@Url.Content("~/" + hilights[2].NPartyArticleLink)"><h3>@hilights[2].Title</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- ================================== NINTENDO ================================== -->
+    <div id="nintendo-container">
+        <div class="container">
+            <div class="container-header">
+                <h2>
+                    <span class="strong">Nintendo</span>
+                </h2>   
+            </div>
+            <div class="posts">
+            @if (nintendoPosts != null && nintendoPosts.Count >= 4)
+            {
+                <div class="row">
+                    <div class="col-md-8" style="margin-bottom: 24px;">
+                        <a class="hilight-article-item" href="@Url.Content("~/" + nintendoPosts[0].NPartyArticleLink)">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <figure style="background-image: url(@nintendoPosts[0].CoverImage);"></figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>@nintendoPosts[0].Title</h3>
+                                    @if (!string.IsNullOrEmpty(nintendoPosts[0].AuthorName))
+                                    {
+                                        <div class="author">Por <span class="authorName">@nintendoPosts[0].AuthorName</span> em <span class="date">@nintendoPosts[0].DatePublished.ToString("dd/MM/yyyy")</span></div>
+                                    }
+                                    <p class="snippet">@nintendoPosts[0].Summary</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-bordered-left">
+                        <ul class="media-list">
+                            @{
+                                for (int i = 1; i < 4; i++)
+                                {
+                                    <li class="media thumb-item">
+                                        <a href="@Url.Content("~/" + nintendoPosts[i].NPartyArticleLink)">
+                                            <div class="media-left media-middle">
+                                                <figure class="media-object" style="background-image: url(@nintendoPosts[i].CoverImage)"></figure>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">@nintendoPosts[i].Title</h5>
+                                                <div class="time">em @nintendoPosts[i].DatePublished.ToString("dd/MM/yyyy")</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <a class="btn btn-lg btn-block" href="@Url.Content("~/Nintendo")" style="text-align: right">TUDO SOBRE <b>NINTENDO <span aria-hidden="true" class="glyphicon glyphicon-play-circle"></span></b></a>
+                    </div>
+                </div>
+            } else
+            {
+                <div style="padding: 50px; text-align: center;">Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+            }
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================== ESPORTS ================================== -->
+    <div id="esports-container">
+        <div class="container">
+            <div class="container-header">
+                <h2>
+                    <span class="strong">eSports</span>
+                </h2>
+            </div>
+            <div class="posts">
+            @if (eSportsPosts != null && eSportsPosts.Count >= 4)
+            {
+                <div class="row">
+                    <div class="col-md-8" style="margin-bottom: 20px;">
+                        <a class="hilight-article-item" href="@Url.Content("~/" + eSportsPosts[0].NPartyArticleLink)">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <figure style="background-image: url(@eSportsPosts[0].CoverImage);"></figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>@eSportsPosts[0].Title</h3>
+                                    @if (!string.IsNullOrEmpty(eSportsPosts[0].AuthorName))
+                                    {
+                                        <div class="author">Por <span class="authorName">@eSportsPosts[0].AuthorName</span> em <span class="date">@eSportsPosts[0].DatePublished.ToString("dd/MM/yyyy")</span></div>
+                                    }
+                                    <p class="snippet">@eSportsPosts[0].Summary</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-bordered-left">
+                        <ul class="media-list">
+                            @{
+                                for (int i = 1; i < 4; i++)
+                                {
+                                    <li class="media thumb-item">
+                                        <a href="@Url.Content("~/" + eSportsPosts[i].NPartyArticleLink)">
+                                            <div class="media-left media-middle">
+                                                <figure class="media-object" style="background-image: url(@eSportsPosts[i].CoverImage)"></figure>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">@eSportsPosts[i].Title</h5>
+                                                <div class="time">em @eSportsPosts[i].DatePublished.ToString("dd/MM/yyyy")</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <a class="btn btn-lg btn-block" href="@Url.Content("~/ESports")" style="text-align: right">TUDO SOBRE <b>ESPORTS <span aria-hidden="true" class="glyphicon glyphicon-play-circle"></span></b></a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 50px; text-align: center;">Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+            }
+            </div>
+        </div>
+    </div>
+
+
+<!-- ================================== PODCAST ================================== -->
+<div id="podcast-container">
+    <div class="container">
+        <div class="container-header">
+            <h2>
+                <span class="strong">Podcasts</span>
+                <a title="Assine o feed de nossos podcasts" href="http://feeds.feedburner.com/PodcastN-party" class="rss-link" target="_blank"><i class="fa fa-rss-square"></i></a>
+            </h2>
+        </div>
+        <div class="posts">
+            <div style="padding: 50px; text-align: center;" class="loadingMessage">Carregando...</div>
+            <div style="padding: 50px; text-align: center; display: none;" class="errorMessage">Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+
+            <div class="row podcasts" style="display: none;">
+                <div class="col-md-8 firstItem" style="margin-bottom: 20px;">
+                    
+                </div>
+                <div class="col-md-4 col-bordered-left">
+                    <ul class="media-list otherItens">
+                        
+                    </ul>
+                    <a class="btn btn-lg btn-block" href="@Url.Content("~/Podcasts")" style="text-align: right">MAIS <b>PODCASTS <span aria-hidden="true" class="glyphicon glyphicon-play-circle"></span></b></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ================================== EVENTOS ================================== -->
+<div id="eventos-container">
+    <div class="container">
+        <div class="container-header">
+            <h2>
+                <span class="strong">Eventos</span>
+            </h2>
+        </div>
+        @if (eventosPosts != null && eventosPosts.Count >= 4)
+        {
+            <div class="row posts" style="">
+                <div class="col-md-6" style="margin-bottom: 20px;">
+                    <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + eventosPosts[0].NPartyArticleLink)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure style="background-image: url(@eventosPosts[0].CoverImage)"></figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>@eventosPosts[0].Title</h4>
+                                <p class="snippet">@eventosPosts[0].Summary</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 20px;">
+                    <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + eventosPosts[1].NPartyArticleLink)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure style="background-image: url(@eventosPosts[1].CoverImage)"></figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>@eventosPosts[1].Title</h4>
+                                <p class="snippet">@eventosPosts[1].Summary</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row posts" style="">
+                <div class="col-md-6" style="margin-bottom: 20px;">
+                    <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + eventosPosts[2].NPartyArticleLink)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure style="background-image: url(@eventosPosts[2].CoverImage)"></figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>@eventosPosts[2].Title</h4>
+                                <p class="snippet">@eventosPosts[2].Summary</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 20px;">
+                    <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + eventosPosts[3].NPartyArticleLink)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure style="background-image: url(@eventosPosts[3].CoverImage)"></figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>@eventosPosts[3].Title</h4>
+                                <p class="snippet">@eventosPosts[3].Summary</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div style="padding: 50px; text-align: center;">Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+        }
+        <hr>
+        <a class="btn btn-lg btn-block" href="@Url.Content("~/Eventos")" style="text-align: right">TUDO SOBRE <b>EVENTOS <span aria-hidden="true" class="glyphicon glyphicon-play-circle"></span></b></a>
+    </div>
+</div>
+
+
+
+<!-- ================================== COPA N-PARTY ================================== -->
+@*<div id="copa-container">
+    <div class="container">
+        <div class="container-header">
+            <h2>
+                <span class="strong">Copa</span>
+                <span class="thin">N-Party</span>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="sub-header">Último evento</h3>
+                <div id="lastOrNextEvent">
+                    <a class="hilight-article-item hilight-md-article-item" href="http://connect.nparty.com.br/Eventos/Detalhes/2060" target="_blank">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img class="img-responsive" src="http://www.images.nparty.com.br/connect/eventCover/small/nparty.png">
+                            </div>
+                            <div class="col-md-8" style="padding-top: 15px;">
+                                <h4>MeetUp N-Party</h4>
+                                    <p class="snippet">
+                                    <b>Organizador</b>: N-Party<br>
+                                    <b>Local</b>: Avenida Liberdade, 593<br>
+                                    <b>Tipo</b>: MeetUp<br>
+                                    <b>Data</b>: 01/11/2015<br>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="sub-header">Ranking de Jogadores</h3>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-hover table-striped" id="ranking">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome</th>
+                                <th>Apelido</th>
+                                <th>Pontos</th>
+                            </tr>
+                        </thead>
+                        <tbody><tr><td style="vertical-align: middle; text-align: center;"><img src="https://s3-sa-east-1.amazonaws.com/connectprofileimages/3577_30092015124241" style="width: 70px"></td><td style="vertical-align: middle"><a target="_blank" href="http://connect.nparty.com.br/Jogadores/Detalhes/3577">Lucas  Magalhães</a></td><td style="vertical-align: middle">Lukinhas</td><td style="vertical-align: middle; text-align: center;">210</td></tr><tr><td style="vertical-align: middle; text-align: center;"><img src="http://connect.nparty.com.br/Static/img/playerPhoto/default.jpg" style="width: 70px"></td><td style="vertical-align: middle"><a target="_blank" href="http://connect.nparty.com.br/Jogadores/Detalhes/17">Leandro Auto da Cruz Lima</a></td><td style="vertical-align: middle">xLeandrox</td><td style="vertical-align: middle; text-align: center;">130</td></tr><tr><td style="vertical-align: middle; text-align: center;"><img src="https://s3-sa-east-1.amazonaws.com/connectprofileimages/2533_04042015021147" style="width: 70px"></td><td style="vertical-align: middle"><a target="_blank" href="http://connect.nparty.com.br/Jogadores/Detalhes/2533">Glauber Rodrigues</a></td><td style="vertical-align: middle">Dr.Glawzer</td><td style="vertical-align: middle; text-align: center;">124</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@section Scripts{
+    <script type="text/javascript">
+        function loadPodcasts() {
+            $podcastsContainer = $('#podcast-container');
+            $loadingMessage = $podcastsContainer.find('.loadingMessage');
+            $errorMessage = $podcastsContainer.find('.errorMessage');
+            $podcasts = $podcastsContainer.find('.podcasts');
+
+            $.get('/Home/PodcastFeedOnHome/', function (data) {
+                if (data) {
+                    console.log(data);
+
+                    $podcastsContainer.find('.firstItem').html(
+                        '<a class="hilight-article-item" href="/' + data[0].NPartyArticleLink + '">' +
+                        '<div class="row">' +
+                        '<div class="col-md-8">' +
+                        '<figure style="background-image: url(' + data[0].CoverImage + ');"></figure>' +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '<h3>' + data[0].Title + '</h3>' +
+                        '<p class="snippet">' + data[0].Summary + '</p></div></div></a>'
+                        );
+
+                    var appendable = '';
+
+                    for (var i = 1; i < 4; i++) {
+                        appendable += '<li class="media thumb-item">' + 
+                                      '<a href="' + data[i].NPartyArticleLink + '">' + 
+                                      '<div class="media-left media-middle">' + 
+                                      '<figure class="media-object" style="background-image: url(' + data[i].CoverImage + ')"></figure>' + 
+                                      '</div><div class="media-body">' +
+                                      '<h5 class="media-heading">' + data[i].Title + '</h5>' +
+                                      '</div></a></li>';
+                    }
+
+                    $podcastsContainer.find('.otherItens').html(appendable);
+                    $loadingMessage.hide();
+                    $podcasts.show();
+                } else {
+                    $loadingMessage.hide();
+                    $errorMessage.show();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadPodcasts();
+        });
+    </script>
+}

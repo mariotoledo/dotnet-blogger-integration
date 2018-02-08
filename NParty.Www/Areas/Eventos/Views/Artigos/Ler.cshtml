@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Ler";
+    ViewData["ActiveMenu"] = 3;
+
+    NParty.Www.Models.Article article = (NParty.Www.Models.Article)ViewData["article"];
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/EventosN-party";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (article != null)
+    {
+        ViewData["title"] = article.Title;
+        ViewData["metaDescription"] = article.Summary;
+        ViewData["metaImage"] = article.CoverImage;
+        ViewData["metaImageUrlIsExternal"] = true;
+        ViewData["metaUrl"] = "/" + article.NPartyArticleLink;
+        ViewData["metaAuthor"] = article.AuthorName;
+
+        if (article.Labels != null)
+        {
+            List<string> keywords = new List<string>();
+
+            foreach (string tag in article.Labels)
+            {
+                keywords.Add(tag);
+            }
+
+            ViewData["metaKeywords"] = keywords;
+        }
+
+        if (article.AuthorData != null)
+        {
+            ViewData["metaTwitterAuthor"] = article.AuthorData.TwitterAccount;
+            ViewData["metaFacebookAuthor"] = article.AuthorData.FacebookProfileUrl;
+        }
+    }
+}
+<div id="eventos-container" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Eventos", 0);}
+    <div class=" container" style="padding-top: 20px; padding-bottom: 20px;">
+        @if (article != null)
+        {
+            string keywordsSchema = "";
+
+            foreach (string keyword in article.Labels)
+            {
+                keywordsSchema += keyword + ",";
+            }
+
+            <div class="row" itemscope itemtype="http://schema.org/Article">
+                <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name" content="N-Party"></span>
+                </span>
+                <span itemprop="articleSection" content="News"></span>
+                <span itemprop="keywords" content="@keywordsSchema Eventos"></span>
+                <div class="col-lg-8 col-bordered-right">
+                    <div class="post hentry">
+                        <div class="article">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="header">
+                                        <img itemprop="image" src="@article.CoverImage" style="width: 100%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: -30px; background-color: #FFF; padding: 30px; padding-bottom: 0px;">
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 10px; padding-bottom: 0px; background-color: #FFF;">
+                                        <div class="article-title">
+                                            <h3 class="post-title entry-title" itemprop="headline">
+                                                @article.Title
+                                            </h3>
+                                            <!--<div class="subtitulo" itemprop="description">
+                                                Apesar dos números não serem tão surpreendentes assim
+                                            </div>-->
+                                            @if (!string.IsNullOrEmpty(article.AuthorName))
+                                            {
+                                                <div class="author">
+                                                    <div>
+                                                        Por
+                                                        <span>@article.AuthorName</span>
+                                                        em
+                                                        <span itemprop="datePublished" content="@article.DatePublished.ToString("yyyy-MM-dd", new System.Globalization.CultureInfo("pt-Br"))">@article.DatePublished.Day de @article.DatePublished.ToString("MMMM", new System.Globalization.CultureInfo("pt-Br")) de @article.DatePublished.Year</span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="share-icons">
+                                                <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/" + article.NPartyArticleLink))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                                <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/" + article.NPartyArticleLink))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                                <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/" + article.NPartyArticleLink))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                                <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/" + article.NPartyArticleLink))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                            </div>
+                                        </div>
+                                        <div id="loading-content">
+                                            Carregando...
+                                        </div>
+                                        <div class="content" id="article-content" itemprop="articleBody">
+                                            @Html.Raw(article.Content)
+                                        </div>
+                                        <div style="margin: 0px 0px 20px 10px; overflow-x: hidden;">
+                                            <div class="fb-like" data-href="https://www.facebook.com/NParty/" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+                                        </div>
+                                        @{
+                                            if (article.AuthorData != null)
+                                            {
+                                                <div class="author-box" id="authorBox" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                            <img itemprop="image" class="authorPhoto img-rounded img-responsive" id="authorPhoto" src="@article.AuthorData.ImageUrl">
+                                                        </div>
+                                                        <div class="col-sm-10" id="authorDescription"><b itemprop="name">@article.AuthorData.Name</b> <span itemprop="description">@article.AuthorData.Description</span></div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="related-posts-wrapper">
+                            <h3>Leia também</h3>
+                            <div class="row" id="related-posts">
+                                <div class="col-md-12">
+                                    Carregado...
+                                </div>
+                            </div>
+                        </div>
+                        @{Html.RenderPartial("Comments/Disqus");}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    @{Html.RenderPartial("Sidebars/Eventos");}
+                </div>
+            </div>
+        }
+        else
+        {
+            <div style="padding: 50px; text-align: center;">Não foi possível encontrar a publicação desejada.</div>
+        }
+    </div>
+</div>
+@section Scripts{
+    <script src="http://nparty.com.br/Content/js/audioplayer.min.js"></script>
+    <script type="text/javascript">
+        var labels = [];
+
+        $(document).ready(function () {
+            adjustArticleImages();
+            adjustTables();
+            adjustArticleIframes();
+            adjustArticleSubtitles();
+
+            try {
+                $('audio').audioPlayer();
+            } catch (err) { }
+
+            $('#loading-content').hide();
+            $('#article-content').show();
+        });
+    </script>
+    @{ 
+        if(article != null && article.Labels != null)
+        {
+            foreach(string label in article.Labels)
+            {
+                <script>
+                    labels.push('@label');
+                </script>
+            }
+        }
+    }
+    @if (article != null)
+    {
+        <script type="text/javascript">
+            printRelatedPostsByLabels('@article.Id', labels, 'related-posts', 'Eventos');
+        </script>
+    }
+}

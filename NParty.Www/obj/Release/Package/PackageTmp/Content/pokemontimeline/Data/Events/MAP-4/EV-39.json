@@ -1,0 +1,1 @@
+[{"id":39,"x":62,"y":11,"name":"EV-39"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Fiquei sem palavras ao ver as cartas LEGEND.'}"],"graphic":"140","graphic-params":{"uniqid":1454074399208}}]]

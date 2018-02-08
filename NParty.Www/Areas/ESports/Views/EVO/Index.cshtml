@@ -1,0 +1,562 @@
+﻿@{
+    ViewBag.Title = "EVO 2016";
+    ViewData["metaDescription"] = "Todas as novidades da maior competição de fighting games do mundo";
+    ViewData["metaImage"] = Url.Content("~/Content/img/evo/evo_media.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Esports/EVO");
+    ViewData["metaKeywords"] = new List<string>() { "EVO", "Super Smash Bros", "Street Fighter", "Mortal Kombar", "Noticias" };
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+
+    string selectedId = Request.Params["stream"];
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int currentDay = DateTime.Now.Day;
+    int currentMonth = DateTime.Now.Month;
+    int currentHour = DateTime.Now.Hour;
+}
+
+@section Head{
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/evo.css")" />
+    <style>
+        .conferences {
+        }
+
+        .col-conference {
+            min-height: 240px;
+            border-bottom: 1px solid #CCCCCC;
+            padding: 5px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+            .col-conference img {
+                margin: 0px auto 5px auto;
+            }
+
+            .col-conference a {
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            .col-conference:hover {
+                background-color: #DDDDDD;
+                color: #000;
+            }
+
+            .col-conference a:hover {
+                color: #000;
+                background-color: #DDDDDD;
+            }
+
+        .conference-title {
+            text-align: center;
+        }
+
+            .conference-title h2 {
+                margin-top: 10px;
+            }
+
+        .conference-name {
+            height: 35px;
+        }
+
+        .video-area {
+            padding: 30px 0px 30px 0px;
+            background-color: #777;
+            color: #FFF;
+        }
+
+        #stream {
+            display: none;
+        }
+
+        #video-title {
+            margin-top: 40px;
+        }
+
+        #video-description {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .btn-close {
+            color: #FFF;
+        }
+
+        hr {
+            border-color: #CCCCCC;
+        }
+
+        .articles-container a:hover {
+            color: #FE5050;
+        }
+
+        .e3-stream a {
+            color: #FFFFFF;
+        }
+    </style>
+}
+
+<div class="evo">
+    <section class="content-section video-section">
+        <div class="pattern-overlay">
+            <div class="bg" style="background-image: url(@Url.Content("~/Content/img/evo/evo_media.jpg"))">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo"><img class="img-responsive" alt="EVO 2016" src="@Url.Content("~/Content/img/evo/evo_logo.png")" /></div>
+                        <h3>Todas as novidades da <b>EVO 2016</b>, a maior competição de fighting games do mundo</h3>
+                        <div class="share-icons">
+                            <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/ESports/EVO"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/ESports/EVO"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/ESports/EVO"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/ESports/EVO"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row-fluid conferences" id="streams-menu">
+        <div class="col-lg-3 col-bordered-right col-conference conference-title" style="background-color: #FFF;">
+            <h2>Transmissões</h2>
+            <p>Fique ligado nas datas e horários das transmissões da EVO deste ano<span style="font-size: 10px; font-style: italic;"> (horário de Brasília)</span></p>
+            <p>Clique no link da transmissão para abrir o stream correspondente.</p>
+            <button class="btn" onclick="openStream('evo1')" style="margin-top: 30px;"><span class="glyphicon glyphicon glyphicon-menu-down"></span></button>
+        </div>
+        <div class="col-lg-9" style="padding: 0; background-color: #FFF;">
+            <ul class="nav nav-pills nav-justified" id="streams-tab">
+                <li role="presentation" class="@((currentDay > 15 && currentMonth == 7 && currentHour >= 4) == false ? "active" : "")">
+                    <a style="border-radius: 0" href="#friday" aria-controls="home" role="tab" data-toggle="tab">15/07</a>
+                </li>
+                <li role="presentation" style="border-right: 1px solid #ddd; border-left: 1px solid #ddd;" class="@((currentDay > 15 && currentMonth == 7 && currentHour > 4) && (currentDay <= 17 && currentMonth == 7 && currentHour < 4) == true ? "active" : "")">
+                    <a style="border-radius: 0" href="#saturday" aria-controls="home" role="tab" data-toggle="tab">16/07</a>
+                </li>
+                <li role="presentation" class="@(currentDay >= 17 && currentMonth == 7 && currentMonth > 4)"><a style="border-radius: 0" href="#sunday" aria-controls="home" role="tab" data-toggle="tab">17/07</a></li>
+            </ul>
+            <div id="streams" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in @((currentDay > 15 && currentMonth == 7 && currentHour > 4) == false ? "active" : "")" id="friday" aria-labelledby="streams-tab">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered" style="margin-bottom: 0px;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>12:00</th>
+                                    <th>14:00</th>
+                                    <th>16:00</th>
+                                    <th>18:00</th>
+                                    <th>20:00</th>
+                                    <th>22:00</th>
+                                    <th>0:00</th>
+                                    <th>2:00</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer" onclick="openStream('evo1')">
+                                    <td>twitch.tv/<b>srkevo1</b></td>
+                                    <td colspan="2">Street Fighter V</td>
+                                    <td colspan="2">SSB Melee</td>
+                                    <td colspan="2">Tekken 7 SR Semifinal</td>
+                                    <td colspan="2">SSB Melee Pools Round 2</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo2')">
+                                    <td>twitch.tv/<b>srkevo2</b></td>
+                                    <td colspan="6">SSB Wii U</td>
+                                    <td colspan="2">SSB Wii U Pools Round 2</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo3')">
+                                    <td>twitch.tv/<b>srkevo3</b></td>
+                                    <td colspan="2">SSB Melee</td>
+                                    <td colspan="2">Super Street Fighter V</td>
+                                    <td colspan="2">GGXrd Rev.</td>
+                                    <td>GGXrd Ref. QF</td>
+                                    <td colspan="2">GGXrd: Rev. Semifinal</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo4')">
+                                    <td>twitch.tv/<b>srkevo4</b></td>
+                                    <td colspan="6">Pokkén Tournament</td>
+                                    <td colspan="2">SSB Melee Pools Round 2</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('cap')">
+                                    <td>twitch.tv/<b>capcomfighters</b></td>
+                                    <td colspan="8">Street Fighter V</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in @((currentDay > 15 && currentMonth == 7 && currentHour > 4) && (currentDay <= 17 && currentMonth == 7 && currentHour < 4) == true ? "active" : ""))" id="saturday" aria-labelledby="streams-tab">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered" style="margin-bottom: 0px;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>12:00</th>
+                                    <th>14:00</th>
+                                    <th>16:00</th>
+                                    <th>18:00</th>
+                                    <th>20:00</th>
+                                    <th>22:00</th>
+                                    <th>0:00</th>
+                                    <th>2:00</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer" onclick="openStream('evo1')">
+                                    <td>twitch.tv/<b>srkevo1</b></td>
+                                    <td colspan="2">Tekken 7 FR Final</td>
+                                    <td colspan="2">SSB Wii U Final</td>
+                                    <td>Pokken Semi</td>
+                                    <td>KI Final</td>
+                                    <td colspan="2">SFV Semifinal</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo2')">
+                                    <td>twitch.tv/<b>srkevo2</b></td>
+                                    <td colspan="2">SSB Wii U Semifinal</td>
+                                    <td colspan="2">Killer Instinct</td>
+                                    <td colspan="2">SSB Melee Semifinal</td>
+                                    <td colspan="2">Marvel Semifinal</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo3')">
+                                    <td>twitch.tv/<b>srkevo3</b></td>
+                                    <td colspan="2">U. Marvel vs. Capcom 3</td>
+                                    <td colspan="2">Mortal Kombat X</td>
+                                    <td colspan="2">SSB Melee Semifinal</td>
+                                    <td colspan="2">SFV Semifinal</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('evo4')">
+                                    <td>twitch.tv/<b>srkevo4</b></td>
+                                    <td>Pokkén</td>
+                                    <td colspan="2">Pokkén Quarters</td>
+                                    <td>Pokkén Semi</td>
+                                    <td>MK X</td>
+                                    <td>MK X QF</td>
+                                    <td colspan="2">MK X Semifinal</td>
+                                </tr>
+                                <tr style="cursor: pointer" onclick="openStream('cap')">
+                                    <td>twitch.tv/<b>capcomfighters</b></td>
+                                    <td colspan="3">Street Fighter V</td>
+                                    <td colspan="2">SFV Pools Round 2</td>
+                                    <td colspan="2">SFV Q. Finals</td>
+                                    <td colspan="2">SFV Semifinal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div role="tabpanel" class="tab-pane fade in @(currentDay >= 17 && currentMonth == 7 && currentMonth > 4)" id="sunday" aria-labelledby="streams-tab">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered" style="margin-bottom: 0px;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>12:00</th>
+                                    <th>14:30</th>
+                                    <th>17:00</th>
+                                    <th>19:00</th>
+                                    <th>23:00</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer" onclick="openStream('evo1')">
+                                    <td>twitch.tv/<b>srkevo1</b></td>
+                                    <td>Mortal Kombat X Final</td>
+                                    <td>U. Marvel vs. Capcom 3 Final</td>
+                                    <td>GG Xrd: Revelator Final</td>
+                                    <td>SSB Melee Final</td>
+                                    <td>SFV Final</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div class="clearfix"></div>
+    <div class="video-area" id="stream">
+        <div class="container">
+            <a onclick="closeStream()" class="btn btn-lg pull-right btn-close" style="margin-bottom: 15px; cursor: pointer; font-size: 36px"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            <div class="clearfix"></div>
+            <div id="stream-evo1" class="embed-responsive embed-responsive-16by9 stream" style="display: none;">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="0" src="https://player.twitch.tv/?channel=srkevo1&autoplay=false"></iframe>
+            </div>
+            <div id="stream-evo2" class="embed-responsive embed-responsive-16by9 stream" style="display: none;">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="0" src="https://player.twitch.tv/?channel=srkevo2&autoplay=false"></iframe>
+            </div>
+            <div id="stream-evo3" class="embed-responsive embed-responsive-16by9 stream" style="display: none;">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="0" src="https://player.twitch.tv/?channel=srkevo3&autoplay=false"></iframe>
+            </div>
+            <div id="stream-evo4" class="embed-responsive embed-responsive-16by9 stream" style="display: none;">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="0" src="https://player.twitch.tv/?channel=srkevo4&autoplay=false"></iframe>
+            </div>
+            <div id="stream-cap" class="embed-responsive embed-responsive-16by9 stream" style="display: none;">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="0" src="https://player.twitch.tv/?channel=capcom&autoplay=false"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container articles-container" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+                @if (articles != null && articles.Count > 0)
+                {
+                    foreach (NParty.Www.Models.Article article in articles)
+                    {
+                        bool isSpecialTag = false;
+
+                        foreach (string label in article.Labels)
+                        {
+                            if ("Destaque".Equals(label))
+                            {
+                                isSpecialTag = true;
+                                break;
+                            }
+                        }
+                        if (isSpecialTag)
+                        {
+                            <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                <figure style="background-image: url('@article.CoverImage')"></figure>
+                                <h3>@article.Title</h3>
+                                @if (!string.IsNullOrEmpty(article.AuthorName))
+                                {
+                                    <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                }
+                                <p class="snippet">@article.Summary</p>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3>@article.Title</h3>
+                                        @if (!string.IsNullOrEmpty(article.AuthorName))
+                                        {
+                                            <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                        }
+                                        <p class="snippet">@article.Summary</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                        <hr />
+                    }
+                }
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="sidebar-follow sidebar-item">
+                        <div class="fb-page" data-href="https://www.facebook.com/npartyesports" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/nparty"><a href="https://www.facebook.com/nparty">N-Party</a></blockquote></div></div>
+                    </div>
+                    <div class="sidebar-item">
+                        <h4 class="sidebar-title">Horários dos Torneios</h4>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Super Street Fighter V</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/sfv_thumb.png")" class="img-responsive" style="margin: auto;" title="Street Fighter V"/>
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h e Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Pools, Round 2</b>: Sábado, às 18h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sábado, às 22h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 0h</li>
+                                <li class="list-group-item"><b>Finais</b>: Domingo, às 23h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Super Smash Bros. for Wii U</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/smash_wii.png")" class="img-responsive" style="margin: auto;" title="Super Smash Bros. Wii U" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h</li>
+                                <li class="list-group-item"><b>Pools, Round 2</b>: Sexta, às 0h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Finais</b>: Sábado, às 16h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Super Smash Bros. Melee</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/smash.png")" class="img-responsive" style="margin: auto;" title="Super Smash Bros. Melee" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h</li>
+                                <li class="list-group-item"><b>Pools, Round 2</b>: Sexta, às 0h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 20h</li>
+                                <li class="list-group-item"><b>Finais</b>: Domingo, às 19h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Pokkén Tournament</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/pokken_thumb.png")" class="img-responsive" style="margin: auto;" title="Pokkén Tournament" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h e Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sábado, às 14h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 18h</li>
+                                <li class="list-group-item"><b>Finais</b>: Sábado, às 20h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Guilty Ger Xrd Revelation</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/gg_thumb.png")" class="img-responsive" style="margin: auto;" title="Guilty Ger Xrd Revelation" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sexta, às 22h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 00h</li>
+                                <li class="list-group-item"><b>Finais</b>: Domingo, às 17h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Ultimate Marvel vs. Capcom 3</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/marvel3.png")" class="img-responsive" style="margin: auto;" title="Ultimate Marvel vs. Capcom 3" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sábado, às 22h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 00h</li>
+                                <li class="list-group-item"><b>Finais</b>: Domingo, às 14h30</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Mortal Kombat X</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/mortalkx.png")" class="img-responsive" style="margin: auto;" title="Mortal Kombat X" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sábado, às 22h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 00h</li>
+                                <li class="list-group-item"><b>Finais</b>: Domingo, às 12h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Tekken 7</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/t7_thumb.png")" class="img-responsive" style="margin: auto;" title="Tekken" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sexta, às 12h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sexta, às 20h</li>
+                                <li class="list-group-item"><b>Finais</b>: Sábado, às 13h</li>
+                            </ul>
+                        </div>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Killer Instinct</div>
+                            <div class="panel-body">
+                                <img src="@Url.Content("~/Content/img/evo/ki.png")" class="img-responsive" style="margin: auto;" title="Killer Instinct" />
+                            </div>
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Pools</b>: Sábado, às 12h</li>
+                                <li class="list-group-item"><b>Quartas de final</b>: Sábado, às 18h</li>
+                                <li class="list-group-item"><b>Semifinais</b>: Sábado, às 20h</li>
+                                <li class="list-group-item"><b>Finais</b>: Sábado, às 22h</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="@Url.Content("~/Content/js/jquery.bgswitcher.js")"></script>
+    <script>
+        $('#streams-tab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        $(".bg").bgswitcher({
+            images: ["@Url.Content("~/Content/img/evo/evo_1.jpg")", "@Url.Content("~/Content/img/evo/evo_2.jpg")", "@Url.Content("~/Content/img/evo/evo_3.jpg")", "@Url.Content("~/Content/img/evo/evo_4.jpg")"],
+            interval: 2500
+        });
+
+        $stream = $('#stream');
+        $streamsMenu = $('#streams-menu');
+
+        $('.choose-stream-tabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        function openStream(descriptionId) {
+
+            if (!$($stream).is(":visible")) {
+                $('#stream-' + descriptionId).show();
+                $stream.slideDown();
+            } else {
+                $('.stream').fadeOut();
+                $('#stream-' + descriptionId).fadeIn();
+            }
+
+            goToSectionFromEl($stream);
+        }
+
+        function closeStream() {
+            if ($($stream).is(":visible")) {
+                $stream.slideUp(
+                    function () { $('.stream').hide(); }
+                );
+            }
+
+            goToSectionFromEl($streamsMenu);
+        }
+    </script>
+
+    @if (!string.IsNullOrEmpty(selectedId))
+    {
+        <script>
+            if ($("#stream-@selectedId").length)
+                openStream('@selectedId');
+        </script>
+    }
+
+
+}

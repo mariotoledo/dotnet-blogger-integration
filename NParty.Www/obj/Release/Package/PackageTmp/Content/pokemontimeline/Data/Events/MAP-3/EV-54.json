@@ -1,0 +1,1 @@
+[{"id":54,"x":"90","y":"13","name":"EV-54"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Parece ser interessante ser um Ranger.'}"],"graphic":"149","graphic-params":{"uniqid":1454073684301}}]]

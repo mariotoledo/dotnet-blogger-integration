@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Dicas";
+    ViewData["ActiveMenu"] = 2;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/EsportsN-party";
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+    int currentPage = (int)ViewData["currentPage"];
+    int maxPosts = (int)ViewData["MaxPosts"];
+
+    ViewData["title"] = "Dicas";
+    ViewData["metaDescription"] = "As melhores dicas do competitivo de League of Legends, Counter Strike e mais!";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/dicaseSports.jpg");
+    ViewData["metaUrl"] = Url.Content("~/ESports/Dicas");
+    ViewData["metaKeywords"] = new List<string>() { "Counter Strike", "Counter Strike: GO", "League of Legends", "Dicas" };
+
+    string[] esportsSpecialTags = (string[])ViewData["ESportsSpecialTags"];
+
+    @section Head{
+        @if (articles.Count >= maxPosts)
+        {
+            <link rel="next" href="@Url.Content("~/ESports/Dicas?page=" + (currentPage + 1))">
+        }
+        @if (currentPage > 0)
+        {
+            <link rel="prev" href="@Url.Content("~/ESports/Dicas?page=" + (currentPage - 1))">
+        }
+    }
+}
+
+<div id="esports-container" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/ESports", 2);}
+    
+    <div class="container" style="padding-top: 30px;">
+        @{
+            if (articles != null && articles.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+
+                        @foreach (NParty.Www.Models.Article article in articles)
+                        {
+                            bool isSpecialTag = false;
+
+                            foreach (string label in article.Labels)
+                            {
+                                if (esportsSpecialTags.Contains(label))
+                                {
+                                    isSpecialTag = true;
+                                    break;
+                                }
+                            }
+                            if (isSpecialTag)
+                            {
+                                <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    <h3>@article.Title</h3>
+                                    @if (!string.IsNullOrEmpty(article.AuthorName))
+                                    {
+                                        <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                    }
+                                    <p class="snippet">@article.Summary</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <figure style="background-image: url('@article.CoverImage')"></figure>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>@article.Title</h3>
+                                            @if (!string.IsNullOrEmpty(article.AuthorName))
+                                            {
+                                                <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                            }
+                                            <p class="snippet">@article.Summary</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            <hr />
+                        }
+
+                        <div class="row">
+                            <div class="col-md-5 prevPage">
+                                @{
+                                    if (articles.Count >= maxPosts)
+                                    {
+                                        <a rel="next" class="directionLink" href="@Url.Content("~/ESports/Dicas?page=" + (currentPage + 1))" style="text-align: left"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span> ARTIGOS MAIS <b>ANTIGOS</b> </a>
+                                    }
+                                }
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5 nextPage">
+                                @{
+                                    if (currentPage > 0)
+                                    {
+                                        <a ref="prev" class="directionLink" href="@Url.Content("~/ESports/Dicas?page=" + (currentPage - 1))" style="text-align: right;"> ARTIGOS MAIS <b>RECENTES</b> <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @{Html.RenderPartial("Sidebars/ESports");}
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 50px; text-align: center;"> Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+            }
+        }
+    </div>
+</div>

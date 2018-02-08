@@ -1,0 +1,1 @@
+[{"id":42,"x":14,"y":12,"name":"EV-42"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Fico chateada que as Triple Battle e as Rotation Battle n\u00e3o foram t\u00e3o bem aceitas. Elas pareciam bem divertidas.'}"],"graphic":"143","graphic-params":{"uniqid":1454074930894}}]]

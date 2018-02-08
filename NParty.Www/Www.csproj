@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4761E92E-73EC-40AF-A271-CB4DDC372D14}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NParty.Www</RootNamespace>
+    <AssemblyName>NParty.Www</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.9.2.27817, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.9.2\lib\net40\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.9.2.27817, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.9.2.27820, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.2\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Blogger.v3, Version=1.9.2.48, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Blogger.v3.1.9.2.480\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Blogger.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.9.2.27816, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.9.2\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.9.2.27818, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.9.2\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\ESports\Controllers\ArtigosController.cs" />
+    <Compile Include="Areas\ESports\Controllers\CounterStrikeController.cs" />
+    <Compile Include="Areas\ESports\Controllers\DicasController.cs" />
+    <Compile Include="Areas\ESports\Controllers\ESportsController.cs" />
+    <Compile Include="Areas\ESports\Controllers\EVOController.cs" />
+    <Compile Include="Areas\ESports\Controllers\HomeController.cs" />
+    <Compile Include="Areas\ESports\Controllers\LeagueOfLegendsController.cs" />
+    <Compile Include="Areas\ESports\ESportsAreaRegistration.cs" />
+    <Compile Include="Areas\Eventos\Controllers\ArtigosController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\AnimeFriendsController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\BMAController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\BGSController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\CoberturasController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\EventosController.cs" />
+    <Compile Include="Areas\Eventos\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Eventos\EventosAreaRegistration.cs" />
+    <Compile Include="Areas\Multi\Controllers\ArtigosController.cs" />
+    <Compile Include="Areas\Multi\Controllers\MultiController.cs" />
+    <Compile Include="Areas\Multi\MultiAreaRegistration.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\ArtigosController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\TheLegendOfZeldaController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\MarioController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\Top10Controller.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\RetroController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\ReviewsController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\PreviewsController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\NintendoController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\Nintendo3DSController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\NintendoWiiUController.cs" />
+    <Compile Include="Areas\Nintendo\Controllers\PokemonController.cs" />
+    <Compile Include="Areas\Nintendo\NintendoAreaRegistration.cs" />
+    <Compile Include="Areas\Podcasts\Controllers\ArtigosController.cs" />
+    <Compile Include="Areas\Podcasts\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Podcasts\Controllers\NintendoA3Controller.cs" />
+    <Compile Include="Areas\Podcasts\Controllers\NPartyCostaACostaController.cs" />
+    <Compile Include="Areas\Podcasts\Controllers\PodcastsController.cs" />
+    <Compile Include="Areas\Podcasts\PodcastsAreaRegistration.cs" />
+    <Compile Include="Controllers\E3Controller.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
+    <Compile Include="Controllers\FiltroArtigoController.cs" />
+    <Compile Include="Controllers\OpsController.cs" />
+    <Compile Include="Controllers\SobreController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NPartyController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ArticlesHelper.cs" />
+    <Compile Include="Helpers\NPartyArticlesHelper.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\RSSActionResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\css\audioplayer.css" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\evo.css" />
+    <Content Include="Content\css\nparty.css" />
+    <Content Include="Content\css\e3.css" />
+    <Content Include="Content\css\pokemon20th.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\20anospokemon.png" />
+    <Content Include="Content\img\20anospokemon_small.jpg" />
+    <Content Include="Content\img\authors\caiocardoso.jpg" />
+    <Content Include="Content\img\authors\camilaingles.jpg" />
+    <Content Include="Content\img\authors\fabricioluz.jpg" />
+    <Content Include="Content\img\authors\fernandagrillo.jpg" />
+    <Content Include="Content\img\authors\heitorramos.jpg" />
+    <Content Include="Content\img\authors\lucasalves.jpg" />
+    <Content Include="Content\img\authors\mariotoledo.jpg" />
+    <Content Include="Content\img\authors\rafaelfarias.jpg" />
+    <Content Include="Content\img\authors\ruicelso.jpg" />
+    <Content Include="Content\img\authors\victorsouza.jpg" />
+    <Content Include="Content\img\authors\vitorbertani.jpg" />
+    <Content Include="Content\img\e3\bethesda_logo.png" />
+    <Content Include="Content\img\e3\e3-logo.png" />
+    <Content Include="Content\img\e3\e3_1.jpg" />
+    <Content Include="Content\img\e3\e3_2.jpg" />
+    <Content Include="Content\img\e3\e3_3.jpg" />
+    <Content Include="Content\img\e3\e3_4.jpg" />
+    <Content Include="Content\img\e3\e3_media.jpg" />
+    <Content Include="Content\img\e3\ea_logo.png" />
+    <Content Include="Content\img\e3\kawadoka_logo.png" />
+    <Content Include="Content\img\e3\ninteno_logo.png" />
+    <Content Include="Content\img\e3\pct_logo.png" />
+    <Content Include="Content\img\e3\sony_logo.png" />
+    <Content Include="Content\img\e3\ubisoft_logo.png" />
+    <Content Include="Content\img\e3\xbox_logo.png" />
+    <Content Include="Content\img\evo\evo_1.jpg" />
+    <Content Include="Content\img\evo\evo_2.jpg" />
+    <Content Include="Content\img\evo\evo_3.jpg" />
+    <Content Include="Content\img\evo\evo_4.jpg" />
+    <Content Include="Content\img\evo\evo_logo.png" />
+    <Content Include="Content\img\evo\evo_media.jpg" />
+    <Content Include="Content\img\evo\gg_thumb.png" />
+    <Content Include="Content\img\evo\ki.png" />
+    <Content Include="Content\img\evo\marvel3.png" />
+    <Content Include="Content\img\evo\mortalkx.png" />
+    <Content Include="Content\img\evo\pokken_thumb.png" />
+    <Content Include="Content\img\evo\sfv_thumb.png" />
+    <Content Include="Content\img\evo\smash.png" />
+    <Content Include="Content\img\evo\smash_wii.png" />
+    <Content Include="Content\img\evo\t7_thumb.png" />
+    <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\icons\article-share\email_32.png" />
+    <Content Include="Content\img\icons\article-share\facebook_32.png" />
+    <Content Include="Content\img\icons\article-share\googleplus_32.png" />
+    <Content Include="Content\img\icons\article-share\linkedin_32.png" />
+    <Content Include="Content\img\icons\article-share\pinterest_32.png" />
+    <Content Include="Content\img\icons\article-share\twitter_32.png" />
+    <Content Include="Content\img\icons\partners\castelonerd.jpg" />
+    <Content Include="Content\img\icons\partners\lopsp.jpg" />
+    <Content Include="Content\img\icons\partners\nintendoblast.jpg" />
+    <Content Include="Content\img\icons\partners\projetoxpodcast.jpg" />
+    <Content Include="Content\img\icons\social\facebook.jpg" />
+    <Content Include="Content\img\icons\social\gplus.jpg" />
+    <Content Include="Content\img\icons\social\instagram.jpg" />
+    <Content Include="Content\img\icons\social\rss.jpg" />
+    <Content Include="Content\img\icons\social\twitter.jpg" />
+    <Content Include="Content\img\icons\social\youtube.jpg" />
+    <Content Include="Content\img\lhama.jpg" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logoNParty.png" />
+    <Content Include="Content\img\logo_copag.png" />
+    <Content Include="Content\img\marquee_bg.jpg" />
+    <Content Include="Content\img\metaImages\animefriends.jpg" />
+    <Content Include="Content\img\metaImages\bgs.jpg" />
+    <Content Include="Content\img\metaImages\bma.jpg" />
+    <Content Include="Content\img\metaImages\busca.jpg" />
+    <Content Include="Content\img\metaImages\coberturas.jpg" />
+    <Content Include="Content\img\metaImages\contato.jpg" />
+    <Content Include="Content\img\metaImages\counterstrike.jpg" />
+    <Content Include="Content\img\metaImages\dicaseSports.jpg" />
+    <Content Include="Content\img\metaImages\eSports.jpg" />
+    <Content Include="Content\img\metaImages\eventos.jpg" />
+    <Content Include="Content\img\metaImages\facaparte.jpg" />
+    <Content Include="Content\img\metaImages\leagueOfLegends.jpg" />
+    <Content Include="Content\img\metaImages\mario.jpg" />
+    <Content Include="Content\img\metaImages\metaPokemon20th.jpg" />
+    <Content Include="Content\img\metaImages\metaPokemonTimeline.jpg" />
+    <Content Include="Content\img\metaImages\metaPokePartyDay.jpg" />
+    <Content Include="Content\img\metaImages\metaSorteioPokemon.jpg" />
+    <Content Include="Content\img\metaImages\naoencontrado.jpg" />
+    <Content Include="Content\img\metaImages\nintendo.jpg" />
+    <Content Include="Content\img\metaImages\nintendo3ds.jpg" />
+    <Content Include="Content\img\metaImages\nintendowiiu.jpg" />
+    <Content Include="Content\img\metaImages\ops.jpg" />
+    <Content Include="Content\img\metaImages\podcast.jpg" />
+    <Content Include="Content\img\metaImages\pokemon.jpg" />
+    <Content Include="Content\img\metaImages\previews.jpg" />
+    <Content Include="Content\img\metaImages\quemsomos.jpg" />
+    <Content Include="Content\img\metaImages\retro.jpg" />
+    <Content Include="Content\img\metaImages\reviews.jpg" />
+    <Content Include="Content\img\metaImages\sharer.jpg" />
+    <Content Include="Content\img\metaImages\thelegendofzelda.jpg" />
+    <Content Include="Content\img\metaImages\top10.jpg" />
+    <Content Include="Content\img\missing_no.png" />
+    <Content Include="Content\img\partners\castelonerd.jpg" />
+    <Content Include="Content\img\partners\lopsp.jpg" />
+    <Content Include="Content\img\partners\nintendoblast.jpg" />
+    <Content Include="Content\img\partners\projetoxpodcast.jpg" />
+    <Content Include="Content\img\poke20th_bgHome.jpg" />
+    <Content Include="Content\img\poke20th_sorteioDragonite.png" />
+    <Content Include="Content\img\poke20th_timeline.png" />
+    <Content Include="Content\img\poke20th_timelineLogo.png" />
+    <Content Include="Content\img\pokeEventoBg.png" />
+    <Content Include="Content\img\pokeEventoLogo.png" />
+    <Content Include="Content\img\pokemonGbBg.jpg" />
+    <Content Include="Content\img\pokePartyDay.jpg" />
+    <Content Include="Content\img\pokepartyday\cosplay_aline.jpg" />
+    <Content Include="Content\img\pokepartyday\cosplay_amanda.jpg" />
+    <Content Include="Content\img\pokepartyday\cosplay_ana.jpg" />
+    <Content Include="Content\img\pokepartyday\cosplay_gih.jpg" />
+    <Content Include="Content\img\pokepartyday\cosplay_vini.jpg" />
+    <Content Include="Content\img\pokepartyday\desafiocaptura.jpg" />
+    <Content Include="Content\img\pokepartyday\desafioperguntas.jpg" />
+    <Content Include="Content\img\pokepartyday\desfilePokemon.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_aliagym.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_aline.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_arigato.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_dungeonstore.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_multiplayer.jpg" />
+    <Content Include="Content\img\pokepartyday\estande_ohmypudin.jpg" />
+    <Content Include="Content\img\pokepartyday\jogosclassicos.jpg" />
+    <Content Include="Content\img\pokepartyday\logoLopSp.png" />
+    <Content Include="Content\img\pokepartyday\logoMadSlayersSmall.png" />
+    <Content Include="Content\img\pokepartyday\logo_dungeonStore.png" />
+    <Content Include="Content\img\pokepartyday\meetup.jpg" />
+    <Content Include="Content\img\pokepartyday\oc.jpg" />
+    <Content Include="Content\img\pokepartyday\otakucompany.png" />
+    <Content Include="Content\img\pokepartyday\palestras.jpg" />
+    <Content Include="Content\img\pokepartyday\palestra_braz.jpg" />
+    <Content Include="Content\img\pokepartyday\palestra_igor.jpg" />
+    <Content Include="Content\img\pokepartyday\palestra_mugi.jpg" />
+    <Content Include="Content\img\pokepartyday\palestra_ricardo.jpg" />
+    <Content Include="Content\img\pokepartyday\segredinho.jpg" />
+    <Content Include="Content\img\pokepartyday\tcgChampionship.jpg" />
+    <Content Include="Content\img\pokepartyday\tcgFree.jpg" />
+    <Content Include="Content\img\pokepartyday\tcgLearn.jpg" />
+    <Content Include="Content\img\pokepartyday\vgc.jpg" />
+    <Content Include="Content\img\sad_pikachu.png" />
+    <Content Include="Content\img\sobre1.jpg" />
+    <Content Include="Content\img\sobre10.jpg" />
+    <Content Include="Content\img\sobre11.jpg" />
+    <Content Include="Content\img\sobre12.jpg" />
+    <Content Include="Content\img\sobre2.jpg" />
+    <Content Include="Content\img\sobre3.jpg" />
+    <Content Include="Content\img\sobre4.jpg" />
+    <Content Include="Content\img\sobre5.jpg" />
+    <Content Include="Content\img\sobre6.jpg" />
+    <Content Include="Content\img\sobre7.jpg" />
+    <Content Include="Content\img\sobre8.jpg" />
+    <Content Include="Content\img\sobre9.jpg" />
+    <Content Include="Content\img\socialIcons\facebook.jpg" />
+    <Content Include="Content\img\socialIcons\gplus.jpg" />
+    <Content Include="Content\img\socialIcons\instagram.jpg" />
+    <Content Include="Content\img\socialIcons\rss.jpg" />
+    <Content Include="Content\img\socialIcons\twitter.jpg" />
+    <Content Include="Content\img\socialIcons\youtube.jpg" />
+    <Content Include="Content\js\audioplayer.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-1.11.3.min.js" />
+    <Content Include="Content\js\jquery.bgswitcher.js" />
+    <Content Include="Content\js\nparty.js" />
+    <Content Include="Content\js\npm.js" />
+    <Content Include="Content\pokemontimeline\css\arpg.css" />
+    <Content Include="Content\pokemontimeline\css\chat.css" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Chick.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Doutorrandom.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Fisherman.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\fortinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Gordinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\hero.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\men1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\menina1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\menina2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Nerd.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\oak.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\paper.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\pc3.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\placa2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\RocetGrunt.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Trainer01.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\Velinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\woman1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\woman2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\Chick.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\Doutorrandom.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\fortinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\Gordinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\hero.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\men1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\menina1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\menina2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\Nerd.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\oak.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\paper.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\pc3.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\placa2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\RocetGrunt.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\Velinho.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\woman1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Characters\_thumbs_\woman2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\10years.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\2000.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\3000.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\aguarde.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\AnimeBrasil.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\animeBrasil.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\AnimeEUA.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\animeEua.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\artAcademy.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\BattleRevolution.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\BattleTrozei.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\BlackWhite.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\box.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\BWDragonsExalted.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Channel.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Colesseum.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Conquest.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Crystal.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Dash.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\DetectivePikachu.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\DiamondPearl.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\DiamondPearlTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Dreamradar.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Dreamworld.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\DSStormFront.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Emerald.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exCrystalGuardians.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exDeltaSpecies.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exDragon.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exDragonFrontiers.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Expedition.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\ExplorersDark.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\ExplorersSky.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exPowerKeeper.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exRubySapphire.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\exSandstorm.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Filme3.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\FireRedLeafGreen.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\GoldSilver.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\HeartGoldSoulSilver.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\heyou.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\HGSSTSC.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\imgPoke1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\imgPoke2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Latiken.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\MagmaAquaEX.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\MarilRosa.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Mew.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\mew.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\mewvsmewtwo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\misterydungeongatesinfinity.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\misterydungeonredblue.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\neodestiny.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\neogenesis.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\neorevelation.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\nextdestinies.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\oak.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\ORAS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\origins.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\piccross.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\pikachusadventure.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PlatinumTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokeBankPokeTransporter.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Pokedex3D.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Pokedex3DPRo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonANime.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonBW2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonGBTCC.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonLogo.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonLogo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonPinball.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonRedblue.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonSnap.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokemonYellow.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PokePark2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\pokePlatinum.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Pokken.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PuzzleChallenge.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PuzzleLeague.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2004.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2005.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2007.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2008.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2009.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2010.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2011.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2012.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2013.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2014.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\PWC2015.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Ranch.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Ranger.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RangerShadowOfAlmia.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Rangersigns.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RedBlueYellow3DS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RedGyarados.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RubySapphire.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RubySapphirePinball.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Rumble.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RumbleBlast.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\RumbleU.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Rumbleworld.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Shuffle.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\ShuffleMobile.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Skyridge.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Smash3DS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\SmashBros.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\SmashBrosBrawl.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\SmashBrosMelee.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Stadium.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Stadium2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\SuperMisteryDungeon.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\TCGXY.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\TeamRocketTXG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Torchic.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\TradeCardGameOnline.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Trozei.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\Unleashed.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\ViajantesDoTempo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\WorldChampionships.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\XDGalesOf.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\xy.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\xyBreak.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\xyPrimalCrash.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\10years.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\2000.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\AnimeBrasil.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\animeBrasil.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\AnimeEUA.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\animeEua.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\artAcademy.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\BattleRevolution.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\BattleTrozei.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\BlackWhite.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\box.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\BWDragonsExalted.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Channel.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Colesseum.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Conquest.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Crystal.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Dash.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\DetectivePikachu.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\DiamondPearl.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\DiamondPearlTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Dreamradar.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Dreamworld.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\DSStormFront.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Emerald.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exCrystalGuardians.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exDeltaSpecies.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exDragon.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exDragonFrontiers.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Expedition.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\ExplorersDark.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\ExplorersSky.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exPowerKeeper.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exRubySapphire.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\exSandstorm.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Filme3.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\FireRedLeafGreen.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\GoldSilver.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\HeartGoldSoulSilver.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\heyou.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\HGSSTSC.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\imgPoke1.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\imgPoke2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\MagmaAquaEX.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Mew.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\mew.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\mewvsmewtwo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\misterydungeongatesinfinity.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\misterydungeonredblue.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\neodestiny.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\neogenesis.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\neorevelation.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\nextdestinies.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\ORAS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\origins.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\piccross.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\pikachusadventure.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PlatinumTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokeBankPokeTransporter.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Pokedex3D.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Pokedex3DPRo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonANime.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonBW2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonGBTCC.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonLogo.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonLogo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonPinball.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonRedblue.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonSnap.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonTCG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokemonYellow.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PokePark2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\pokePlatinum.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Pokken.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PuzzleChallenge.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PuzzleLeague.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2004.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2005.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2007.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2008.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2009.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2010.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2011.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2012.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2013.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2014.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\PWC2015.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Ranch.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Ranger.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RangerShadowOfAlmia.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Rangersigns.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RedBlueYellow3DS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RubySapphire.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RubySapphirePinball.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Rumble.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RumbleBlast.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\RumbleU.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Rumbleworld.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Shuffle.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\ShuffleMobile.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Skyridge.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Smash3DS.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\SmashBros.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\SmashBrosBrawl.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\SmashBrosMelee.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Stadium.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Stadium2.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\SuperMisteryDungeon.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\TCGXY.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\TeamRocketTXG.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\TradeCardGameOnline.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Trozei.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\Unleashed.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\ViajantesDoTempo.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\WorldChampionships.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\XDGalesOf.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\xy.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\xyBreak.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Pictures\_thumbs_\xyPrimalCrash.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\pokemontileset.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\pokemontilesete2.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\pokemontilesete3.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\pokemontileseteste.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\_thumbs_\pokemon.png" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\_thumbs_\pokemontileset.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\_thumbs_\pokemontilesete2.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\_thumbs_\pokemontilesete3.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Tilesets\_thumbs_\pokemontileseteste.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Titles\picture11.jpg" />
+    <Content Include="Content\pokemontimeline\Graphics\Windowskins\window.png" />
+    <Content Include="Content\pokemontimeline\index.html" />
+    <Content Include="Content\pokemontimeline\readme.html" />
+    <Content Include="Content\pokemontimeline\rpgjs\canvasengine.min.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Gameover.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Generated.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Load.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Map.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Menu.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Title.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\core\scene\Scene_Window.js" />
+    <Content Include="Content\pokemontimeline\rpgjs\rpgjs.min.js" />
+    <Content Include="Content\video\pokevideo.mp4" />
+    <Content Include="Global.asax" />
+    <Content Include="Libraries\Google.GData.Blogger.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libraries\Google.GData.Client.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\ESports\Models\" />
+    <Folder Include="Areas\ESports\Views\Shared\" />
+    <Folder Include="Areas\Eventos\Models\" />
+    <Folder Include="Areas\Eventos\Views\Shared\" />
+    <Folder Include="Areas\Multi\Models\" />
+    <Folder Include="Areas\Multi\Views\Shared\" />
+    <Folder Include="Areas\Nintendo\Models\" />
+    <Folder Include="Areas\Nintendo\Views\Shared\" />
+    <Folder Include="Areas\Podcasts\Models\" />
+    <Folder Include="Areas\Podcasts\Views\Shared\" />
+    <Folder Include="Content\img\ad\" />
+    <Folder Include="Content\pokemontimeline\Audio\BGM\" />
+    <Folder Include="Content\pokemontimeline\Audio\BGS\" />
+    <Folder Include="Content\pokemontimeline\Audio\ME\" />
+    <Folder Include="Content\pokemontimeline\Audio\SE\" />
+    <Folder Include="Content\pokemontimeline\Database\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Animations\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Autotiles\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Battlers\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Faces\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Gameovers\" />
+    <Folder Include="Content\pokemontimeline\Graphics\Icons\" />
+    <Folder Include="Content\pokemontimeline\plugins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SubMenus\Nintendo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Sidebars\General.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SubMenus\ESports.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SubMenus\Eventos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Sidebars\Nintendo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\json\authors.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Comments\Disqus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Busca.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Advertisement\ad1_sidebar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Ler.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Sidebars\ESports.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Sidebars\Eventos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sobre\QuemSomos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sobre\Contato.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Ops\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Ops\NaoEncontrado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Nintendo\Views\Web.config" />
+    <Content Include="Areas\Nintendo\Views\Pokemon\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Pokemon\Timeline.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Artigos\Ler.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Mario\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Nintendo3DS\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\NintendoWiiU\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Previews\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Retro\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Reviews\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\TheLegendOfZelda\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Top10\Index.cshtml" />
+    <Content Include="Areas\ESports\Views\Web.config" />
+    <Content Include="Areas\ESports\Views\Artigos\Ler.cshtml" />
+    <Content Include="Areas\ESports\Views\CounterStrike\Index.cshtml" />
+    <Content Include="Areas\ESports\Views\Dicas\Index.cshtml" />
+    <Content Include="Areas\ESports\Views\Home\Index.cshtml" />
+    <Content Include="Areas\ESports\Views\LeagueOfLegends\Index.cshtml" />
+    <Content Include="Areas\Eventos\Views\Web.config" />
+    <Content Include="Areas\Eventos\Views\AnimeFriends\Index.cshtml" />
+    <Content Include="Areas\Eventos\Views\Artigos\Ler.cshtml" />
+    <Content Include="Areas\Eventos\Views\BGS\Index.cshtml" />
+    <Content Include="Areas\Eventos\Views\BMA\Index.cshtml" />
+    <Content Include="Areas\Eventos\Views\Coberturas\Index.cshtml" />
+    <Content Include="Areas\Eventos\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Nintendo\Views\Pokemon\PokePartyDay.cshtml" />
+    <Content Include="Content\pokemontimeline\Data\Database.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-10.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-11.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-12.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-13.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-14.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-15.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-16.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-17.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-18.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-19.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-20.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-21.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-22.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-23.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-24.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-25.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-28.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-29.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-30.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-31.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-8.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-9.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-1.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-10.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-11.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-12.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-13.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-14.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-15.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-16.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-17.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-18.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-19.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-20.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-21.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-22.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-23.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-24.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-25.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-26.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-27.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-28.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-29.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-30.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-31.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-32.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-33.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-34.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-35.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-36.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-37.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-8.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-9.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-1.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-10.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-11.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-12.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-13.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-14.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-15.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-16.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-17.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-18.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-19.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-20.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-21.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-22.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-23.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-24.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-25.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-26.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-27.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-28.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-29.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-30.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-31.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-32.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-33.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-34.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-8.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-9.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-1.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-10.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-11.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-12.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-13.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-14.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-15.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-16.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-17.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-18.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-19.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-20.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-21.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-22.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-23.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-24.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-25.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-26.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-27.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-28.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-29.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-30.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-31.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-32.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-33.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-34.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-8.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-9.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Materials.json" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\AUBREY1__.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Elementary_Gothic_Bookhand.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Megadeth.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Philosopher-Bold.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Philosopher-BoldItalic.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Philosopher-Italic.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Philosopher-Regular.ttf" />
+    <Content Include="Content\pokemontimeline\Graphics\Fonts\Pokemon.ttf" />
+    <Content Include="Content\pokemontimeline\package.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-32.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-33.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-34.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-35.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-36.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-37.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-38.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-39.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-40.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-41.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-42.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-43.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-44.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-45.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-35.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-1.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-2.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-3.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-4.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-5.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-8.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-6\EV-9.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-6.json" />
+    <Content Include="Content\pokemontimeline\Data\Maps\MAP-7.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-7\EV-1.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-36.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-37.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-38.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-39.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-40.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-41.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-42.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-43.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-44.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-45.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-46.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-47.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-48.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-49.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-50.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-51.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-52.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-5\EV-53.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-35.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-36.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-37.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-38.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-39.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-40.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-41.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-42.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-43.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-4\EV-44.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-38.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-39.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-40.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-41.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-42.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-43.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-44.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-45.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-46.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-47.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-48.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-49.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-50.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-51.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-52.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-53.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-3\EV-54.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-46.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-47.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-48.json" />
+    <Content Include="Content\pokemontimeline\Data\Events\MAP-2\EV-49.json" />
+    <Content Include="Areas\Podcasts\Views\Web.config" />
+    <Content Include="Areas\Podcasts\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Podcasts\Views\Artigos\Ler.cshtml" />
+    <Content Include="Areas\Podcasts\Views\NintendoA3\Ouvir.cshtml" />
+    <Content Include="Areas\Podcasts\Views\NPartyCostaACosta\Ouvir.cshtml" />
+    <Content Include="Areas\Podcasts\Views\NintendoA3\Index.cshtml" />
+    <Content Include="Areas\Podcasts\Views\NPartyCostaACosta\Index.cshtml" />
+    <Content Include="Areas\Multi\Views\Web.config" />
+    <Content Include="Areas\Multi\Views\Artigos\Ler.cshtml" />
+    <Content Include="Areas\ESports\Views\EVO\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\nparty-www.pubxml" />
+    <Content Include="Views\Home\UrlInvalida.cshtml" />
+    <Content Include="Views\Home\GenerateUrl.cshtml" />
+    <Content Include="Views\Shared\SubMenus\Podcasts.cshtml" />
+    <Content Include="Views\Sobre\FacaParte.cshtml" />
+    <Content Include="Views\Feed\RSS.cshtml" />
+    <Content Include="Views\E3\Index.cshtml" />
+    <Content Include="Views\E3\Streams\EA.cshtml" />
+    <Content Include="Views\E3\Streams\General.cshtml" />
+    <Content Include="Views\E3\Streams\Bethesda.cshtml" />
+    <Content Include="Views\E3\Streams\Microsoft.cshtml" />
+    <Content Include="Views\E3\Streams\Pc.cshtml" />
+    <Content Include="Views\E3\Streams\Ubisoft.cshtml" />
+    <Content Include="Views\E3\Streams\Sony.cshtml" />
+    <Content Include="Views\E3\Streams\Nintendo.cshtml" />
+    <Content Include="Views\Shared\Special_Area_Top.cshtml" />
+    <Content Include="Views\Shared\Special_Area_Sidebar.cshtml" />
+    <Content Include="Views\Home\SitesFeed.cshtml" />
+    <Content Include="Views\FiltroArtigo\Index.cshtml" />
+    <Content Include="Views\FiltroArtigo\Autor.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63528</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63528/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

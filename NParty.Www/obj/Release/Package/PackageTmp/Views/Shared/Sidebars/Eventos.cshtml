@@ -1,0 +1,39 @@
+﻿@{
+    List<NParty.Www.Models.Article> hilights = (List<NParty.Www.Models.Article>)ViewData["hilights"];
+}
+<div id="sidebar-general" class="sidebar">
+    <div class="sidebar-item">
+        <div class="sidebar-advertising ">
+            @{Html.RenderPartial("Advertisement/ad1_sidebar");}
+        </div>
+    </div>
+    @if (hilights != null && hilights.Count > 0)
+    {
+        <div class="sidebar-item" style="text-align: left;">
+            <h4 class="sidebar-title">DESTAQUES</h4>
+            <ul class="media-list other-posts" id="sidebar-hilights-posts">
+                @foreach (NParty.Www.Models.Article hilight in hilights)
+                {
+                    <li class="media">
+                        <a href="@Url.Content("~/" + hilight.NPartyArticleLink)">
+                            <div class="media-left">
+                                <div width="45" class="media-object media-object-img-sm" style="background-image: url('@hilight.CoverImage')" alt="@hilight.Title"></div>
+                            </div>
+                            <div class="media-body">@hilight.Title</div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    <div class="sidebar-follow sidebar-item">
+        <div class="fb-page" data-href="https://www.facebook.com/nparty" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/nparty"><a href="https://www.facebook.com/nparty">N-Party</a></blockquote></div></div>
+    </div>
+    <div class="sidebar-item">
+        <h4 class="sidebar-title">Faça parte da equipe!</h4>
+        <div class="jointeam">
+            <p>Você gosta do mundo dos eventos? Gosta de interagir com pessoas? É pró-ativo? Ama video-games?</p>
+            <a href="https://docs.google.com/forms/d/15Yc7Ajn4Q4933KA5LVR-uqbzDMEf_oTumqWCzPpBFUM/viewform" target="_blank" class="btn btn-lg btn-block">Se inscreva!</a>
+        </div>
+    </div>
+</div>

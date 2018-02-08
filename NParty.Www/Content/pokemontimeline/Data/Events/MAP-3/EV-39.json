@@ -1,0 +1,1 @@
+[{"id":39,"x":11,"y":13,"name":"EV-39"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Por que n\u00e3o fazem outro Pok\u00e9mon Stadium?'}"],"graphic":"140","graphic-params":{"uniqid":1454071878403}}]]

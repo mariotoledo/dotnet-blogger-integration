@@ -1,0 +1,1 @@
+[{"id":43,"x":72,"y":12,"name":"EV-43"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'O nome de todas cidades de Unova tem rela\u00e7\u00e3o com nomes de nuvens ou fen\u00f4menos que ocorre com elas.'}"],"graphic":"130","graphic-params":{"uniqid":1454074705271}}]]

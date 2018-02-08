@@ -1,0 +1,1 @@
+[{"id":43,"x":"77","y":"10","name":"EV-43"},[{"trigger":"action_button","frequence":"5","type":"fixed","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'O treinador de Pokemon Gold e Silver quase usou um skate no lugar da bicicleta.'}"],"graphic":"130","graphic-params":{"uniqid":1454037298207}}]]

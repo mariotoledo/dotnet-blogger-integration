@@ -1,0 +1,1 @@
+[{"id":36,"x":24,"y":12,"name":"EV-36"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Fazer um desfile no Pok\u00e9mon Ranch \u00e9 t\u00e3o legal-fofinho-gracioso.'}"],"graphic":"138","graphic-params":{"uniqid":1454074154781}}]]

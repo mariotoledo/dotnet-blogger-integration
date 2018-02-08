@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Pokémon";
+    ViewData["ActiveMenu"] = 1;
+
+    ViewData["title"] = "Timeline Interativa";
+    ViewData["metaDescription"] = "Acompanhe a trajetória da franquia Pokémon da melhor forma possível: jogando!";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/metaPokemonTimeline.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Nintendo/Pokemon/Timeline");
+    ViewData["metaKeywords"] = new List<string>() { "Pokémon", "Pokemon", "Nintendo", "Pikachu", "Timeline" };
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/NintendoN-party";
+
+    @section Head{
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/pokemon20th.css")"/>
+    }
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="nintendo-container" class="pokemon20th" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Nintendo", 9);}
+    <section class="content-section video-section">
+        <div style="background: url('@Url.Content("~/Content/img/marquee_bg.jpg")') center center; background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo"><img class="img-responsive" alt="Timeline Interativa" src="@Url.Content("~/Content/img/poke20th_timelineLogo.png")" /></div>
+                        <h3 class="subTitle">Acompanhe a trajetória da franquia Pokémon da melhor forma possível: jogando!</h3>
+                    </div>
+                </div>
+                <div class="share-icons">
+                    <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/Timeline"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/Timeline"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/Timeline"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                    <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/Nintendo/Pokemon/Timeline"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar navbar-default" id="pokemon20th-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-pokeParty" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="margin-top: 12px; text-align: center; color: #FFF; text-shadow: 0 1px 2px rgba(0,0,0,.6);" class="hidden-lg">Menu</h3>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-pokeParty">
+                <ul class="nav nav-pills  menu">
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/")">Home</a></li>
+                    <li role="presentation" class="active"><a href="@Url.Content("~/Nintendo/Pokemon/Timeline")">Timeline Interativa</a></li>
+                    <li role="presentation"><a href="@Url.Content("~/Nintendo/Pokemon/PokePartyDay")">Poké Party Day</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <p style="padding: 15px 0px">Controle o treinador utilizando as setas de seu teclado, e utilize a barra de espaço para interagir com o jogo.</p>
+                <iframe id="game1" class="hidden-sm hidden-md hidden-xs" src="@Url.Content("~/Content/pokemontimeline/index.html")" style="margin: auto; border: none; overflow: hidden; width:640px; height:480px" class="rpgcreator-game" name="rpgcreator-game"></iframe>
+                <div class="alert alert-info visible-md visible-sm visible-xs"><b>Atenção:</b> Você precisa abrir esta página em um computador para poder interagir com a timeline.</div><br />
+            <i>Todos os direitos da marca Pokémon e suas imagens pertencem a The Pokémon Company</i><br/><br />
+            <p>Idealizado e projetado por <b>André "Jomon" Aranovich</b><br />Programação e adaptação por <b>Mario Toledo</b></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onkeydown = function (e) {
+        if (e.keyCode == 32 && e.target == document.body) {
+            e.preventDefault();
+            return false;
+        }
+    };
+
+    window.onload = function () {
+        document.getElementById("game1").focus();
+    };
+</script>
+
+

@@ -1,0 +1,1 @@
+[{"id":49,"x":77,"y":12,"name":"EV-49"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Passar da Whitney e seu Milktank era mais dificil que passar da Elite 4!'}"],"graphic":"148","graphic-params":{"uniqid":1454071611483}}]]

@@ -1,0 +1,1 @@
+[{"id":9,"x":"41","y":"7","name":"EV-9"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Para se teletransportar \u00e9 s\u00f3 interagir com uma das portas.'}"],"graphic":"137","graphic-params":{"uniqid":1454035179051}}]]

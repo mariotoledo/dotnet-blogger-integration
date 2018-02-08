@@ -1,0 +1,1 @@
+[{"id":38,"x":"39","y":"13","name":"EV-38"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Pok\u00e9mon come\u00e7ou a parecer Digimon depois de Platinum, n\u00e3o sei por que ainda jogo isso\u2026'}"],"graphic":"142","graphic-params":{"uniqid":1454074330237}}]]

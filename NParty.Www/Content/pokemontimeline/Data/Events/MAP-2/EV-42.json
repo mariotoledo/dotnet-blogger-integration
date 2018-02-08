@@ -1,0 +1,1 @@
+[{"id":42,"x":"27","y":"9","name":"EV-42"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Sabia que Satoshi Tajiri, um dos criadores do jogo, adorava pegar insetos quando era menor?'}"],"graphic":"140","graphic-params":{"uniqid":1454036976831}}]]

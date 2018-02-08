@@ -1,0 +1,1 @@
+[{"id":42,"x":"24","y":"10","name":"EV-42"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Eu tinha comprado um e-Reader na \u00e9poca...'}"],"graphic":"130","graphic-params":{"uniqid":1454072503877}}]]

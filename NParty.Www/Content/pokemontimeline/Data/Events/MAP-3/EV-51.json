@@ -1,0 +1,1 @@
+[{"id":51,"x":"66","y":"11","name":"EV-51"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Battle Frontier...'}","SHOW_TEXT: {'text': '... Que lugar impressionante.'}"],"graphic":"142","graphic-params":{"uniqid":1454073436932}}]]

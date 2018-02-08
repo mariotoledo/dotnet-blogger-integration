@@ -1,0 +1,1 @@
+[{"id":35,"x":11,"y":11,"name":"EV-35"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'As m\u00fasicas de Diamond e Pearl me d\u00e3o uma sensa\u00e7\u00e3o de tranquilidade.'}"],"graphic":"148","graphic-params":{"uniqid":1454073991335}}]]

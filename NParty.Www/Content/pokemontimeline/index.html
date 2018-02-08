@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+  
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title></title>
+	<script src="rpgjs/canvasengine.min.js"></script>
+	<script src="rpgjs/rpgjs.min.js"></script>
+	<script src="plugins/gamepad.js"></script>
+	<script src="plugins/virtualjoystick.js"></script>
+	<script src="plugins/soundmanager2-jsmin.js"></script>
+	
+	<style>
+	
+	body {
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+		background-image: url('/Content/pokemontimeline/Graphics/Pictures/aguarde.jpg');
+		font-family: "RPG"!important;
+	}
+
+    html{
+        font-family: "RPG"!important;
+    }
+	
+	canvas {
+		-webkit-user-select	: none;
+		-moz-user-select	: none;
+		overflow	: hidden;
+	}
+
+	@font-face{
+		font-family : "Pokemon";
+		src : url("Graphics/Fonts/Pokemon.ttf");
+	}
+	@font-face{
+		font-family : "Megadeth";
+		src : url("Graphics/Fonts/Pokemon.ttf");
+	}
+	
+	</style>
+	
+	<script>
+	
+	RPGJS.defines({
+			canvas: "canvas",
+			scene_path: "rpgjs/",
+			soundmanager: {
+				url: "plugins/swf/",
+			},
+			ignoreLoadError: true
+		}).ready(function() {
+		
+				var scene = this.scene.call("Scene_Title", {
+				overlay: true
+			});
+			scene.zIndex(0);
+			
+	
+		});
+	
+		
+	</script>
+		
+ </head>
+  <body style="font-family: 'RPG'">
+	<div id="game"><canvas id="canvas" width="640" height="480" autofocus="autofocus"></canvas></div>
+	<script>
+
+
+        window.onkeydown = function (e) {
+            if (e.keyCode == 32 && e.target == document.body) {
+                e.preventDefault();
+                return false;
+            }
+        };
+
+        window.addEventListener("keydown", function (e) {
+            // space and arrow keys
+            if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+</script>
+  </body>
+</html>

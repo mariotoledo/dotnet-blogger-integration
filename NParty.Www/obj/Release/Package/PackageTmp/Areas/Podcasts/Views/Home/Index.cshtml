@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Podcasts";
+
+    ViewData["ActiveMenu"] = 4;
+
+    ViewData["feedUrl"] = "http://feeds.feedburner.com/PodcastN-party";
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+    int currentPage = (int)ViewData["currentPage"];
+    int maxPosts = 20;//(int)ViewData["MaxPosts"];
+
+    ViewData["title"] = "Podcasts";
+    ViewData["metaDescription"] = "Coloque seus fones de ouvidos e escute uma galera falando o que pensa sobre games e outras coisas";
+    ViewData["metaImage"] = Url.Content("~/Content/img/metaImages/podcasts.jpg");
+    ViewData["metaUrl"] = Url.Content("~/Podcasts/Index");
+    ViewData["metaKeywords"] = new List<string>() { "Podcast", "N-Party", "Costa a Costa", "Games" };
+
+    string[] podcastSpecialTags = (string[])ViewData["PodcastsSpecialTags"];
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    @section Head{
+        @if (articles.Count >= maxPosts)
+        {
+            <link rel="next" href="@Url.Content("~/Podcasts/Home/Index?page=" + (currentPage + 1))">
+        }
+        @if (currentPage > 0)
+        {
+            <link rel="prev" href="@Url.Content("~/Podcasts/Home/Index?page=" + (currentPage - 1))">
+        }
+    }
+}
+
+<div id="podcast-container" style="padding: 0;">
+    @{Html.RenderPartial("SubMenus/Podcasts", 0);}
+    <div class="container" style="padding-top: 30px;">
+        @{
+            if (articles != null && articles.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+
+                        @foreach (NParty.Www.Models.Article article in articles)
+                        {
+                            bool isSpecialTag = false;
+
+                            foreach (string label in article.Labels)
+                            {
+                                if (podcastSpecialTags.Contains(label))
+                                {
+                                    isSpecialTag = true;
+                                    break;
+                                }
+                            }
+                            if (isSpecialTag)
+                            {
+                                <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    <h3>@article.Title</h3>
+                                    @if (!string.IsNullOrEmpty(article.AuthorName))
+                                    {
+                                        <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                    }
+                                    <p class="snippet">@article.Summary</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <figure style="background-image: url('@article.CoverImage')"></figure>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>@article.Title</h3>
+                                            @if (!string.IsNullOrEmpty(article.AuthorName))
+                                            {
+                                                <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                            }
+                                            <p class="snippet">@article.Summary</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            <hr />
+                        }
+
+                        <div class="row">
+                            <div class="col-md-5 prevPage">
+                                @{
+                                    if (articles.Count >= maxPosts)
+                                    {
+                                        <a rel="next" class="directionLink" href="@Url.Content("~/Podcasts/Home/Index?page=" + (currentPage + 1))" style="text-align: left"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span> ARTIGOS MAIS <b>ANTIGOS</b> </a>
+                                    }
+                                }
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5 nextPage">
+                                @{
+                                    if (currentPage > 0)
+                                    {
+                                        <a rel="prev" class="directionLink" href="@Url.Content("~/Podcasts/Home/Index?page=" + (currentPage - 1))" style="text-align: right;"> ARTIGOS MAIS <b>RECENTES</b> <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @{Html.RenderPartial("Sidebars/General");}
+                    </div>
+                </div>
+                            }
+                            else
+                            {
+                                <div style="padding: 50px; text-align: center;"> Não foi possível encontrar publicãções no momento. Por favor, tente novamente mais tarde.</div>
+                            }
+        }
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var $hilights = $('#general-hilights');
+
+            $.ajax('@Url.Content("~/Home/GetHilightItems/")').done(function (data) {
+                if (!data || data.length == 0) {
+                    $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+                    return;
+                }
+
+                var appendable = '';
+
+                $.each(data, function (index) {
+                    appendable += '<li class="media ' + data[index].Domain.toLowerCase() + '">' +
+                                   '<a href="' + data[index].NPartyArticleLink + '"><div class="media-left"><div style="width: 45px; height: 45px; background-image: url(' + data[index].CoverImage + '); background-size: cover; background-position: center center;" class="media-object"></div></div>' +
+                                   '<div class="media-body"><span class="label label-default">' + data[index].Domain + '</span>' + data[index].Title + '</div></a></li>'
+                });
+
+                $hilights.html(appendable);
+            }).fail(function () {
+                $hilights.html('<li>Não foi possível carregar os destaques. Tente novamente mais tarde.</li>');
+            });
+        });
+    </script>
+}

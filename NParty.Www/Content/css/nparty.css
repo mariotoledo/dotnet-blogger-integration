@@ -1,0 +1,1357 @@
+﻿/*
+    N-Party - 5.0b
+    Design e desenvolvimento por Mario Toledo (mario.toledo@nparty.com.br)
+*/
+
+body {
+    background-color: rgb(240, 240, 240);
+	font-family: Arial, Helvetica;
+}
+
+a {
+	color: #C90201;
+	text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+blockquote{
+	font-size:14px;
+	font-style: italic
+}
+
+/*
+    ======================================== NAVBAR ================================
+*/
+.navbar-brand {
+    padding: 10px 10px;
+}
+
+.navbar-default{
+   margin-bottom: 0px;
+   border-bottom: 0px;
+   border-top: 0px;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: #C90201;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.navbar-default .navbar-nav>li>a:hover
+{
+    color: #ea9494;
+}
+
+@media (min-width: 1200px){
+    .navbar-default .navbar-nav li.bordered-left{
+        border-left: 1px solid #CCCCCC;
+    }
+
+    .navbar-default .navbar-nav li.bordered-right{
+        border-right: 1px solid #CCCCCC;
+    }
+
+    footer .bordered-left {
+        border-left: 1px solid #AAAAAA;
+    }
+
+    footer .bordered-right {
+        border-right: 1px solid #AAAAAA;
+    }
+}
+
+.dropdown-menu{
+    padding: 0;
+}
+
+@media (min-width: 992px) {
+    #hilight2{
+        border-left: 1px solid rgb(223, 223, 223);
+        border-right: 1px solid rgb(223, 223, 223);
+        border-bottom: 1px solid rgb(223, 223, 223);
+    }
+
+    #hilight3{
+        border-bottom: 1px solid rgb(223, 223, 223);
+    }
+
+    #hilight4{
+        border-left: 1px solid rgb(223, 223, 223);
+        border-right: 1px solid rgb(223, 223, 223);
+    }
+}
+
+.navbar-header{
+    text-align: center;
+}
+
+@media (max-width: 1199px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+
+    #main-menu .navbar-nav{
+        width: 100%;
+        text-align: center;
+    }
+
+    #main-menu .navbar-form{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.navbar-collapse{
+    padding: 0;
+}
+
+@media (max-width: 1000px) {
+    .navbar-collapse .navbar-form .input-group {
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+
+    .hover-menu .sub-menu {
+        left: 100%;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        margin-top: -1px;
+    }
+
+    .hover-menu li:hover .sub-menu {
+        visibility: visible;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .nav-tabs .hover-menu, .nav-pills .hover-menu, .navbar .hover-menu {
+        margin-top: 0;
+    }
+
+    .navbar .sub-menu:before, .navbar .sub-menu::before {
+        border-bottom: 7px solid transparent;
+        border-left: none;
+        top: 10px;
+    }
+    .navbar .sub-menu:after, .navbar .sub-menu::after {
+        border-top: 6px solid transparent;
+        border-left: none;
+        border-right: 6px solid #fff;
+        border-bottom: 6px solid transparent;
+        top: 11px;
+    }
+}
+
+.nintendo-menu:hover, .nintendo-menu-active, .nintendo-menu-active a {
+    background-color: #C90201;
+    color: #FFF!important;
+}
+
+.nintendo-menu .nav li a {
+    color: #FFF
+}
+
+.nintendo-menu .nav li a:hover {
+    color: #C90201;
+}
+
+.nintendo-menu:hover>a, .nintendo-menu:hover>a:hover{
+    color: #FFF!important;
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.nintendo-menu .dropdown-menu{
+    color: #FFF;
+    background-color: #C90201;
+}
+
+.nintendo-menu .divider, .eventos-menu .divider, .esports-menu .divider, .podcast-menu .divider,{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.eventos-menu:hover, .eventos-menu-active, .eventos-menu-active a {
+    background-color: #E18700;
+    color: #FFF!important;
+}
+
+.eventos-menu .nav li a {
+    color: #FFF
+}
+
+.eventos-menu .nav li a:hover {
+    color: #E18700;
+}
+
+.eventos-menu:hover>a, .eventos-menu:hover>a:hover{
+    color: #FFF!important;
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.eventos-menu .dropdown-menu{
+    color: #FFF;
+    background-color: #E18700;
+}
+
+.podcasts-menu:hover, .podcasts-menu-active, .podcasts-menu-active a {
+    background-color: #519603;
+    color: #FFF!important;
+}
+
+.podcasts-menu .nav li a {
+    color: #FFF
+}
+
+.podcasts-menu .nav li a:hover {
+    color: #519603;
+}
+
+.podcasts-menu:hover>a, .podcasts-menu:hover>a:hover{
+    color: #FFF!important;
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.podcasts-menu .dropdown-menu{
+    color: #FFF;
+    background-color: #519603;
+}
+
+
+
+.dropdown-menu{
+    -webkit-background-clip: none;
+    background-clip: padding-box;
+    border: none;
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.esports-menu:hover, .esports-menu-active, .esports-menu-active a {
+    background-color: #54028A;
+    color: #FFF!important;
+}
+
+.esports-menu .nav li a {
+    color: #FFF
+}
+
+.esports-menu .nav li a:hover {
+    color: #54028A;
+}
+
+.esports-menu:hover>a, .esports-menu:hover>a:hover{
+    color: #FFF!important;
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.esports-menu .dropdown-menu{
+    color: #FFF;
+    background-color: #54028A;
+}
+
+.hilight{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.hilight-img{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 255px;
+    transition-duration: 0.5s;
+}
+
+
+.hilight a:hover .hilight-img{
+   transform: scale(1.10);
+}
+
+.hilight-img-med{
+    height: 205px;
+}
+
+.hilight-img-big{
+    height: 422px;
+}
+
+@media (min-width: 992px) and (max-width: 1999px){
+    .hilight-img-med{
+        height: 205px;
+    }
+
+    .hilight-img-big{
+        height: 422px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .hilight-img-big, .hilight-img-med{
+        height: 405px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px){
+    .hilight-img-big, .hilight-img-med{
+        height: 324px;
+    }
+}
+
+@media (min-width: 420px) and (max-width: 599px){
+    .hilight-img-big, .hilight-img-med{
+        height: 240px;
+    }
+}
+
+@media (max-width: 420px){
+    .hilight-img-big, .hilight-img-med{
+        height: 220px;
+    }
+}
+
+.hilight-caption{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+    width: 100%;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+.hilight-caption-inner{
+    color: #fff;
+    font-size: 13px;
+    text-align: left;
+    background: linear-gradient(-180deg,transparent,rgba(0,0,0,.84) 65%);
+    padding: 17px 20px 20px;
+}
+
+.hilight-caption-inner h2, .hilight-caption-inner h3{
+    line-height: 1.3em;
+    font-weight: bold;
+    color: #FFF;
+    margin-top: 10px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.hilight-caption-inner h3{
+    font-size: 16px;
+}
+
+.hilight-caption-inner h2{
+    font-size: 22px;
+}
+
+.domain-box {
+    padding: 5px 11px;
+    text-transform: none;
+    font-size: 12px;
+    color: #FFF;
+}
+
+.domain-box-Nintendo{
+    background-color: #C90201;
+}
+
+.domain-box-ESports{
+    background-color: #54028A;
+}
+
+.domain-box-Eventos{
+    background-color: #E18700;
+}
+
+.domain-box-Podcasts{
+    background-color: #519603;
+}
+
+h1, h2, h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#nintendo-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#nintendo-container .container-header h2
+{
+    color: #C90201;
+    border-bottom: 3px solid #C90201;
+    margin-bottom: 20px;
+}
+
+
+
+#nintendo-container .container-header h2 .thin{
+    font-weight: normal;
+}
+
+#nintendo-container a, .domainLink-Nintendo{
+    color: #C90201;
+}
+
+#nintendo-container a:hover, .domainLink-Nintendo:hover{
+    color: #FE5050;
+}
+
+#esports-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#esports-container .container-header h2
+{
+    color: #54028A;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #54028A;
+}
+
+#esports-container .container-header h2 .thin{
+    font-weight: normal;
+}
+
+#esports-container a, .domainLink-eSports{
+    color: #54028A;
+}
+
+#esports-container a:hover, .domainLink-eSports:hover{
+    color: #C066FD;
+}
+
+
+
+#eventos-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#eventos-container .container-header h2
+{
+    color: #E18700;
+    margin-bottom: 20px;
+}
+
+#eventos-container .container-header h2 .thin{
+    font-weight: normal;
+}
+
+#eventos-container a, .domainLink-Eventos{
+    color: #E18700;
+}
+
+#eventos-container a:hover, .domainLink-Eventos:hover{
+    color: #FFC46A;
+}
+
+#eventos-container .container-header h2{
+    border-bottom: 3px solid #E18700;
+}
+
+
+#podcast-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#podcast-container .container-header h2{
+    border-bottom: 3px solid #519603;
+}
+
+#podcast-container .container-header h2
+{
+    color: #519603;
+    margin-bottom: 20px;
+}
+
+#podcast-container .container-header h2 .thin{
+    font-weight: normal;
+}
+
+#podcast-container a, .domainLink-Podcast{
+    color: #519603;
+}
+
+#podcast-container a:hover, .domainLink-Podcast:hover{
+    color: #6bc306;
+}
+
+
+#nintendo-container hr, #eventos-container hr, #esports-container hr, #podcast-container hr, .default-container hr{
+    border-color: #CCCCCC;
+    margin-bottom: 30px;
+}
+
+
+.article-item figure, .hilight-article-item figure{
+    width: 100%;
+    height: 130px;
+    display: block;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center center;
+    opacity:1;-ms-filter:"alpha(opacity=100)";filter:alpha(opacity=100);
+    text-decoration: none;
+}
+
+@media(min-width: 961px){
+    .article-item figure, .hilight-article-item figure, .article-item figure, .hilight-article-item figure, .thumb-item figure.media-object, footer a, footer .thumb-item a, #related-posts a:hover figure, a {
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+    }
+}
+
+
+#copa-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+#copa-container .container-header h2
+{
+    color: rgb(117, 18, 18);
+    margin-bottom: 20px;
+}
+
+#copa-container .container-header h2 .thin{
+    font-weight: normal;
+}
+
+#copa-container a{
+    color: rgb(117, 18, 18);
+}
+
+#copa-container a:hover{
+    color: rgb(170, 88, 88);
+}
+
+#copa-container .sub-header{
+    color: rgb(117, 18, 18);
+    border-bottom: 2px solid rgb(117, 18, 18);
+    margin: 0;
+}
+
+.article-item figure, .hilight-article-item figure{
+    width: 100%;
+    height: 130px;
+    display: block;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center center;
+    opacity:1;-ms-filter:"alpha(opacity=100)";filter:alpha(opacity=100);
+    text-decoration: none;
+}
+
+@media (max-width: 960px){
+    .sidebar{
+        text-align: center;
+    }
+}
+
+@media(min-width: 441px) and (max-width: 960px) {
+    .hilight-md-article-item figure{
+        height: 230px;
+    }
+
+    .hilight-article-item figure{
+        height: 286px;
+    }
+}
+
+@media(min-width: 961px){
+    .hilight-article-item figure{
+        height: 286px;
+    }
+
+    .inside-section .hilight-article-item figure{
+        height: 406px;
+    }
+
+    .inside-section .hilight-md-article-item figure{
+        height: 195px;
+    }
+
+     .hilight-md-article-item figure{
+        height: 143px;
+    }
+}
+
+
+
+@media(max-width: 440px){
+    .hilight-article-item figure, .hilight-md-article-item figure{
+        height: 180px;
+    }
+}
+
+
+.article-item figure{
+    height: 130px;
+}
+
+.hilight-article-item:hover figure, .hilight-article-item:hover img{
+    opacity:.85;-ms-filter:"alpha(opacity=85)";filter:alpha(opacity=85);
+}
+
+.hilight-article-item .author{
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.hilight-article-item .snippet{
+    color: #000000;
+    font-size: 12px;
+}
+
+.hilight-article-item h3{
+    margin-top: 0px;
+}
+
+.hilight-article-item .snippet{
+    font-style: italic;
+}
+
+@media(min-width: 1200px) {
+    .col-bordered-left {
+        border-left: 1px solid #CCCCCC;
+    }
+
+    .col-bordered-right {
+        border-right: 1px solid #CCCCCC;
+    }
+}
+
+.thumb-item{
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 10px;
+}
+
+.thumb-item figure.media-object{
+        height: 180px;
+        background-size: cover;
+        background-position: center center;
+        width: 64px; height: 64px;
+        opacity:1;-ms-filter:"alpha(opacity=100)";filter:alpha(opacity=100);
+        text-decoration: none;
+}
+
+
+.thumb-item:hover figure.media-object{
+    opacity:.85;-ms-filter:"alpha(opacity=85)";filter:alpha(opacity=85);
+}
+
+.thumb-item .time{
+    font-size: 10px;
+    color: #000;
+}
+
+#eventos-container hr{
+    margin-top: 10px;
+    border-top: 1px solid #CCCCCC;
+}
+
+#eventos-container .photo{
+    height: 140px;
+    background-size: cover;
+    background-position: center center;
+    opacity:.70;-ms-filter:"alpha(opacity=70)";filter:alpha(opacity=70);
+}
+
+#eventos-container .photo:hover{
+    opacity:1;-ms-filter:"alpha(opacity=100)";filter:alpha(opacity=100);
+}
+
+#eventos-container .event-photos .album-title{
+    padding: 10px;
+    position: absolute;
+    margin-top: -20px;
+    background-color: #E18700;
+    z-index: 10;
+}
+
+#eventos-container .event-photos .album-title:hover{
+    background-color: #FFC46A;
+}
+
+#eventos-container .event-photos .album-title h3{
+    color: #FFFFFF;
+    margin: 0px;
+    font-size: 16px;
+}
+
+#eventos-container .event-photos .album-title h3 small{
+    color: #FFFFFF;
+}
+
+#eventos-container .event-photos{
+    margin-top: 30px;
+}
+
+.lastOrNextEvent {
+	margin-top: 10px;
+	max-width: 100%; 
+	max-height: 100%; 
+	min-height: 388px;
+}
+
+.eventHilight{
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	-moz-background-size: cover;
+	min-height: 380px;
+}
+
+@media (max-width: 400px) {
+	.lastOrNextEvent t  {
+		min-height: 320px;
+	}
+}
+
+.footer-divider{
+		background-color: #FFFFFF;
+		border-top: 2px solid rgb(204, 204, 204);
+		border-bottom: 2px solid rgb(204, 204, 204);
+		height: 30px;
+	}
+	footer{
+		padding-top: 10px;
+		min-height: 170px;
+		background-color: #333;
+		color: #888;
+	}
+	
+	footer ul{
+		margin-top: 5px;
+		padding-left: 0px;
+	}
+	
+	footer ul li{
+		list-style-type: none;
+	}
+	
+	footer a{
+		color: #FFF;
+        text-decoration: none;
+	}
+
+    footer a:hover{
+        color: #AAA;
+    }
+    
+    footer .thumb-item{
+        border-bottom: 1px solid #888;
+        padding-bottom: 10px;
+    }
+
+    footer .thumb-item a{
+        text-decoration: none;
+    }
+
+    footer .thumb-item:hover a{
+        color: #AAA;
+    }
+
+.thumb-item .time{
+    font-size: 10px;
+    color: #888;
+}
+
+.socialIcon{
+    padding: 0; width: 50px; height: 50px; border: 0;
+    -webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	-o-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+    margin-top: 0;
+}
+
+.socialIcon img{
+    width: 100%;
+}
+
+.socialIcon:hover{
+    margin-top: -10px;
+}
+
+.content-area-menu{
+    background-color: #CCCCCC;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.content-area-menu h2{
+    margin-top: 0px;
+}
+
+#nintendo-container .content-area-menu{
+    background-color: #C90201;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#nintendo-container .content-area-menu a{
+    color: #FFF;
+}
+
+#nintendo-container .content-area-menu li a{
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+#nintendo-container .content-area-menu li.active a{
+    color: #FFF;
+    background-color: #A60201;
+    font-weight: bolder;
+}
+
+#nintendo-container .content-area-menu li:hover a, #nintendo-container .content-area-menu li a:focus{
+   background-color: #FF3333;
+}
+
+#esports-container .content-area-menu{
+    background-color: #54028A;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#esports-container .content-area-menu a{
+    color: #FFF;
+}
+
+#esports-container .content-area-menu li a{
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+#esports-container .content-area-menu li.active a{
+    color: #FFF;
+    background-color: #350057;
+    font-weight: bolder;
+}
+
+#esports-container .content-area-menu li:hover a, #esports-container .content-area-menu li a:focus{
+   background-color: #C066FD;
+}
+
+#eventos-container .content-area-menu{
+    background-color: #E18700;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#eventos-container .content-area-menu a{
+    color: #FFF;
+}
+
+#eventos-container .content-area-menu li a{
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+#eventos-container .content-area-menu li.active a{
+    color: #FFF;
+    background-color: #c17400;
+    font-weight: bolder;
+}
+
+#eventos-container .content-area-menu li:hover a, #eventos-container .content-area-menu li a:focus{
+   background-color: #ffa827;
+}
+
+#nintendo-container .content-area-menu .divider-vertical {
+    height: 37px;
+    margin: 0px 5px 0px 5px;
+    border-right: 1px solid #FF3333;
+}
+
+#esports-container .content-area-menu .divider-vertical {
+    height: 37px;
+    margin: 0px 5px 0px 5px;
+    border-right: 1px solid #7624AC;
+}
+#eventos-container .content-area-menu .divider-vertical {
+    height: 37px;
+    margin: 0px 5px 0px 5px;
+    border-right: 1px solid #F29811;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#podcast-container .content-area-menu{
+    background-color: #519603;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#podcast-container .content-area-menu a{
+    color: #FFF;
+}
+
+#podcast-container .content-area-menu li a{
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+#podcast-container .content-area-menu li.active a{
+    color: #FFF;
+    background-color: #3c6d03;
+    font-weight: bolder;
+}
+
+#podcast-container .content-area-menu li:hover a, #podcast-container .content-area-menu li a:focus{
+   background-color: #66bd05;
+}
+
+#podcast-container .content-area-menu .divider-vertical {
+    height: 37px;
+    margin: 0px 5px 0px 5px;
+    border-right: 1px solid #63b606;
+}
+
+.prevPage,{
+    text-align: left;
+}
+
+.nextPage{
+    text-align: right;
+}
+
+@media (max-width: 991px) {
+    .prevPage, .nextPage{
+    text-align: center;
+}
+}
+
+@media (max-width: 767px) {
+#nintendo-container .content-area-menu .divider-vertical, #esports-container .content-area-menu .divider-vertical, #eventos-container .content-area-menu .divider-vertical {
+    display: none;
+  }
+
+
+}
+
+.navbar-brand{
+    width: 170px;
+    float: none;
+    display: inline-block;
+}
+
+.navbar-toggle{
+    background-color: #FFF;
+}
+
+.navbar-toggle .icon-bar{
+    background-color: #AAA;
+}
+
+.sidebar-advertising, .sidebar-follow{
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.sidebar-item{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #CCCCCC;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+}
+
+.sidebar-title {
+    margin-left: -15px;
+    margin-right: -15px;
+    background-color: #CCCCCC;
+    padding: 5px 5px 5px 15px;
+	font-size: 16px;
+    margin-bottom: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: -20px;
+    font-weight: bold;
+}
+
+
+.sidebar-title .title{
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.sidebar-item .other-posts li{
+    border-bottom: 1px dashed #CCCCCC;
+    padding-bottom: 10px;
+}
+
+.sidebar-item .other-posts li:last-child{
+     border-bottom: 0px;
+     padding-bottom: 0px;
+}
+
+#sidebar-general .other-posts li .label{
+    margin-right: 5px;
+}
+
+#sidebar-general .other-posts li.nintendo a{
+    color: #C90201;
+}
+
+#sidebar-general .other-posts li.nintendo a:hover{
+    color: #FE5050;
+}
+
+#sidebar-general .other-posts li.nintendo .label{
+    background-color: #C90201;
+    color: #FFF;
+}
+
+#sidebar-general .other-posts li.nintendo a{
+    color: #C90201;
+}
+
+#sidebar-general .other-posts li.nintendo a:hover{
+    color: #FE5050;
+}
+
+#sidebar-general .other-posts li.nintendo .label{
+    background-color: #C90201;
+    color: #FFF;
+}
+
+#sidebar-general .other-posts li.esports a{
+    color: #54028A;
+}
+
+#sidebar-general .other-posts li.esports a:hover{
+    color: #C066FD;
+}
+
+#sidebar-general .other-posts li.esports .label{
+    background-color: #54028A;
+    color: #FFF;
+}
+
+#sidebar-general .other-posts li.esports a{
+    color: #54028A;
+}
+
+#sidebar-general .other-posts li.esports a:hover{
+    color: #C066FD;
+}
+
+#sidebar-general .other-posts li.esports .label{
+    background-color: #54028A;
+    color: #FFF;
+}
+
+#sidebar-general .other-posts li.eventos a{
+    color: #E18700;
+}
+
+#sidebar-general .other-posts li.eventos a:hover{
+    color: #FFC46A;
+}
+
+#sidebar-general .other-posts li.eventos .label {
+    background-color: #E18700;
+    color: #FFF;
+}
+
+.article .content {
+    padding: 10px;
+    padding-bottom: 25px;
+}
+
+.article .header{
+    min-height: 50px;
+}
+
+.article .share-icons{
+    margin: 25px auto 0px auto;
+    text-align: center;
+}
+
+.article .share-icons .share-icon{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: relative;
+    margin-right: 3px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.article .share-icons .share-icon:hover{
+    opacity:.75;-ms-filter:"alpha(opacity=75)";filter:alpha(opacity=75);
+}
+
+.article-title h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+@media (max-width: 420px){
+		.article-title h3{
+			margin-top: 0px;
+			margin-bottom: 10px;
+			font-size: 20px;
+		}
+	}
+
+.PopularPosts .item-thumbnail {
+    float: left;
+    margin: 0 5px 5px 0;    
+}
+
+.panel-default>.panel-heading {
+    background-color: #f0f0f0;
+    border-color: #CCCCCC;
+}
+
+.article-title {
+    padding: 10px;
+}
+
+.subtitulo{
+		font-size: 16px;
+		font-style: italic;
+		color: #999999;
+	}
+
+.PopularPosts img {
+    padding-right: .4em;
+}
+
+.author-box {
+    background-color: #CCCCCC;
+    padding: 10px;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.author-box img {
+    margin: 0 auto 5px auto;
+    width: 127px;
+}
+
+.PopularPosts .list-group-item{
+    padding: 0;
+}
+
+.directionLink{
+    font-size: 18px;
+}
+
+.media-object-img-sm{
+    width: 45px;
+    height: 45px;
+}
+
+.media-object-img-sm, .media-object-img-md{
+    background-size: cover;
+    background-position: center center;
+}
+
+.media-object-img-md{
+    width: 75px;
+    height: 75px;
+}
+
+#related-posts figure{
+    background-size: cover;
+    background-position: center center; 
+    opacity:.70;-ms-filter:"alpha(opacity=70)";filter:alpha(opacity=70);
+}
+
+#related-posts a:hover figure{
+    opacity:1;-ms-filter:"alpha(opacity=100)";filter:alpha(opacity=100);
+}
+
+#article-content{
+    display: none;
+}
+
+#loading-content{
+    font-style: italic;
+    padding: 50px;
+    text-align: center;
+}
+
+.socialShare{
+    width: 85px;
+    float: left;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 13px;
+}
+
+@media(min-width: 441px) and (max-width: 960px) {
+    #related-posts figure{
+        height: 360px;
+    }
+}
+
+.pagina-titulo, #nintendo-container .pagina-titulo {
+	font-weight: bold;
+	font-size: 26px;
+	line-height: 32px;
+	font-weight: bold;
+	color: #CD2B2B;
+	text-align: left;
+    border-bottom: 3px solid #CD2B2B;
+}
+
+#esports-container .pagina-titulo{
+    color: #54028A;
+    border-color: #54028A;
+}
+
+#eventos-container .pagina-titulo{
+    color: #E18700;
+    border-color: #E18700;
+}
+
+.jointeam{
+    text-align: center;
+    padding: 10px;
+}
+
+.jointeam h4{
+
+}
+
+#eventos-container .posts h4{
+    margin-top: 0px;
+}
+
+#podcast-container .rss-link, #nintendo-container .rss-link, #esports-container .rss-link, #eventos-container .rss-link{
+    color: #BBB;
+}
+
+.top-bar-social{
+    padding-top: 5px;
+    min-height: 20px; margin: 10px auto auto 0px;
+}
+
+.top-bar-social a{
+    color: #999;
+    margin-right: 8px;
+}
+
+.top-bar-social a:hover{
+    color: #000;
+}
+
+@media (max-width: 960px) {
+    .top-bar-social{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 960px) {
+    #subMenu-ESports li, #subMenu-Nintendo li, #subMenu-Eventos li, #subMenu-Podcast li {
+        float: none;
+        text-align: center;
+    }
+}

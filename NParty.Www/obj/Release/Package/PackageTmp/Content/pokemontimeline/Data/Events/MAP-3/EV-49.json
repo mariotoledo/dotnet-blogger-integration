@@ -1,0 +1,1 @@
+[{"id":49,"x":50,"y":11,"name":"EV-49"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Naquele set o Groundon da Magma Team est\u00e1 muito melhor que a artwork original.'}"],"graphic":"130","graphic-params":{"uniqid":1454073050295}}]]

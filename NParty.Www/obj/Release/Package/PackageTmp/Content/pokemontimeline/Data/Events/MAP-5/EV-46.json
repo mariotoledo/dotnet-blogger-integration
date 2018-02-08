@@ -1,0 +1,1 @@
+[{"id":46,"x":35,"y":12,"name":"EV-46"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Eu estava muito bem em minha jornada\u2026'}","SHOW_TEXT: {'text': 'At\u00e9 que salvei meu jogo em Lumiose City, e perdi tudo...'}"],"graphic":"136","graphic-params":{"uniqid":1454075189294}}]]

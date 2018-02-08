@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "SiteFeed";
+    Layout = null;
+
+    IEnumerable<System.ServiceModel.Syndication.SyndicationItem> everythingItems =
+        (IEnumerable<System.ServiceModel.Syndication.SyndicationItem>)ViewData["everything"];
+
+    IEnumerable<System.ServiceModel.Syndication.SyndicationItem> goItems =
+    (IEnumerable<System.ServiceModel.Syndication.SyndicationItem>)ViewData["go"];
+
+    IEnumerable<System.ServiceModel.Syndication.SyndicationItem> myItems =
+    (IEnumerable<System.ServiceModel.Syndication.SyndicationItem>)ViewData["my"];
+}
+
+<html>
+    <head>
+        <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet">
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Everything</h1>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                @{
+                    int i = 0;
+              
+                    foreach (System.ServiceModel.Syndication.SyndicationItem item in everythingItems)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-everything-@i">
+                                <h4 class="panel-title">
+                                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#everything-@i" aria-expanded="true" aria-controls="everything-@i">
+                                        <span class="label label-default">@item.PublishDate.ToString("dd/MM/yyyy hh:mm")</span> @item.Title.Text
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="everything-@i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-everything-@i">
+                                <div class="panel-body">
+                                    @Html.Raw(item.Content == null || string.IsNullOrEmpty(item.Content.ToString()) ? item.Summary.Text : item.Content.ToString())
+                                </div>
+                            </div>
+                        </div>
+                        i++;
+                    }       
+                }         
+            </div>
+            
+            <h1>My</h1>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                @{
+                    int k = 0;
+
+                    foreach (System.ServiceModel.Syndication.SyndicationItem item in myItems)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-my-@k">
+                                <h4 class="panel-title">
+                                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#my-@k" aria-expanded="true" aria-controls="my-@k">
+                                        <span class="label label-default">@item.PublishDate.ToString("dd/MM/yyyy hh:mm")</span> @item.Title.Text
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="my-@k" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-my-@k">
+                                <div class="panel-body">
+                                    @Html.Raw(item.Content == null || string.IsNullOrEmpty(item.Content.ToString()) ? item.Summary.Text : item.Content.ToString())
+                                </div>
+                            </div>
+                        </div>
+                        k++;
+                    }
+                }
+            </div>
+
+
+
+            <h1>GO</h1>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                @{
+                    int j = 0;
+
+                    foreach (System.ServiceModel.Syndication.SyndicationItem item in goItems)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-go-@j">
+                                <h4 class="panel-title">
+                                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#go-@j" aria-expanded="true" aria-controls="go-@j">
+                                        <span class="label label-default">@item.PublishDate.ToString("dd/MM/yyyy hh:mm")</span> @item.Title.Text
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="go-@j" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-go-@j">
+                                <div class="panel-body">
+                                    @Html.Raw(item.Content == null || string.IsNullOrEmpty(item.Content.ToString()) ? item.Summary.Text : item.Content.ToString())
+                                </div>
+                            </div>
+                        </div>
+                        j++;
+                    }
+                }
+            </div>
+
+        </div>
+        <script src='@Url.Content("~/Content/js/jquery-1.11.3.min.js")'></script>
+        <script src='@Url.Content("~/Content/js/bootstrap.min.js")'></script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+[{"id":38,"x":"52","y":"12","name":"EV-38"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Lembro de um \u00e1lbum de Pok\u00e9mon de cor laranja. Onde ser\u00e1 que ele est\u00e1?'}"],"graphic":"139","graphic-params":{"uniqid":1454036619503}}]]

@@ -1,0 +1,336 @@
+﻿@{
+    ViewBag.Title = "E3 2016 - Eletronic Enterteinment Expo";
+    ViewData["metaDescription"] = "Todas as novidades maior feira de jogos eletrônicos do mundo";
+    ViewData["metaImage"] = Url.Content("~/Content/img/e3/e3_media.jpg");
+    ViewData["metaUrl"] = Url.Content("~/E3");
+    ViewData["metaKeywords"] = new List<string>() { "E3", "Eletronic Enterteinment Expo", "Nintendo", "Sony", "Microsoft", "Zelda", "Noticias" };
+
+    List<NParty.Www.Models.Article> articles = (List<NParty.Www.Models.Article>)ViewData["articles"];
+
+    string selectedId = Request.Params["stream"];
+}
+
+@section Head{
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/e3.css")" />
+    <style>
+        .conferences{
+        }
+        .col-conference{
+            min-height: 140px;
+            border-bottom: 1px solid #CCCCCC;
+            padding: 5px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        .col-conference img{
+            margin: 0px auto 5px auto;
+        }
+
+        .col-conference a{
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .col-conference:hover{
+            background-color: #DDDDDD;
+            color: #000;
+        }
+
+        .col-conference a:hover{
+            color: #000;
+            background-color: #DDDDDD;
+        }
+
+        .conference-title{
+            text-align: center;
+        }
+
+        .conference-title h2{
+            margin-top: 10px;
+        }
+
+        .conference-name{
+            height: 35px;
+        }
+
+        .video-area{
+            padding: 30px 0px 30px 0px;
+            background-color: #777;
+            color: #FFF;
+        }
+
+        #stream{
+            display: none;
+        }
+
+        #video-title{
+            margin-top: 40px;
+        }
+
+        #video-description{
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .btn-close{
+            color: #FFF;
+        }
+
+        hr{
+            border-color: #CCCCCC;
+        }
+
+        .articles-container a:hover{
+            color:#FE5050;
+        }
+
+        .e3-stream a{
+            color: #FFFFFF;
+        }
+    </style>
+}
+
+<div class="e3">
+    <section class="content-section video-section">
+        <div class="pattern-overlay">
+            <div class="bg" style="background-image: url(@Url.Content("~/Content/img/e3/e3_media.jpg"))">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo"><img class="img-responsive" alt="E3 2016" src="@Url.Content("~/Content/img/e3/e3-logo.png")" /></div>
+                        <h3>Todas as novidades da <b>E3 2016</b>, a maior feira de jogos eletrônicos do mundo</h3>
+                        <div class="share-icons">
+                            <a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php?u=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/E3"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/facebook_32.png")')" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?source=n_party&related=n_party&via=n_party&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/E3"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/twitter_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/E3"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/linkedin_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                            <a title="Compartilhe no Google+" href="https://plus.google.com/share?url=@System.Configuration.ConfigurationManager.AppSettings["SiteUrl"]@(Url.Content("~/E3"))" class="share-icon" style="background-image: url('@Url.Content("~/Content/img/icons/article-share/googleplus_32.png")')" onclick="javascript:window.open(this.href,
+                                                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row-fluid conferences" id="streams-menu"> 
+        <div class="col-lg-5 col-bordered-right col-conference conference-title" style="background-color: #FFF;">
+            <h2>Conferências</h2>
+            <p>Fique ligado nas datas e horários das conferências da E3<span style="font-size: 10px; font-style: italic;"> (horário de Brasília)</span></p>
+            <button class="btn" onclick="openStream('e3')"><span class="glyphicon glyphicon glyphicon-menu-down"></span></button>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('ea')">
+                <img src="@Url.Content("~/Content/img/e3/ea_logo.png")" class="img-responsive" alt="Eletronic Arts" title="Eletronic Arts" />
+                <div class="conference-name">Electronic Arts</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 12/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 17h00</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('bethesda')">
+                <img src="@Url.Content("~/Content/img/e3/bethesda_logo.png")" class="img-responsive" alt="Bethesda" title="Bethesda" />
+                <div class="conference-name">Bethesda</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 12/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 23h00</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('xbox')">
+                <img src="@Url.Content("~/Content/img/e3/xbox_logo.png")" cla class="img-responsive" alt="Microsoft" title="Microsoft" />
+                <div class="conference-name">Microsoft</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 13/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 13h30</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('pc')">
+                <img src="@Url.Content("~/Content/img/e3/pct_logo.png")" cla class="img-responsive" alt="PC Gaming Show" title="PC Gaming Show" />
+                <div class="conference-name">PC Gaming Show</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 13/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 15h30</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('ubisoft')">
+                <img src="@Url.Content("~/Content/img/e3/ubisoft_logo.png")" cla class="img-responsive" alt="Ubisoft" title="Ubisoft" />
+                <div class="conference-name">Ubisoft</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 13/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 17h00</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('sony')">
+                <img src="@Url.Content("~/Content/img/e3/sony_logo.png")" cla class="img-responsive" alt="Sony" title="Sony" />
+                <div class="conference-name">Sony</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info"><span class="glyphicon glyphicon-calendar"></span> 13/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 22h00</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-1 col-bordered-right col-conference">
+            <a onclick="openStream('nintendo')">
+                <img src="@Url.Content("~/Content/img/e3/ninteno_logo.png")" cla class="img-responsive" alt="Nintendo" title="Nintendo" />
+                <div class="conference-name">Nintendo</div>
+                <div style="margin-top: 5px;">
+                    <span class="label label-default label-info" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-calendar"></span> 14/06</span>
+                    <span class="label label-default label-default"><span class="glyphicon glyphicon-time"></span> 13h00</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="video-area" id="stream">
+        <div class="container">
+            <a onclick="closeStream()" class="btn btn-lg pull-right btn-close" style="margin-bottom: 15px; cursor: pointer; font-size: 36px"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            <div class="clearfix"></div>
+            
+            @{
+                Html.RenderPartial("Streams/General");
+                Html.RenderPartial("Streams/EA");
+                Html.RenderPartial("Streams/Bethesda");
+                Html.RenderPartial("Streams/Microsoft");
+                Html.RenderPartial("Streams/Pc");
+                Html.RenderPartial("Streams/Ubisoft");
+                Html.RenderPartial("Streams/Sony");
+                Html.RenderPartial("Streams/Nintendo");
+            }
+        </div>
+    </div>
+    <div class="container articles-container" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-md-8 inside-section col-bordered-right" style="margin-bottom: 20px;">
+                @if (articles != null && articles.Count > 0)
+                {
+                    foreach (NParty.Www.Models.Article article in articles)
+                    {
+                        bool isSpecialTag = false;
+
+                        foreach (string label in article.Labels)
+                        {
+                            if ("Destaque".Equals(label))
+                            {
+                                isSpecialTag = true;
+                                break;
+                            }
+                        }
+                        if (isSpecialTag)
+                        {
+                            <a class="hilight-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                <figure style="background-image: url('@article.CoverImage')"></figure>
+                                <h3>@article.Title</h3>
+                                @if (!string.IsNullOrEmpty(article.AuthorName))
+                                {
+                                    <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                }
+                                <p class="snippet">@article.Summary</p>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="hilight-article-item hilight-md-article-item" href="@Url.Content("~/" + article.NPartyArticleLink)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <figure style="background-image: url('@article.CoverImage')"></figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3>@article.Title</h3>
+                                        @if (!string.IsNullOrEmpty(article.AuthorName))
+                                        {
+                                            <div class="author">Por @article.AuthorName em @article.DatePublished.ToString("dd/MM/yyyy")</div>
+                                        }
+                                        <p class="snippet">@article.Summary</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                        <hr />
+                    }
+                }
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="sidebar-item" style="text-align: center;">
+                        <a class="twitter-timeline" href="https://twitter.com/search?q=%40n_party%20%23E3" data-chrome="transparent" data-widget-id="737508416076144641"></a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                        @*<a class="twitter-timeline" href="https://twitter.com/n_party" data-chrome="transparent" data-widget-id="737509597708058625"></@*a>
+    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>*@
+                        @*
+                        <a class="twitter-timeline" href="https://twitter.com/search?q=%40n_party%20%23E3" data-widget-id="737508416076144641"></a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                            *@
+                    </div>
+                    <div class="sidebar-follow sidebar-item">
+                        <div class="fb-page" data-href="https://www.facebook.com/nparty" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/nparty"><a href="https://www.facebook.com/nparty">N-Party</a></blockquote></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="@Url.Content("~/Content/js/jquery.bgswitcher.js")"></script>
+    <script>
+        $(".bg").bgswitcher({
+            images: ["@Url.Content("~/Content/img/e3/e3_1.jpg")", "@Url.Content("~/Content/img/e3/e3_2.jpg")", "@Url.Content("~/Content/img/e3/e3_3.jpg")", "@Url.Content("~/Content/img/e3/e3_4.jpg")"],
+            interval: 2500
+        });
+
+        $stream = $('#stream');
+        $streamsMenu = $('#streams-menu');
+
+        $('.choose-stream-tabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        function openStream(descriptionId) {
+
+            if (!$($stream).is(":visible")) {
+                $('#e3-stream-' + descriptionId).show();
+                $stream.slideDown();
+            } else {
+                $('.e3-stream').fadeOut();
+                $('#e3-stream-' + descriptionId).fadeIn();
+            }            
+
+            goToSectionFromEl($stream);
+        }
+
+        function closeStream() {
+            if ($($stream).is(":visible")) {
+                $stream.slideUp(
+                    function () { $('.e3-stream').hide(); }
+                );
+            }
+
+            goToSectionFromEl($streamsMenu);
+        }
+    </script>
+
+    @if (!string.IsNullOrEmpty(selectedId))
+    {
+        <script>
+            if ($("#e3-stream-@selectedId").length)
+                openStream('@selectedId');
+        </script>
+    }
+    
+
+}

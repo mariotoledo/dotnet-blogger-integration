@@ -1,0 +1,1 @@
+[{"id":49,"x":47,"y":10,"name":"EV-49"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Como os Pok\u00e9mon s\u00e3o fofos, ainda bem que \u00e9 poss\u00edvel dar carinho neles!'}"],"graphic":"138","graphic-params":{"uniqid":1454075583649}}]]

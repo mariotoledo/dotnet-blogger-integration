@@ -1,0 +1,61 @@
+﻿
+.evo .video-section .pattern-overlay {
+    background-color: rgba(71, 71, 71, 0.59);
+    padding: 70px 0 70px;
+    min-height: 496px; 
+    position: relative;
+    overflow: hidden;
+}
+
+.evo .bg{
+    background: #222;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    transition: 1s opacity;
+    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    background-position: center center;
+}
+
+.evo .share-icons{
+    margin: 25px auto 20px auto;
+    text-align: center;
+}
+
+.evo .share-icons .share-icon{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: relative;
+    margin-right: 3px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.evo .video-section h1, .video-section h3{
+text-align:center;
+color:#fff;
+}
+.evo .video-section .logo{
+text-align: center;
+padding: 20px 0px;
+}
+.evo .video-section .logo img{
+    margin: auto;
+}
+.evo .video-section h3{
+    font-size: 30px;
+    font-weight:lighter;
+    margin: 0px auto 15px;
+    text-shadow: 1px 1px 1px #000;
+    -webkit-text-shadow: 1px 1px 1px #000;
+    -moz-text-shadow: 1px 1px 1px #000;
+}

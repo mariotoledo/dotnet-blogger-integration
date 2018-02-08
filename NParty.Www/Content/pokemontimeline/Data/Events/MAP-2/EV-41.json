@@ -1,0 +1,1 @@
+[{"id":41,"x":"20","y":"9","name":"EV-41"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Em japon\u00eas a Elite 4 \u00e9 algo como \u201cOs Quatro Reis Celestes\u201d. Eu acho bem mais imponente.'}"],"graphic":"139","graphic-params":{"uniqid":1454036915118}}]]

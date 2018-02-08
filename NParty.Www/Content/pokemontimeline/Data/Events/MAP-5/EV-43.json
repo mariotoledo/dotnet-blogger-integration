@@ -1,0 +1,1 @@
+[{"id":43,"x":17,"y":10,"name":"EV-43"},[{"trigger":"action_button","frequence":"5","type":"random","speed":"1","switch_1":0,"switch_2":0,"switch_3":0,"commands":["SHOW_TEXT: {'text': 'Foi um momento bem sentimental ver que os treinadores de Black 2 & White 2 se lembravam do meu personagem do jogo anterior...'}"],"graphic":"144","graphic-params":{"uniqid":1454074999430}}]]

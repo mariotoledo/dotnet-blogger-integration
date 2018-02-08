@@ -1,0 +1,5 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url('../Graphics/Fonts/Pokemon.ttf');
+}
+.window_custom { border-image: url("../../../images/border_window.png") 14 14 14 14 round round;}

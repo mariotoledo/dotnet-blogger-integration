@@ -1,0 +1,1 @@
+[{"id":7,"x":"29","y":"3","name":"EV-7"},[{"trigger":"action_button","frequence":2,"type":"fixed","speed":4,"switch_1":0,"switch_2":0,"switch_3":0,"commands":["TRANSFER_PLAYER: {'position-type': 'constant','appointement': {'id':'4','x':'1','y':'13'},'direction': '0'}"]}]]
